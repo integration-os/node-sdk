@@ -116,7 +116,7 @@ export class Resource<T> implements UnifiedApi<T> {
 
             return output;
         } catch (error: any) {
-            return error.response?.data;
+            throw error.response?.data;
         }
     }
 
@@ -145,7 +145,7 @@ export class Resource<T> implements UnifiedApi<T> {
 
             return output;
         } catch (error: any) {
-            return error.response?.data;
+            throw error.response?.data;
         }
     }
 
