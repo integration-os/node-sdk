@@ -6,6 +6,10 @@ export * from './types/generic';
 export * from './types/models';
 
 import { 
+    Events, 
+    Calendars, 
+    Threads, 
+    Drafts, 
     Drives, 
     Folders, 
     Files, 
@@ -153,6 +157,10 @@ export class Resource<T> implements UnifiedApi<T> {
         return this.makeRequestSingle<T>('POST', `/${this.resourceName}`, object, options, undefined, HttpStatusCode.Created);
     }
 
+    async upsert(object: T, options?: UnifiedOptions): Promise<Response<T>> {
+        return this.makeRequestSingle<T>('PUT', `/${this.resourceName}`, object, options, undefined, HttpStatusCode.OK);
+    }
+
     async list(filter?: ListFilter, options?: UnifiedOptions): Promise<ListResponse<T>> {
         const queryParams = convertFilterToQueryParams(filter);
         return this.makeRequestList<T>('GET', `/${this.resourceName}`, undefined, options, queryParams, HttpStatusCode.OK);
@@ -194,6 +202,18 @@ export class IntegrationOS {
         });
     }
 
+    events(connectionKey: string) {
+        return new Resource<Events>(this.axiosInstance, connectionKey, 'events');
+    }
+    calendars(connectionKey: string) {
+        return new Resource<Calendars>(this.axiosInstance, connectionKey, 'calendars');
+    }
+    threads(connectionKey: string) {
+        return new Resource<Threads>(this.axiosInstance, connectionKey, 'threads');
+    }
+    drafts(connectionKey: string) {
+        return new Resource<Drafts>(this.axiosInstance, connectionKey, 'drafts');
+    }
     drives(connectionKey: string) {
         return new Resource<Drives>(this.axiosInstance, connectionKey, 'drives');
     }
