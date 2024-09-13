@@ -109,6 +109,10 @@ export class Resource<T> implements UnifiedApi<T> {
         return this.makeRequestSingle<T>('POST', `/${this.resourceName}`, object, options, undefined, HttpStatusCode.Created);
     }
 
+    async upsert(object: T, options?: UnifiedOptions): Promise<Response<T>> {
+        return this.makeRequestSingle<T>('PUT', `/${this.resourceName}`, object, options, undefined, HttpStatusCode.OK);
+    }
+
     async list(filter?: ListFilter, options?: UnifiedOptions): Promise<ListResponse<T>> {
         const queryParams = convertFilterToQueryParams(filter);
         return this.makeRequestList<T>('GET', `/${this.resourceName}`, undefined, options, queryParams, HttpStatusCode.OK);

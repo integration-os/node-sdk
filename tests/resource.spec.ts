@@ -24,13 +24,28 @@ describe('Resource', () => {
             lastName: 'Doe'
         };
 
-        const createdContact = { ...newContact, id: '1' };
+        const createdContact = { ...newContact };
 
         mockAxios.onPost('/contacts').reply(201, { unified: createdContact });
 
         const createResponse = await resource.create(newContact);
         expect(createResponse.unified).toEqual(createdContact);
         expect(createResponse.statusCode).toBe(201);
+    });
+
+    it('should upsert a contact', async () => {
+        const contactToUpsert: Contacts = {
+            firstName: 'Jane',
+            lastName: 'Doe',
+        };
+
+        const upsertedContact = { ...contactToUpsert };
+
+        mockAxios.onPut('/contacts').reply(200, { unified: upsertedContact });
+
+        const upsertResponse = await resource.upsert(contactToUpsert);
+        expect(upsertResponse.unified).toEqual(upsertedContact);
+        expect(upsertResponse.statusCode).toBe(200);
     });
 
     it('should retrieve a contact', async () => {
