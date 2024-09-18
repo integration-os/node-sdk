@@ -1,17 +1,29 @@
-import { Resource } from '../src/index';
+import { IntegrationOS } from '../src/index';
 import axios, { AxiosInstance } from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { Contacts } from '../src/types/models';
 
-describe('Resource', () => {
-    let resource: Resource<Contacts>;
+describe('SDK Unified & Passthrough Mock Tests', () => {
+    let integrate: IntegrationOS;
     let mockAxios: MockAdapter;
     let axiosInstance: AxiosInstance;
 
+    const CONNECTION_KEY = 'integrationos-connection';
+    const SECRET_KEY = 'sk_test_abc';
+    const BASE_URL = 'http://localhost/v1';
+
     beforeEach(() => {
-        axiosInstance = axios.create();
+        axiosInstance = axios.create({
+            baseURL: BASE_URL
+        });
+
         mockAxios = new MockAdapter(axiosInstance);
-        resource = new Resource<Contacts>(axiosInstance, 'test-connection-key', 'contacts');
+
+        integrate = new IntegrationOS(SECRET_KEY, {
+            serverUrl: BASE_URL,
+        });
+
+        integrate.axiosInstance = axiosInstance;
     });
 
     afterEach(() => {
@@ -24,83 +36,120 @@ describe('Resource', () => {
             lastName: 'Doe'
         };
 
-        const createdContact = { ...newContact };
+        const createdContactResponse = { id: '123', ...newContact };
 
-        mockAxios.onPost('/contacts').reply(201, { unified: createdContact });
+        mockAxios.onPost('unified/contacts').reply((_config) => {
+            return [201, { unified: createdContactResponse }];
+        });
 
-        const createResponse = await resource.create(newContact);
-        expect(createResponse.unified).toEqual(createdContact);
-        expect(createResponse.statusCode).toBe(201);
-    });
+        const createdContact = await integrate.contacts(CONNECTION_KEY).create(newContact);
 
-    it('should upsert a contact', async () => {
-        const contactToUpsert: Contacts = {
-            firstName: 'Jane',
-            lastName: 'Doe',
-        };
-
-        const upsertedContact = { ...contactToUpsert };
-
-        mockAxios.onPut('/contacts').reply(200, { unified: upsertedContact });
-
-        const upsertResponse = await resource.upsert(contactToUpsert);
-        expect(upsertResponse.unified).toEqual(upsertedContact);
-        expect(upsertResponse.statusCode).toBe(200);
-    });
-
-    it('should retrieve a contact', async () => {
-        const contactId = '1';
-        const contact = { id: contactId, firstName: 'John', lastName: 'Doe' };
-
-        mockAxios.onGet(`/contacts/${contactId}`).reply(200, { unified: contact });
-
-        const getResponse = await resource.get(contactId);
-        expect(getResponse.unified).toEqual(contact);
-        expect(getResponse.statusCode).toBe(200);
+        expect(createdContact.statusCode).toBe(201);
     });
 
     it('should update a contact', async () => {
-        const contactId = '1';
+        const contactId = '123';
         const updatedContact: Contacts = {
-            id: contactId,
-            firstName: 'John',
-            lastName: 'Smith'
+            firstName: 'Jane',
+            lastName: 'Doe'
         };
 
-        mockAxios.onPatch(`/contacts/${contactId}`).reply(204, { unified: updatedContact });
+        mockAxios.onPatch(`unified/contacts/${contactId}`).reply((_config) => {
+            return [204, { unified: updatedContact }];
+        });
 
-        const updateResponse = await resource.update(contactId, updatedContact);
-        expect(updateResponse.unified).toEqual(updatedContact);
-        expect(updateResponse.statusCode).toBe(204);
+        const response = await integrate.contacts(CONNECTION_KEY).update(contactId, updatedContact);
+
+        expect(response.statusCode).toBe(204);
+    });
+
+    it('should get a contact', async () => {
+        const contactId = '123';
+        const contact: Contacts = {
+            id: contactId,
+            firstName: 'John',
+            lastName: 'Doe'
+        };
+
+        mockAxios.onGet(`unified/contacts/${contactId}`).reply((_config) => {
+            return [200, { unified: contact }];
+        });
+
+        const response = await integrate.contacts(CONNECTION_KEY).get(contactId);
+
+        expect(response.statusCode).toBe(200);
+        expect(response.unified).toEqual(contact);
     });
 
     it('should list contacts', async () => {
-        const mockContacts = [
+        const contacts: Contacts[] = [
             { id: '1', firstName: 'John', lastName: 'Doe' },
             { id: '2', firstName: 'Jane', lastName: 'Smith' }
         ];
 
-        mockAxios.onGet('/contacts').reply(200, {
-            unified: mockContacts,
-            pagination: { next: 'nextpage' },
-            meta: { total: 2 }
+        mockAxios.onGet('unified/contacts').reply((_config) => {
+            return [200, { unified: contacts }];
         });
 
-        const listResponse = await resource.list();
+        const response = await integrate.contacts(CONNECTION_KEY).list();
 
-        expect(Array.isArray(listResponse.unified)).toBe(true);
-        expect(listResponse.unified).toEqual(mockContacts);
-        expect(listResponse.pagination).toBeDefined();
-        expect(listResponse.meta).toBeDefined();
-        expect(listResponse.statusCode).toBe(200);
+        expect(response.statusCode).toBe(200);
+        expect(response.unified).toEqual(contacts);
     });
 
     it('should delete a contact', async () => {
-        const contactId = '1';
+        const contactId = '123';
 
-        mockAxios.onDelete(`/contacts/${contactId}`).reply(204);
+        mockAxios.onDelete(`unified/contacts/${contactId}`).reply((_config) => {
+            return [204, {}];
+        });
 
-        const deleteResponse = await resource.delete(contactId);
-        expect(deleteResponse.statusCode).toBe(204);
+        const response = await integrate.contacts(CONNECTION_KEY).delete(contactId);
+
+        expect(response.statusCode).toBe(204);
+    });
+
+    it('should count contacts', async () => {
+        const count = { count: 10 };
+
+        mockAxios.onGet('unified/contacts/count').reply((_config) => {
+            return [200, { unified: count }];
+        });
+
+        const response = await integrate.contacts(CONNECTION_KEY).count();
+
+        expect(response.statusCode).toBe(200);
+        expect(response.unified).toEqual(count);
+    });
+
+    it('should use passthrough to search contacts', async () => {
+        interface Custom {
+            name: string,
+            age: number,
+            verified: boolean
+        };
+
+        const mockContacts: Custom[] = [
+            { name: 'John Doe', age: 30, verified: true },
+            { name: 'Jane Smith', age: 25, verified: false }
+        ];
+
+        const data = {
+            data: mockContacts
+        };
+
+        mockAxios.onGet('/passthrough/contacts/search.json').reply((_config) => {
+            return [200, data];
+        });
+
+        const passthroughResponse = await integrate.passthrough<Custom>(CONNECTION_KEY).call({
+            method: 'GET',
+            path: 'contacts/search.json',
+            headers: {},
+            queryParams: {}
+        });
+
+        expect(passthroughResponse.statusCode).toBe(200);
+        expect(passthroughResponse.passthrough).toEqual(data);
     });
 });

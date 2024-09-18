@@ -20,10 +20,20 @@ interface UnifiedApi<Type> {
     delete(id: string, deleteOptions?: DeleteOptions | undefined | null, options?: UnifiedOptions | undefined | null): Promise<Response<Type>>;
 }
 
-export class Resource<T> implements UnifiedApi<T> {
-    private axiosInstance: AxiosInstance;
-    private connectionKey: string;
-    private resourceName: string;
+interface PassthroughAPI<Type> {
+    call(options: {
+        method: Method;
+        path: string;
+        data?: any;
+        headers?: Record<string, string>;
+        queryParams?: Record<string, string>;
+    }): Promise<Response<Type>>;
+}
+
+export class Resource {
+    protected axiosInstance: AxiosInstance;
+    protected connectionKey: string;
+    protected resourceName: string;
 
     constructor(axiosInstance: AxiosInstance, connectionKey: string, resourceName: string) {
         this.axiosInstance = axiosInstance;
@@ -31,7 +41,7 @@ export class Resource<T> implements UnifiedApi<T> {
         this.resourceName = resourceName;
     }
 
-    private getRequestHeaders(options?: UnifiedOptions): Record<string, string> {
+    protected getRequestHeaders(options?: UnifiedOptions): Record<string, string> {
         const headers: Record<string, string> = {};
         const excludedKeys = ['common', 'delete', 'get', 'head', 'post', 'put', 'patch'];
 
@@ -47,12 +57,12 @@ export class Resource<T> implements UnifiedApi<T> {
         return headers;
     }
 
-    private async makeRequestSingle<R>(
-        method: string, 
-        url: string, 
-        data?: any, 
-        options?: UnifiedOptions, 
-        queryParams?: Record<string, string>, 
+    protected async makeRequestSingle<R>(
+        method: string,
+        url: string,
+        data?: any,
+        options?: UnifiedOptions,
+        queryParams?: Record<string, string>,
         statusCode?: number
     ): Promise<Response<R>> {
         try {
@@ -65,7 +75,7 @@ export class Resource<T> implements UnifiedApi<T> {
             });
 
             const output = {
-                ...response?.data,
+                ...(url.startsWith('/passthrough') ? { passthrough: response?.data } : response?.data),
                 headers: response.headers as Record<string, string>,
                 statusCode: statusCode || response.status
             };
@@ -76,12 +86,12 @@ export class Resource<T> implements UnifiedApi<T> {
         }
     }
 
-    private async makeRequestList<R>(
-        method: string, 
-        url: string, 
-        data?: any, 
-        options?: UnifiedOptions, 
-        queryParams?: Record<string, string>, 
+    protected async makeRequestList<R>(
+        method: string,
+        url: string,
+        data?: any,
+        options?: UnifiedOptions,
+        queryParams?: Record<string, string>,
         statusCode?: number
     ): Promise<ListResponse<R>> {
         try {
@@ -104,36 +114,52 @@ export class Resource<T> implements UnifiedApi<T> {
             throw error.response?.data;
         }
     }
+}
 
+class UnifiedResourceImpl<T> extends Resource implements UnifiedApi<T> {
     async create(object: T, options?: UnifiedOptions): Promise<Response<T>> {
-        return this.makeRequestSingle<T>('POST', `/${this.resourceName}`, object, options, undefined, HttpStatusCode.Created);
+        return this.makeRequestSingle<T>('POST', `/unified/${this.resourceName}`, object, options, undefined, HttpStatusCode.Created);
     }
 
     async upsert(object: T, options?: UnifiedOptions): Promise<Response<T>> {
-        return this.makeRequestSingle<T>('PUT', `/${this.resourceName}`, object, options, undefined, HttpStatusCode.OK);
+        return this.makeRequestSingle<T>('PUT', `/unified/${this.resourceName}`, object, options, undefined, HttpStatusCode.OK);
     }
 
     async list(filter?: ListFilter, options?: UnifiedOptions): Promise<ListResponse<T>> {
         const queryParams = convertFilterToQueryParams(filter);
-        return this.makeRequestList<T>('GET', `/${this.resourceName}`, undefined, options, queryParams, HttpStatusCode.OK);
+        return this.makeRequestList<T>('GET', `/unified/${this.resourceName}`, undefined, options, queryParams, HttpStatusCode.OK);
     }
 
     async get(id: string, options?: UnifiedOptions): Promise<Response<T>> {
-        return this.makeRequestSingle<T>('GET', `/${this.resourceName}/${id}`, undefined, options, undefined, HttpStatusCode.OK);
+        return this.makeRequestSingle<T>('GET', `/unified/${this.resourceName}/${id}`, undefined, options, undefined, HttpStatusCode.OK);
     }
 
     async update(id: string, object: T, options?: UnifiedOptions): Promise<Response<T>> {
-        return this.makeRequestSingle<T>('PATCH', `/${this.resourceName}/${id}`, object, options, undefined, HttpStatusCode.NoContent);
+        return this.makeRequestSingle<T>('PATCH', `/unified/${this.resourceName}/${id}`, object, options, undefined, HttpStatusCode.NoContent);
     }
 
     async count(options?: UnifiedOptions): Promise<Response<Count>> {
-        return this.makeRequestSingle<Count>('GET', `/${this.resourceName}/count`, undefined, options, undefined, HttpStatusCode.OK);
+        return this.makeRequestSingle<Count>('GET', `/unified/${this.resourceName}/count`, undefined, options, undefined, HttpStatusCode.OK);
     }
 
     async delete(id: string, deleteOptions?: DeleteOptions, options?: UnifiedOptions): Promise<Response<T>> {
-        return this.makeRequestSingle<T>('DELETE', `/${this.resourceName}/${id}`, undefined, options, {
+        return this.makeRequestSingle<T>('DELETE', `/unified/${this.resourceName}/${id}`, undefined, options, {
             ...deleteOptions,
         }, HttpStatusCode.NoContent);
+    }
+}
+
+class PassthroughResourceImpl<T> extends Resource implements PassthroughAPI<T> {
+    async call<T>(options: {
+        method: Method;
+        path: string;
+        data?: any;
+        headers?: Record<string, string>;
+        queryParams?: Record<string, string>;
+    }): Promise<Response<T>> {
+        const { method, path, data, headers, queryParams } = options;
+
+        return this.makeRequestSingle<T>(method, `/passthrough/${path}`, data, headers, queryParams);
     }
 }
 
@@ -142,11 +168,11 @@ export interface IntegrationOSConfig {
 }
 
 export class IntegrationOS {
-    private axiosInstance: AxiosInstance;
+    public axiosInstance: AxiosInstance;
 
     constructor(private apiKey: string, options?: IntegrationOSConfig | undefined | null) {
         this.axiosInstance = axios.create({
-            baseURL: options?.serverUrl || 'https://api.integrationos.com/v1/unified',
+            baseURL: options?.serverUrl || 'https://api.integrationos.com/v1',
             headers: {
                 'x-integrationos-secret': this.apiKey,
                 'Content-Type': 'application/json',
@@ -154,9 +180,13 @@ export class IntegrationOS {
         });
     }
 
+    passthrough<T>(connectionKey: string): PassthroughAPI<T> {
+        return new PassthroughResourceImpl(this.axiosInstance, connectionKey, 'passthrough');
+    }
+
     {{#each resources}}
     {{this.camelCase}}(connectionKey: string) {
-        return new Resource<{{this.pascalCase}}>(this.axiosInstance, connectionKey, '{{this.lowerCase}}');
+        return new UnifiedResourceImpl<{{this.pascalCase}}>(this.axiosInstance, connectionKey, '{{this.lowerCase}}');
     }
     {{/each}}
 }
