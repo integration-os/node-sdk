@@ -1,5 +1,19 @@
 // This file is auto-generated. Do not edit it manually.
 
+export interface EventRecurrenceRules { id?: string;
+    dates?: string[];
+    commonModel?: string;
+    frequency?: EventFrequency;
+    until?: string;
+    byDay?: string;
+    type?: EventRuleType;
+    count?: number;
+    byMonthDay?: number;
+    interval?: number;
+    byMonth?: number }
+export interface EventRecurrences { id?: string;
+    rules?: EventRecurrenceRules[];
+    commonModel?: string }
 export interface ToolResultContent { type?: AiMessagesContentType;
     text?: string[];
     commonModel?: string;
@@ -31,42 +45,50 @@ export interface AiMessagesContent { text?: string;
     toolUseId?: string;
     image?: Images;
     toolResultContent?: ToolResultContent[] }
-export interface Events { organizer?: Users;
-    location?: string;
-    description?: string;
-    attendees?: Users[];
-    title?: string;
-    createdAt?: string;
-    updatedAt?: string;
-    modifyToken?: string;
+export interface Events { recurrence?: EventRecurrences;
     deleted?: boolean;
-    startDate?: string;
-    timeZone?: string;
-    id?: string;
     endDate?: string;
-    commonModel?: string }
-export interface Calendars { timeZone?: string;
-    type?: string;
-    title?: string;
-    description?: string;
-    location?: string;
-    deleted?: boolean;
-    modifyToken?: string;
-    updatedAt?: string;
-    id?: string;
-    createdAt?: string;
-    commonModel?: string }
-export interface Threads { createdAt?: string;
     commonModel?: string;
-    lastHistoryId?: string;
-    snippet?: string;
-    deleted?: boolean;
-    messages?: Messages[];
-    lastMessageId?: string;
-    tags?: KeyValues[];
+    attendees?: Users[];
+    rules?: EventRules;
     id?: string;
+    entryPoints?: EntryPoints[];
     updatedAt?: string;
-    modifyToken?: string }
+    timeZone?: string;
+    organizer?: Users;
+    status?: EventStatus;
+    createdAt?: string;
+    modifyToken?: string;
+    location?: string;
+    attachments?: Attachments[];
+    visibility?: EventVisibility;
+    link?: string;
+    title?: string;
+    startDate?: string;
+    reminders?: EventReminders[];
+    description?: string }
+export interface Calendars { deleted?: boolean;
+    timeZone?: string;
+    updatedAt?: string;
+    id?: string;
+    commonModel?: string;
+    description?: string;
+    title?: string;
+    location?: string;
+    createdAt?: string;
+    modifyToken?: string;
+    type?: string }
+export interface Threads { deleted?: boolean;
+    snippet?: string;
+    tags?: KeyValues[];
+    commonModel?: string;
+    modifyToken?: string;
+    lastMessageId?: string;
+    id?: string;
+    messages?: Messages[];
+    lastHistoryId?: string;
+    createdAt?: string;
+    updatedAt?: string }
 export interface Drafts { priority?: PriorityLevel;
     timestamp?: string;
     updatedAt?: string;
@@ -93,45 +115,45 @@ export interface Drafts { priority?: PriorityLevel;
     attachments?: Attachments[];
     replyToMessageId?: string;
     trackingSettings?: KeyValues[] }
-export interface Drives { name?: string;
-    id?: string;
-    description?: string;
-    updatedAt?: string;
+export interface Drives { description?: string;
     createdAt?: string;
+    id?: string;
+    updatedAt?: string;
+    name?: string;
     commonModel?: string }
-export interface Folders { id?: string;
-    path?: string;
-    updatedAt?: string;
-    modifyToken?: string;
-    commonModel?: string;
-    name?: string;
-    description?: string;
-    parent?: ParentFolders;
-    size?: number;
-    downloadable?: boolean;
-    createdAt?: string;
-    owner?: FileOwners;
-    permissions?: Permissions }
-export interface Files { permissions?: Permissions;
-    content?: string;
-    path?: string;
-    updatedAt?: string;
-    mimeType?: string;
-    exportable?: boolean;
-    downloadable?: boolean;
-    parent?: ParentFolders;
-    commonModel?: string;
-    size?: number;
-    modifyToken?: string;
-    owner?: FileOwners;
+export interface Folders { size?: number;
     id?: string;
-    type?: FileType;
-    name?: string;
+    permissions?: Permissions;
+    commonModel?: string;
+    parent?: ParentFolders;
+    downloadable?: boolean;
+    path?: string;
     description?: string;
-    downloadUrl?: string;
-    exportFormats?: string;
     createdAt?: string;
-    extension?: string }
+    name?: string;
+    owner?: FileOwners;
+    updatedAt?: string;
+    modifyToken?: string }
+export interface Files { permissions?: Permissions;
+    parent?: ParentFolders;
+    owner?: FileOwners;
+    size?: number;
+    downloadUrl?: string;
+    modifyToken?: string;
+    exportFormats?: string;
+    id?: string;
+    mimeType?: string;
+    commonModel?: string;
+    content?: string;
+    updatedAt?: string;
+    downloadable?: boolean;
+    name?: string;
+    exportable?: boolean;
+    path?: string;
+    extension?: string;
+    createdAt?: string;
+    description?: string;
+    type?: FileType }
 export interface FileOwners { email?: string;
     id?: string;
     createdAt?: string;
@@ -151,34 +173,34 @@ export interface Speakers { email?: string;
     id?: string;
     name?: string;
     userId?: string }
-export interface Recordings { files?: Attachments[];
-    name?: string;
-    updatedAt?: string;
+export interface Recordings { duration?: number;
+    id?: string;
     accountId?: string;
-    callType?: CallDirection;
-    duration?: number;
-    endTime?: string;
+    description?: string;
+    modifyToken?: string;
+    commonModel?: string;
     topic?: string;
     createdAt?: string;
-    modifyToken?: string;
-    hostId?: string;
-    id?: string;
+    callType?: CallDirection;
+    fileSize?: number;
     password?: string;
-    commonModel?: string;
-    participants?: Speakers[];
-    description?: string;
+    files?: Attachments[];
+    hostId?: string;
+    name?: string;
+    endTime?: string;
     startTime?: string;
-    fileSize?: number }
-export interface Transcripts { createdAt?: string;
-    updatedAt?: string;
-    modifyToken?: string;
-    speakerId?: string;
-    id?: string;
-    sentences?: Sentences[];
+    participants?: Speakers[];
+    updatedAt?: string }
+export interface Transcripts { speakerName?: string;
+    createdAt?: string;
     topic?: string;
-    speakerName?: string;
+    speakerId?: string;
+    sentences?: Sentences[];
     commonModel?: string;
-    meetingId?: string }
+    updatedAt?: string;
+    meetingId?: string;
+    modifyToken?: string;
+    id?: string }
 export interface Sentences { speakerId?: string;
     endTime?: string;
     commonModel?: string;
@@ -213,18 +235,18 @@ export interface Databases { permissionLevel?: string;
     deleted?: boolean;
     description?: string;
     organizationId?: string }
-export interface Attributes { name?: string;
-    slug?: string;
-    required?: boolean;
-    unique?: boolean;
+export interface Attributes { unique?: boolean;
     customTypeDetails?: Metadata[];
+    modifyToken?: string;
     updatedAt?: string;
+    slug?: string;
+    commonModel?: string;
+    required?: boolean;
+    description?: string;
     createdAt?: string;
     id?: string;
-    description?: string;
-    modifyToken?: string;
-    dataType?: DataType;
-    commonModel?: string }
+    name?: string;
+    dataType?: DataType }
 export interface Records { entity?: unknown;
     createdAt?: string;
     commonModel?: string;
@@ -330,16 +352,16 @@ export interface CurrencyDetails { value?: number;
 export interface UsageLimitExpirations { commonModel?: string;
     limit?: number;
     expirationDate?: string }
-export interface Webhooks { commonModel?: string;
-    updatedAt?: string;
-    modifyToken?: string;
-    format?: Format;
+export interface Webhooks { events?: string[];
     objects?: string[];
+    format?: Format;
     address?: string;
-    id?: string;
-    events?: string[];
+    updatedAt?: string;
+    commonModel?: string;
     createdAt?: string;
-    isDeleted?: boolean }
+    isDeleted?: boolean;
+    id?: string;
+    modifyToken?: string }
 export interface PrerequisiteRanges { greaterThanOrEqualTo?: number;
     lessThanOrEqualTo?: number;
     commonModel?: string;
@@ -422,31 +444,31 @@ export interface AiMessages { content?: AiMessagesContent[];
     role?: AiRole;
     index?: number;
     finishReason?: string }
-export interface Chats { enableParallelToolCalls?: boolean;
-    logitBias?: unknown;
-    id?: string;
-    model?: string;
-    topP?: number;
-    tools?: JsonSchema[];
-    frequencyPenalty?: number;
-    createdAt?: string;
-    temperature?: number;
-    commonModel?: string;
-    toolChoice?: AiToolChoice;
+export interface Chats { numberOfCompletions?: number;
     topK?: number;
-    systemFingerprint?: string;
-    maxTokens?: number;
-    numberOfCompletions?: number;
-    presencePenalty?: number;
     modifyToken?: string;
-    messages?: AiMessages[];
-    usage?: AiUsage;
-    systemMessage?: string;
-    userId?: string;
     seed?: number;
+    messages?: AiMessages[];
     responseFormat?: ResponseFormat;
+    tools?: JsonSchema[];
+    presencePenalty?: number;
+    createdAt?: string;
+    logitBias?: unknown;
+    model?: string;
     objectType?: string;
-    stopSequences?: string[] }
+    usage?: AiUsage;
+    maxTokens?: number;
+    temperature?: number;
+    enableParallelToolCalls?: boolean;
+    stopSequences?: string[];
+    id?: string;
+    systemFingerprint?: string;
+    commonModel?: string;
+    userId?: string;
+    toolChoice?: AiToolChoice;
+    systemMessage?: string;
+    frequencyPenalty?: number;
+    topP?: number }
 export interface TaxDetails { rate?: number;
     currency?: Currency;
     name?: string;
@@ -800,33 +822,33 @@ export interface PurchaseOrderLineItems { unitOfMeasure?: string;
     description?: string;
     unitPrice?: number;
     commonModel?: string }
-export interface Accounts { createdAt?: string;
-    allowPayments?: boolean;
+export interface Accounts { accountNumber?: string;
+    title?: string;
+    accountCode?: string;
+    accountType?: AccountType;
+    overdraftProtection?: boolean;
+    branch?: string;
     active?: boolean;
-    deleted?: boolean;
+    description?: string;
+    taxType?: string;
     showInExpenses?: boolean;
+    owner?: Customers;
     notes?: string;
+    balance?: number;
+    deleted?: boolean;
+    allowPayments?: boolean;
+    modifyToken?: string;
+    status?: FinancialAccountStatus;
+    name?: string;
+    overdraftLimit?: number;
+    createdAt?: string;
+    commonModel?: string;
     id?: string;
+    closedAt?: string;
     currency?: Currency;
     transactions?: Transactions[];
-    overdraftLimit?: number;
-    name?: string;
-    taxType?: string;
-    accountNumber?: string;
-    description?: string;
-    modifyToken?: string;
     interestRate?: number;
-    commonModel?: string;
-    updatedAt?: string;
-    accountCode?: string;
-    status?: FinancialAccountStatus;
-    balance?: number;
-    closedAt?: string;
-    title?: string;
-    branch?: string;
-    accountType?: AccountType;
-    owner?: Customers;
-    overdraftProtection?: boolean }
+    updatedAt?: string }
 export interface PurchaseOrders { createdAt?: string;
     deleted?: boolean;
     lineItems?: PurchaseOrderLineItems[];
@@ -858,16 +880,16 @@ export interface AdditionalCharges { createdAt?: string;
     commonModel?: string;
     updatedAt?: string;
     id?: string }
-export interface Refunds { status?: TransactionStatus;
-    currency?: Currency;
-    reason?: string;
-    commonModel?: string;
-    amount?: number;
-    id?: string;
+export interface Refunds { currency?: Currency;
     createdAt?: string;
     modifyToken?: string;
-    updatedAt?: string;
-    paymentId?: string }
+    amount?: number;
+    commonModel?: string;
+    id?: string;
+    status?: TransactionStatus;
+    paymentId?: string;
+    reason?: string;
+    updatedAt?: string }
 export interface Payments { refund?: Refunds;
     cardDetails?: CardDetails;
     updatedAt?: string;
@@ -1017,43 +1039,43 @@ export interface IncomeStatements { operatingExpenses?: OperatingExpensesDetails
     exchangeRate?: number;
     incomeBeforeTax?: number;
     profitMargins?: number }
-export interface Invoices { issuedDate?: string;
-    subtotal?: number;
-    id?: string;
-    billingAddress?: Addresses;
+export interface Invoices { dueDate?: string;
+    exchangeRate?: number;
+    currency?: Currency;
+    balanceDue?: number;
+    vatNumber?: string;
+    invoiceNumber?: string;
+    paymentTerms?: PaymentTerms;
+    modifyToken?: string;
+    invoicePayments?: InvoicePayments[];
+    discountPercentage?: number;
+    active?: boolean;
+    notes?: string;
+    taxTotal?: number;
+    status?: PaymentStatus;
+    footer?: string;
+    reference?: Entity;
+    metadata?: Metadata[];
+    createdAt?: string;
+    paidAmount?: number;
+    updatedAt?: string;
     discountTotal?: number;
     terms?: string;
-    discountPercentage?: number;
-    shippingAddress?: Addresses;
-    total?: number;
-    createdAt?: string;
-    active?: boolean;
-    header?: string;
-    updatedAt?: string;
-    commonModel?: string;
-    customer?: Customers;
-    invoicePayments?: InvoicePayments[];
-    status?: PaymentStatus;
+    subtotal?: number;
     vatName?: string;
+    customer?: Customers;
+    billingAddress?: Addresses;
+    commonModel?: string;
     transactionDate?: string;
-    modifyToken?: string;
-    dueDate?: string;
-    balanceDue?: number;
-    attachments?: Attachments[];
-    notes?: string;
-    metadata?: Metadata[];
-    exchangeRate?: number;
-    invoiceNumber?: string;
-    adjustments?: InvoiceAdjustments[];
-    paymentTerms?: PaymentTerms;
     items?: InvoiceItems[];
-    reference?: Entity;
-    vatNumber?: string;
+    attachments?: Attachments[];
+    adjustments?: InvoiceAdjustments[];
+    shippingAddress?: Addresses;
     deleted?: boolean;
-    footer?: string;
-    currency?: Currency;
-    taxTotal?: number;
-    paidAmount?: number }
+    id?: string;
+    total?: number;
+    issuedDate?: string;
+    header?: string }
 export interface JournalEntries { commonModel?: string;
     id?: string;
     reference?: string;
@@ -1088,41 +1110,41 @@ export interface JournalEntryLines { credit?: number;
     debit?: number;
     taxAmount?: number;
     amount?: number }
-export interface InvoiceItems { tags?: string[];
-    customFields?: CustomAttributes[];
-    price?: number;
-    updatedAt?: string;
+export interface InvoiceItems { dimensions?: Dimensions;
+    createdAt?: string;
+    tags?: string[];
+    options?: ProductOptions[];
+    discount?: number;
+    inventoryStatus?: ProductAvailabilityStatus;
+    brand?: string;
+    mpn?: string;
+    id?: string;
     variants?: Variants[];
     isbn?: string;
-    name?: string;
-    upc?: string;
-    createdAt?: string;
-    imageUrl?: string;
-    options?: ProductOptions[];
-    commonModel?: string;
-    currency?: Currency;
-    dimensions?: Dimensions;
-    discount?: number;
-    gallery?: Images[];
-    deletedAt?: string;
-    active?: boolean;
-    modifyToken?: string;
-    inventoryStatus?: ProductAvailabilityStatus;
     weight?: number;
-    rating?: number;
-    quantity?: number;
-    ratingCount?: number;
-    brand?: string;
-    reviews?: RatingsReviews[];
-    description?: string;
-    isAvailable?: boolean;
+    name?: string;
     availabilityDate?: string;
     condition?: ItemCondition;
-    inventoryQuantity?: number;
-    ean?: string;
-    mpn?: string;
+    isAvailable?: boolean;
+    commonModel?: string;
     onSale?: boolean;
-    id?: string;
+    rating?: number;
+    active?: boolean;
+    deletedAt?: string;
+    modifyToken?: string;
+    gallery?: Images[];
+    inventoryQuantity?: number;
+    customFields?: CustomAttributes[];
+    updatedAt?: string;
+    ean?: string;
+    quantity?: number;
+    upc?: string;
+    currency?: Currency;
+    price?: number;
+    reviews?: RatingsReviews[];
+    description?: string;
+    imageUrl?: string;
+    ratingCount?: number;
     sku?: string }
 export interface Tickets { type?: SupportQueryType;
     tags?: string[];
@@ -1189,68 +1211,68 @@ export interface Candidates { phoneNumber?: string;
     commonModel?: string;
     preferredWorkLocation?: string;
     createdAt?: string }
-export interface Contacts { company?: string;
-    address?: Addresses;
+export interface Contacts { relationship?: string;
     code?: string;
-    birthday?: string;
-    notes?: Notes;
-    tags?: string[];
-    isActive?: boolean;
-    emails?: Emails[];
-    phones?: Phones[];
-    customFields?: CustomAttributes[];
-    createdAt?: string;
-    addresses?: Addresses[];
-    firstName?: string;
-    defaultPhone?: string;
-    relationship?: string;
+    commonModel?: string;
     socialProfiles?: SocialProfiles[];
-    modifyToken?: string;
-    note?: string;
-    commonModel?: string;
-    lastName?: string;
-    defaultEmail?: string;
+    isActive?: boolean;
+    firstName?: string;
+    emails?: Emails[];
+    customFields?: CustomAttributes[];
     updatedAt?: string;
+    modifyToken?: string;
+    id?: string;
+    notes?: Notes;
+    address?: Addresses;
+    tags?: string[];
     websites?: string[];
-    id?: string;
-    leadId?: string }
-export interface Jobs { jobTrainingProvided?: boolean;
-    jobStartDate?: string;
-    educationRequirements?: string;
-    jobShifts?: string[];
-    benefits?: string[];
-    qualifications?: string;
-    responsibilities?: string;
-    employmentType?: EmploymentType;
-    occupationalCategory?: string;
-    workFromHome?: boolean;
-    industry?: string;
-    jobTrialPeriod?: string;
-    languagesSpoken?: string[];
-    updatedAt?: string;
-    experienceRequirements?: string;
-    commonModel?: string;
-    skills?: string[];
-    salaryCurrency?: string;
-    workHours?: string;
-    modifyToken?: string;
-    company?: Companies;
-    validUntil?: string;
-    baseSalary?: Salaries;
+    birthday?: string;
+    defaultEmail?: string;
+    lastName?: string;
     createdAt?: string;
-    jobLocationType?: string;
-    incentives?: string;
-    applicationDeadline?: string;
-    remote?: boolean;
-    jobImmediateStart?: boolean;
-    jobFlexibleHours?: boolean;
+    company?: string;
+    defaultPhone?: string;
+    addresses?: Addresses[];
+    note?: string;
+    phones?: Phones[];
+    leadId?: string }
+export interface Jobs { createdAt?: string;
     jobBenefits?: string;
-    description?: string;
-    id?: string;
+    occupationalCategory?: string;
+    incentives?: string;
+    benefits?: string[];
     title?: string;
-    incentiveCompensation?: string;
+    baseSalary?: Salaries;
+    employmentType?: EmploymentType;
+    jobShifts?: string[];
+    applicationDeadline?: string;
     location?: Addresses;
-    employmentUnit?: EmploymentUnits }
+    experienceRequirements?: string;
+    jobLocationType?: string;
+    jobImmediateStart?: boolean;
+    id?: string;
+    jobStartDate?: string;
+    company?: Companies;
+    jobFlexibleHours?: boolean;
+    employmentUnit?: EmploymentUnits;
+    jobTrialPeriod?: string;
+    educationRequirements?: string;
+    commonModel?: string;
+    salaryCurrency?: string;
+    responsibilities?: string;
+    updatedAt?: string;
+    incentiveCompensation?: string;
+    modifyToken?: string;
+    qualifications?: string;
+    description?: string;
+    workFromHome?: boolean;
+    remote?: boolean;
+    languagesSpoken?: string[];
+    validUntil?: string;
+    skills?: string[];
+    industry?: string;
+    jobTrainingProvided?: boolean;
+    workHours?: string }
 export interface Salaries { paymentPeriod?: TimeCycle;
     commonModel?: string;
     currency?: Currency;
@@ -1486,46 +1508,46 @@ export interface Dimensions { commonModel?: string;
     width?: number;
     length?: number;
     height?: number }
-export interface Products { variants?: Variants[];
-    reference?: Entity;
-    vendor?: string;
-    customFields?: CustomAttributes[];
-    createdAt?: string;
-    prices?: Prices[];
-    title?: string;
-    code?: string;
-    taxes?: Taxes[];
-    modifyToken?: string;
-    id?: string;
-    skuValidation?: SkuValidation;
+export interface Products { localizations?: Localizations[];
     commonModel?: string;
-    brand?: Brands;
-    inventoryLocation?: InventoryLocations;
-    type?: string;
-    relatedProducts?: string[];
-    options?: ProductOptions[];
-    description?: string;
-    publishedAt?: string;
-    tags?: string[];
-    availableForSale?: boolean;
-    dimensions?: Dimensions;
-    weightUnit?: string;
-    images?: Images[];
+    downloadFiles?: Attachments[];
+    seoKeywords?: string[];
     accountIds?: KeyValues[];
-    status?: EntityLifecycleStatus;
+    manufacturerName?: string;
+    availableForSale?: boolean;
+    modifyToken?: string;
+    weightUnit?: string;
+    skuValidation?: SkuValidation;
+    images?: Images[];
+    metaTitle?: string;
     inventoryQuantity?: number;
-    localizations?: Localizations[];
+    categories?: string[];
+    title?: string;
+    tags?: string[];
+    sku?: string;
+    inventoryLocation?: InventoryLocations;
+    publishedAt?: string;
+    status?: EntityLifecycleStatus;
+    description?: string;
+    vendor?: string;
+    brand?: Brands;
+    dimensions?: Dimensions;
+    id?: string;
+    slug?: string;
+    customFields?: CustomAttributes[];
+    updatedAt?: string;
+    code?: string;
+    options?: ProductOptions[];
+    variants?: Variants[];
+    relatedProducts?: string[];
     isDownloadable?: boolean;
     weight?: number;
-    categories?: string[];
-    slug?: string;
-    metaTitle?: string;
-    downloadFiles?: Attachments[];
-    updatedAt?: string;
-    manufacturerName?: string;
+    reference?: Entity;
+    prices?: Prices[];
+    type?: string;
     metaDescription?: string;
-    seoKeywords?: string[];
-    sku?: string }
+    createdAt?: string;
+    taxes?: Taxes[] }
 export interface Orders { trackingInfo?: string;
     currency?: Currency;
     paymentMethods?: string[];
@@ -1635,15 +1657,15 @@ export interface Users { createdAt?: string;
     socialProfiles?: SocialProfiles[];
     status?: UserStatus;
     coverPhoto?: Images }
-export interface Categories { name?: string;
-    modifyToken?: string;
-    tags?: string[];
+export interface Categories { tags?: string[];
+    commonModel?: string;
     image?: string;
-    parentId?: string;
+    name?: string;
     updatedAt?: string;
-    id?: string;
     createdAt?: string;
-    commonModel?: string }
+    id?: string;
+    modifyToken?: string;
+    parentId?: string }
 export interface Notes { modifyToken?: string;
     createdAt?: string;
     id?: string;
@@ -1762,41 +1784,41 @@ export interface CustomAttributes { fieldName?: string;
     fieldType?: DataType;
     commonModel?: string;
     id?: string }
-export interface Companies { createdAt?: string;
-    reference?: Entity;
-    id?: string;
-    legalName?: string;
-    additionalContacts?: Contacts[];
-    address?: Addresses;
-    parentCompanyId?: string;
-    dunsNumber?: string;
-    numberOfEmployees?: number;
-    regulatoryStatus?: string;
-    domain?: string;
-    stockSymbol?: string;
-    incorporationDate?: string;
-    updatedAt?: string;
+export interface Companies { stockSymbol?: string;
     incorporationCountry?: string;
-    defaultPhone?: string;
-    phones?: Phones[];
-    socialProfiles?: SocialProfiles[];
-    revenueCurrency?: string;
-    customFields?: CustomAttributes[];
-    emails?: Emails[];
-    defaultEmail?: string;
-    type?: string;
-    website?: string;
-    modifyToken?: string;
-    description?: string;
-    revenue?: number;
-    companyNumber?: string;
-    commonModel?: string;
-    logo?: string;
-    industry?: string;
+    incorporationDate?: string;
     taxId?: string;
+    reference?: Entity;
+    address?: Addresses;
+    updatedAt?: string;
+    socialProfiles?: SocialProfiles[];
+    phones?: Phones[];
+    type?: string;
+    logo?: string;
+    customFields?: CustomAttributes[];
+    modifyToken?: string;
     tags?: string[];
+    industry?: string;
+    foundedDate?: string;
+    additionalContacts?: Contacts[];
     name?: string;
-    foundedDate?: string }
+    revenueCurrency?: string;
+    defaultEmail?: string;
+    createdAt?: string;
+    companyNumber?: string;
+    website?: string;
+    domain?: string;
+    commonModel?: string;
+    id?: string;
+    defaultPhone?: string;
+    legalName?: string;
+    numberOfEmployees?: number;
+    revenue?: number;
+    emails?: Emails[];
+    description?: string;
+    parentCompanyId?: string;
+    regulatoryStatus?: string;
+    dunsNumber?: string }
 export interface Localizations { title?: string;
     description?: string;
     metaTitle?: string;
@@ -2115,116 +2137,121 @@ export interface CRMAccounts { annualRevenue?: number;
     accountType?: StakeholderType;
     rating?: AccountEngagementLevel;
     updatedAt?: string }
-export const enum MinimumRequirements { MinimumQuantityOfItems = 'minimum-quantity-of-items', None = 'none', MinimumPurchaseAmount = 'minimum-purchase-amount' }
-export const enum TargetSelection { Entitled = 'entitled', All = 'all' }
-export const enum Status { Scheduled = 'scheduled', Expired = 'expired', Active = 'active' }
-export const enum AppliesTo { SpecificCategories = 'specific-categories', SpecificItems = 'specific-items', AllItems = 'all-items' }
-export const enum ChannelAvailability { Online = 'online', InApp = 'in-app', AllChannels = 'all-channels', InStore = 'in-store' }
-export const enum CustomerSelection { All = 'all', Prerequisite = 'prerequisite' }
-export const enum TransactionMethod { Atm = 'atm', Online = 'online', Telephone = 'telephone', BankBranch = 'bank-branch', Mobile = 'mobile', Mail = 'mail' }
-export const enum CustomerEligibility { SpecificCustomers = 'specific-customers', SpecificCustomerGroups = 'specific-customer-groups', All = 'all' }
 export const enum AllocationMethod { Across = 'across', Each = 'each' }
-export const enum TargetType { LineItem = 'line-item', ShippingLine = 'shipping-line' }
-export const enum SkuValidation { LocalUnique = 'local-unique', GlobalUnique = 'global-unique', None = 'none' }
-export const enum Roles { User = 'user', Admin = 'admin', Moderator = 'moderator' }
 export const enum Format { Xml = 'xml', Json = 'json' }
-export const enum Gender { Male = 'male', Other = 'other', PreferNotToSay = 'prefer not to say', Female = 'female' }
-export const enum AccountType { LiabilityAccrualsAndDeferredIncome = 'liability::accruals-and-deferred-income', EquityCommonStock = 'equity::common-stock', EquityPaidInCapitalOrSurplus = 'equity::paid-in-capital-or-surplus', ExpenseOtherBusinessExpenses = 'expense::other-business-expenses', AssetLeaseBuyout = 'asset::lease-buyout', LiabilityShareholderNotesPayable = 'liability::shareholder-notes-payable', AssetSecurityDeposits = 'asset::security-deposits', ExpenseCharitableContributions = 'expense::charitable-contributions', ExpenseTravelExpensesSellingExpense = 'expense::travel-expenses-selling-expense', ExpenseTaxesPaid = 'expense::taxes-paid', OtherCurrentLiabilityCurrentTaxLiability = 'other-current-liability::current-tax-liability', LiabilityAccountsPayable = 'liability::accounts-payable', OtherExpenseExtraordinaryItems = 'other-expense::extraordinary-items', RevenueSalesWholesale = 'revenue::sales-wholesale', ExpenseShippingAndDeliveryExpense = 'expense::shipping-and-delivery-expense', LiabilityLongTermLiability = 'liability::long-term-liability', ExpenseInsurance = 'expense::insurance', OtherExpenseHomeOwnerRentalInsurance = 'other-expense::home-owner-rental-insurance', ExpenseExternalServices = 'expense::external-services', ExpenseCostOfLabor = 'expense::cost-of-labor', EquityDividendDisbursed = 'equity::dividend-disbursed', LiabilityAccruedVacationPayable = 'liability::accrued-vacation-payable', ExpenseAdvertisingPromotional = 'expense::advertising-promotional', AssetFixedAssetPhone = 'asset::fixed-asset-phone', AssetInvestmentTaxExemptSecurities = 'asset::investment-tax-exempt-securities', ExpenseManagementCompensation = 'expense::management-compensation', OtherExpenseExceptionalItems = 'other-expense::exceptional-items', OtherCurrentLiabilityGlobalTaxSuspense = 'other-current-liability::global-tax-suspense', AssetInvestmentOther = 'asset::investment-other', OtherExpenseOtherHomeOfficeExpenses = 'other-expense::other-home-office-expenses', ExpenseLegalProfessionalFees = 'expense::legal-professional-fees', LiabilityBankLoans = 'liability::bank-loans', ExpenseRentOrLeaseOfBuildings = 'expense::rent-or-lease-of-buildings', OtherCurrentLiabilityProvisionsCurrentLiabilities = 'other-current-liability::provisions-current-liabilities', OtherExpenseDepletion = 'other-expense::depletion', AssetOtherAsset = 'asset::other-asset', OtherCurrentLiabilityCurrentLiabilities = 'other-current-liability::current-liabilities', AssetCapitalWip = 'asset::capital-wip', AssetMoneyMarket = 'asset::money-market', ExpenseEntertainmentMeals = 'expense::entertainment-meals', OtherExpenseVehicleLoanInterest = 'other-expense::vehicle-loan-interest', AccountsReceivable = 'accounts-receivable', CostOfGoodsSoldEquipmentRentalCos = 'cost-of-goods-sold::equipment-rental-cos', AssetFixedAssetPhotoVideo = 'asset::fixed-asset-photo-video', EquityFunds = 'equity::funds', AssetFixedAssetOtherToolsEquipment = 'asset::fixed-asset-other-tools-equipment', AssetLandAsset = 'asset::land-asset', OtherCurrentLiabilityRentsInTrustLiability = 'other-current-liability::rents-in-trust-liability', ExpenseAmortizationExpense = 'expense::amortization-expense', ExpenseOtherMiscellaneousServiceCost = 'expense::other-miscellaneous-service-cost', AssetProvisionsNonCurrentAssets = 'asset::provisions-non-current-assets', ExpenseOtherRentalCosts = 'expense::other-rental-costs', OtherCurrentLiabilitySocialSecurityAgencies = 'other-current-liability::social-security-agencies', AssetLoansToStockholders = 'asset::loans-to-stockholders', ExpensePromotionalMeals = 'expense::promotional-meals', RevenueSalesRetail = 'revenue::sales-retail', AssetFixedAssetCopiers = 'asset::fixed-asset-copiers', LiabilityLiabilitiesRelatedToAssetsHeldForSale = 'liability::liabilities-related-to-assets-held-for-sale', OtherCurrentLiabilityDividendsPayable = 'other-current-liability::dividends-payable', OtherCurrentLiabilityTrustAccountsLiabilities = 'other-current-liability::trust-accounts-liabilities', AssetAllowanceForBadDebts = 'asset::allowance-for-bad-debts', ExpenseLossOnDiscontinuedOperationsNetOfTax = 'expense::loss-on-discontinued-operations-net-of-tax', CostOfGoodsSoldFreightAndDeliveryCost = 'cost-of-goods-sold::freight-and-delivery-cost', ExpenseTravelMeals = 'expense::travel-meals', OtherCurrentLiabilityCurrentPortionEmployeeBenefitsObligations = 'other-current-liability::current-portion-employee-benefits-obligations', AssetAccumulatedDepletion = 'asset::accumulated-depletion', AssetGlobalTaxDeferred = 'asset::global-tax-deferred', EquityOtherFreeReserves = 'equity::other-free-reserves', ExpenseTravelExpensesGeneralAndAdminExpenses = 'expense::travel-expenses-general-and-admin-expenses', AssetDeferredTax = 'asset::deferred-tax', OtherCurrentLiabilityProvisionForWarrantyObligations = 'other-current-liability::provision-for-warranty-obligations', OtherIncomeGainLossOnSaleOfInvestments = 'other-income::gain-loss-on-sale-of-investments', ExpenseOtherExternalServices = 'expense::other-external-services', AssetNonCurrentAssets = 'asset::non-current-assets', AssetInternalTransfers = 'asset::internal-transfers', OtherExpenseMortgageInterest = 'other-expense::mortgage-interest', OtherExpenseVehicleLease = 'other-expense::vehicle-lease', AssetLand = 'asset::land', OtherExpenseIncomeTaxOtherExpense = 'other-expense::income-tax-other-expense', AssetUndepositedFunds = 'asset::undeposited-funds', LiabilityOtherLongTermProvisions = 'liability::other-long-term-provisions', OtherExpenseUtilities = 'other-expense::utilities', AssetOrganizationalCosts = 'asset::organizational-costs', ExpenseGlobalTaxExpense = 'expense::global-tax-expense', AssetFurnitureAndFixtures = 'asset::furniture-and-fixtures', AssetLicenses = 'asset::licenses', OtherExpenseOtherVehicleExpenses = 'other-expense::other-vehicle-expenses', Asset = 'asset', AssetOtherLongTermLoansAndAdvances = 'asset::other-long-term-loans-and-advances', OtherIncomeDividendIncome = 'other-income::dividend-income', LiabilityAccruedLongTermLiabilities = 'liability::accrued-long-term-liabilities', AssetTrustAccounts = 'asset::trust-accounts', EquityAccumulatedAdjustment = 'equity::accumulated-adjustment', ExpensePenaltiesSettlements = 'expense::penalties-settlements', AssetOtherLongTermInvestments = 'asset::other-long-term-investments', OtherExpenseVehicle = 'other-expense::vehicle', Income = 'income', EquityCapitalReserves = 'equity::capital-reserves', ExpenseEntertainment = 'expense::entertainment', AssetInvestments = 'asset::investments', AssetIntangibleAssetsUnderDevelopment = 'asset::intangible-assets-under-development', OtherCurrentLiability = 'other-current-liability', OtherExpenseWashAndRoadServices = 'other-expense::wash-and-road-services', ExpenseFinanceCosts = 'expense::finance-costs', EquityPartnerDistributions = 'equity::partner-distributions', OtherExpenseOtherMiscellaneousExpense = 'other-expense::other-miscellaneous-expense', AssetPrepaymentsAndAccruedIncome = 'asset::prepayments-and-accrued-income', OtherExpenseRepairsAndMaintenance = 'other-expense::repairs-and-maintenance', OtherIncomeOtherMiscellaneousIncome = 'other-income::other-miscellaneous-income', AssetParticipatingInterests = 'asset::participating-interests', ExpenseDistributionCosts = 'expense::distribution-costs', Expense = 'expense', OtherCurrentLiabilitySalesTaxPayable = 'other-current-liability::sales-tax-payable', AssetCumulativeDepreciationOnIntangibleAssets = 'asset::cumulative-depreciation-on-intangible-assets', AssetGoodwill = 'asset::goodwill', AssetIntangibleAssets = 'asset::intangible-assets', LiabilityGroupAndAssociates = 'liability::group-and-associates', EquityShareApplicationMoneyPendingAllotment = 'equity::share-application-money-pending-allotment', AssetPrepaidExpenses = 'asset::prepaid-expenses', AssetProvisionsCurrentAssets = 'asset::provisions-current-assets', OtherExpenseHomeOffice = 'other-expense::home-office', OtherExpenseMatCredit = 'other-expense::mat-credit', AssetCashOnHand = 'asset::cash-on-hand', AssetProvisionsFixedAssets = 'asset::provisions-fixed-assets', OtherCurrentLiabilitySundryDebtorsAndCreditors = 'other-current-liability::sundry-debtors-and-creditors', AssetSavings = 'asset::savings', OtherExpensePriorPeriodItems = 'other-expense::prior-period-items', RevenueOwnWorkCapitalized = 'revenue::own-work-capitalized', OtherIncomeLossOnDisposalOfAssets = 'other-income::loss-on-disposal-of-assets', RevenueOtherCurrentOperatingIncome = 'revenue::other-current-operating-income', EquityPersonalIncome = 'equity::personal-income', AssetDevelopmentCosts = 'asset::development-costs', RevenueNonProfitIncome = 'revenue::non-profit-income', ExpenseBadDebts = 'expense::bad-debts', ExpenseSuppliesMaterials = 'expense::supplies-materials', EquityCalledUpShareCapital = 'equity::called-up-share-capital', LiabilityLongTermDebit = 'liability::long-term-debit', RevenueSalesOfProductIncome = 'revenue::sales-of-product-income', AssetFixedAssetComputers = 'asset::fixed-asset-computers', LiabilityCreditCard = 'liability::credit-card', LiabilityProvisionForLiabilities = 'liability::provision-for-liabilities', AssetOtherIntangibleAssets = 'asset::other-intangible-assets', OtherCurrentLiabilityLoanPayable = 'other-current-liability::loan-payable', CostOfGoodsSold = 'cost-of-goods-sold', OtherCurrentLiabilityDirectDepositPayable = 'other-current-liability::direct-deposit-payable', RevenueServiceFeeIncome = 'revenue::service-fee-income', ExpenseAuto = 'expense::auto', AssetGlobalTaxRefund = 'asset::global-tax-refund', EquityPersonalExpense = 'equity::personal-expense', OtherCurrentLiabilityFederalIncomeTaxPayable = 'other-current-liability::federal-income-tax-payable', AssetLongTermLoansAndAdvancesToRelatedParties = 'asset::long-term-loans-and-advances-to-related-parties', LiabilityOutstandingDuesOtherThanMicroSmallEnterprise = 'liability::outstanding-dues-other-than-micro-small-enterprise', LiabilityNotesPayable = 'liability::notes-payable', LiabilityObligationsUnderFinanceLeases = 'liability::obligations-under-finance-leases', Liability = 'liability', LiabilityLongTermEmployeeBenefitObligations = 'liability::long-term-employee-benefit-obligations', AssetAccumulatedAmortizationOfOtherAssets = 'asset::accumulated-amortization-of-other-assets', AssetOtherCurrentAssets = 'asset::other-current-assets', EquityTreasuryStock = 'equity::treasury-stock', LiabilityLongTermBorrowings = 'liability::long-term-borrowings', RevenueDiscountsRefundsGiven = 'revenue::discounts-refunds-given', OtherExpenseVehicleRepairs = 'other-expense::vehicle-repairs', OtherIncomeTaxExemptInterest = 'other-income::tax-exempt-interest', ExpenseExtraordinaryCharges = 'expense::extraordinary-charges', LiabilityDebtsRelatedToParticipatingInterests = 'liability::debts-related-to-participating-interests', RevenueCashReceiptIncome = 'revenue::cash-receipt-income', OtherCurrentLiabilityStaffAndRelatedLiabilityAccounts = 'other-current-liability::staff-and-related-liability-accounts', OtherIncomeUnrealisedLossOnSecuritiesNetOfTax = 'other-income::unrealised-loss-on-securities-net-of-tax', RevenueUnappliedCashPaymentIncome = 'revenue::unapplied-cash-payment-income', AssetChecking = 'asset::checking', AssetInventory = 'asset::inventory', OtherCurrentLiabilityLineOfCredit = 'other-current-liability::line-of-credit', AssetCalledUpShareCapitalNotPaid = 'asset::called-up-share-capital-not-paid', AssetMachineryAndEquipment = 'asset::machinery-and-equipment', ExpensePurchasesRebates = 'expense::purchases-rebates', AssetBank = 'asset::bank', OtherIncomeOtherOperatingIncome = 'other-income::other-operating-income', EquityRetainedEarnings = 'equity::retained-earnings', AssetAssetsHeldForSale = 'asset::assets-held-for-sale', OtherExpenseTaxRoundoffGainOrLoss = 'other-expense::tax-roundoff-gain-or-loss', ExpenseOtherSellingExpenses = 'expense::other-selling-expenses', OtherExpenseExchangeGainOrLoss = 'other-expense::exchange-gain-or-loss', AssetTradeAndOtherReceivables = 'asset::trade-and-other-receivables', ExpenseOfficeGeneralAdministrativeExpenses = 'expense::office-general-administrative-expenses', OtherCurrentLiabilityPrepaidExpensesPayable = 'other-current-liability::prepaid-expenses-payable', ExpenseProjectStudiesSurveysAssessments = 'expense::project-studies-surveys-assessments', OtherExpenseGasAndFuel = 'other-expense::gas-and-fuel', OtherIncomeInterestEarned = 'other-income::interest-earned', OtherIncome = 'other-income', LiabilityGovernmentAndOtherPublicAuthorities = 'liability::government-and-other-public-authorities', EquityMoneyReceivedAgainstShareWarrants = 'equity::money-received-against-share-warrants', CostOfGoodsSoldOtherCostsOfServiceCos = 'cost-of-goods-sold::other-costs-of-service-cos', ExpenseDuesSubscriptions = 'expense::dues-subscriptions', ExpenseSundry = 'expense::sundry', AssetVehicles = 'asset::vehicles', OtherExpenseParkingAndTolls = 'other-expense::parking-and-tolls', AssetFixedAssetSoftware = 'asset::fixed-asset-software', ExpenseCommissionsAndFees = 'expense::commissions-and-fees', AssetCashAndCashEquivalents = 'asset::cash-and-cash-equivalents', ExpenseEquipmentRental = 'expense::equipment-rental', AssetRentsHeldInTrust = 'asset::rents-held-in-trust', ExpenseAppropriationsToDepreciation = 'expense::appropriations-to-depreciation', LiabilityDeferredTaxLiabilities = 'liability::deferred-tax-liabilities', LiabilityProvisionsNonCurrentLiabilities = 'liability::provisions-non-current-liabilities', OtherCurrentLiabilityDutiesAndTaxes = 'other-current-liability::duties-and-taxes', OtherExpenseVehicleLoan = 'other-expense::vehicle-loan', OtherExpenseVehicleRegistration = 'other-expense::vehicle-registration', AssetLongTermInvestments = 'asset::long-term-investments', OtherExpenseDepreciation = 'other-expense::depreciation', AssetAccumulatedDepreciation = 'asset::accumulated-depreciation', EquityOwnersEquity = 'equity::owners-equity', ExpenseIncomeTaxExpense = 'expense::income-tax-expense', AssetDepletableAssets = 'asset::depletable-assets', ExpensePayrollExpenses = 'expense::payroll-expenses', LiabilityStaffAndRelatedLongTermLiabilityAccounts = 'liability::staff-and-related-long-term-liability-accounts', EquityHealthcare = 'equity::healthcare', CostOfGoodsSoldCostOfLaborCos = 'cost-of-goods-sold::cost-of-labor-cos', EquityInvestmentGrants = 'equity::investment-grants', OtherCurrentLiabilityOtherCurrentLiabilities = 'other-current-liability::other-current-liabilities', AssetFixedAssetFurniture = 'asset::fixed-asset-furniture', OtherIncomeOtherInvestmentIncome = 'other-income::other-investment-income', OtherCurrentLiabilityShortTermBorrowings = 'other-current-liability::short-term-borrowings', EquityPartnerContributions = 'equity::partner-contributions', RevenueSavingsByTaxScheme = 'revenue::savings-by-tax-scheme', EquityEstimatedTaxes = 'equity::estimated-taxes', AssetBuildings = 'asset::buildings', AssetOtherConsumables = 'asset::other-consumables', AssetRetainage = 'asset::retainage', OtherCurrentLiabilityCurrentPortionOfObligationsUnderFinanceLeases = 'other-current-liability::current-portion-of-obligations-under-finance-leases', LiabilityOtherLongTermLiabilities = 'liability::other-long-term-liabilities', AssetExpenditureAuthorisationsAndLettersOfCredit = 'asset::expenditure-authorisations-and-letters-of-credit', EquityPartnersEquity = 'equity::partners-equity', OtherCurrentLiabilityGlobalTaxPayable = 'other-current-liability::global-tax-payable', OtherExpensePenaltiesSettlements = 'other-expense::penalties-settlements', AssetAvailableForSaleFinancialAssets = 'asset::available-for-sale-financial-assets', OtherExpense = 'other-expense', ExpenseBorrowingCost = 'expense::borrowing-cost', OtherExpenseVehicleInsurance = 'other-expense::vehicle-insurance', AssetAccumulatedAmortization = 'asset::accumulated-amortization', OtherExpenseDeferredTaxExpense = 'other-expense::deferred-tax-expense', CostOfGoodsSoldCostOfSales = 'cost-of-goods-sold::cost-of-sales', ExpenseShippingFreightDelivery = 'expense::shipping-freight-delivery', EquityAccumulatedOtherComprehensiveIncome = 'equity::accumulated-other-comprehensive-income', AssetBalWithGovtAuthorities = 'asset::bal-with-govt-authorities', AssetFixedAsset = 'asset::fixed-asset', AssetAssetsInCourseOfConstruction = 'asset::assets-in-course-of-construction', OtherCurrentLiabilityInterestPayables = 'other-current-liability::interest-payables', AssetLeaseholdImprovements = 'asset::leasehold-improvements', OtherCurrentLiabilityPayrollTaxPayable = 'other-current-liability::payroll-tax-payable', AssetOtherFixedAssets = 'asset::other-fixed-assets', RevenueIncome = 'revenue::income', AssetOtherLongTermAssets = 'asset::other-long-term-assets', ExpenseOfficeExpenses = 'expense::office-expenses', AssetShortTermInvestmentsInRelatedParties = 'asset::short-term-investments-in-related-parties', Equity = 'equity', AssetInvestmentMortgageRealEstateLoans = 'asset::investment-mortgage-real-estate-loans', CostOfGoodsSoldSuppliesMaterialsCogs = 'cost-of-goods-sold::supplies-materials-cogs', ExpenseInterestPaid = 'expense::interest-paid', ExpenseStaffCosts = 'expense::staff-costs', OtherExpenseAmortization = 'other-expense::amortization', RevenueOperatingGrants = 'revenue::operating-grants', AssetLoansToOfficers = 'asset::loans-to-officers', CostOfGoodsSoldShippingFreightDeliveryCos = 'cost-of-goods-sold::shipping-freight-delivery-cos', OtherCurrentLiabilityPayrollClearing = 'other-current-liability::payroll-clearing', OtherCurrentLiabilityStateLocalIncomeTaxPayable = 'other-current-liability::state-local-income-tax-payable', ExpenseUtilities = 'expense::utilities', OtherCurrentLiabilityInsurancePayable = 'other-current-liability::insurance-payable', OtherCurrentLiabilityAccruedLiabilities = 'other-current-liability::accrued-liabilities', OtherCurrentLiabilityTradeAndOtherPayables = 'other-current-liability::trade-and-other-payables', AssetEmployeeCashAdvances = 'asset::employee-cash-advances', AssetInvestmentUsGovernmentObligations = 'asset::investment-us-government-obligations', AssetOtherCurrentAsset = 'asset::other-current-asset', EquityShareCapital = 'equity::share-capital', ExpenseBankCharges = 'expense::bank-charges', ExpenseOtherCurrentOperatingCharges = 'expense::other-current-operating-charges', AssetOtherEarMarkedBankAccounts = 'asset::other-ear-marked-bank-accounts', ExpenseRepairMaintenance = 'expense::repair-maintenance', ExpenseTravel = 'expense::travel', OtherIncomeGainLossOnSaleOfFixedAssets = 'other-income::gain-loss-on-sale-of-fixed-assets', RevenueOtherPrimaryIncome = 'revenue::other-primary-income', EquityPreferredStock = 'equity::preferred-stock', EquityEquityInEarningsOfSubsidiuaries = 'equity::equity-in-earnings-of-subsidiuaries', AssetLoansToOthers = 'asset::loans-to-others', RevenueRevenueGeneral = 'revenue::revenue-general', LiabilityOutstandingDuesMicroSmallEnterprise = 'liability::outstanding-dues-micro-small-enterprise', EquityOpeningBalanceEquity = 'equity::opening-balance-equity', ExpenseUnappliedCashBillPaymentExpense = 'expense::unapplied-cash-bill-payment-expense', OtherExpenseRentAndLease = 'other-expense::rent-and-lease', AssetShortTermLoansAndAdvancesToRelatedParties = 'asset::short-term-loans-and-advances-to-related-parties', AssetAssetsAvailableForSale = 'asset::assets-available-for-sale' }
-export const enum Country { Algeria = 'algeria', Comoros = 'comoros', Thailand = 'thailand', Bahamas = 'bahamas', Fiji = 'fiji', Luxembourg = 'luxembourg', Slovakia = 'slovakia', Tonga = 'tonga', SierraLeone = 'sierra-leone', Uganda = 'uganda', Romania = 'romania', TrinidadAndTobago = 'trinidad-and-tobago', UnitedArabEmirates = 'united-arab-emirates', Vietnam = 'vietnam', SouthKorea = 'south-korea', TimorLeste = 'timor-leste', Nauru = 'nauru', Croatia = 'croatia', Singapore = 'singapore', Eswatini = 'eswatini', Nigeria = 'nigeria', Indonesia = 'indonesia', Namibia = 'namibia', SouthAfrica = 'south-africa', Hungary = 'hungary', Argentina = 'argentina', PapuaNewGuinea = 'papua-new-guinea', Djibouti = 'djibouti', Honduras = 'honduras', Iraq = 'iraq', BosniaAndHerzegovina = 'bosnia-and-herzegovina', Paraguay = 'paraguay', Yemen = 'yemen', Finland = 'finland', Libya = 'libya', Gabon = 'gabon', Iran = 'iran', Afghanistan = 'afghanistan', Maldives = 'maldives', DominicanRepublic = 'dominican-republic', Bhutan = 'bhutan', SaoTomeAndPrincipe = 'sao-tome-and-principe', NewZealand = 'new-zealand', Dominica = 'dominica', Kiribati = 'kiribati', Benin = 'benin', Oman = 'oman', Lithuania = 'lithuania', UnitedKingdom = 'united-kingdom', Montenegro = 'montenegro', Mongolia = 'mongolia', Qatar = 'qatar', Cyprus = 'cyprus', Syria = 'syria', Madagascar = 'madagascar', Switzerland = 'switzerland', VaticanCity = 'vatican-city', CzechRepublic = 'czech-republic', Ecuador = 'ecuador', Morocco = 'morocco', Malawi = 'malawi', Malaysia = 'malaysia', Myanmar = 'myanmar', SolomonIslands = 'solomon-islands', Japan = 'japan', Laos = 'laos', Armenia = 'armenia', Canada = 'canada', EquatorialGuinea = 'equatorial-guinea', Monaco = 'monaco', Guyana = 'guyana', Cambodia = 'cambodia', Somalia = 'somalia', Ethiopia = 'ethiopia', Moldova = 'moldova', Kuwait = 'kuwait', Serbia = 'serbia', Angola = 'angola', Barbados = 'barbados', CentralAfricanRepublic = 'central-african-republic', Chile = 'chile', India = 'india', Poland = 'poland', Nepal = 'nepal', Palestine = 'palestine', Tajikistan = 'tajikistan', Guinea = 'guinea', Pakistan = 'pakistan', Turkey = 'turkey', Turkmenistan = 'turkmenistan', Vanuatu = 'vanuatu', Zambia = 'zambia', Taiwan = 'taiwan', Seychelles = 'seychelles', CongoDemocraticRepublic = 'congo-democratic-republic', Uruguay = 'uruguay', Russia = 'russia', Tanzania = 'tanzania', Germany = 'germany', Ghana = 'ghana', CostaRica = 'costa-rica', Azerbaijan = 'azerbaijan', SaintKittsAndNevis = 'saint-kitts-and-nevis', Mauritania = 'mauritania', Jamaica = 'jamaica', Haiti = 'haiti', Rwanda = 'rwanda', China = 'china', Tunisia = 'tunisia', Albania = 'albania', CaboVerde = 'cabo-verde', Australia = 'australia', Iceland = 'iceland', Jordan = 'jordan', Kyrgyzstan = 'kyrgyzstan', Tuvalu = 'tuvalu', BurkinaFaso = 'burkina-faso', Guatemala = 'guatemala', Ukraine = 'ukraine', Bahrain = 'bahrain', MarshallIslands = 'marshall-islands', AntiguaAndBarbuda = 'antigua-and-barbuda', Andorra = 'andorra', Belgium = 'belgium', CongoRepublic = 'congo-republic', SaintVincentAndTheGrenadines = 'saint-vincent-and-the-grenadines', Lesotho = 'lesotho', Netherlands = 'netherlands', SaintLucia = 'saint-lucia', Suriname = 'suriname', GuineaBissau = 'guinea-bissau', Gambia = 'gambia', Sweden = 'sweden', Belize = 'belize', Estonia = 'estonia', Belarus = 'belarus', Burundi = 'burundi', Lebanon = 'lebanon', Grenada = 'grenada', Chad = 'chad', Malta = 'malta', Panama = 'panama', Austria = 'austria', Senegal = 'senegal', SriLanka = 'sri-lanka', Israel = 'israel', Togo = 'togo', Venezuela = 'venezuela', CoteDIvoire = 'cote-d-ivoire', Zimbabwe = 'zimbabwe', Kazakhstan = 'kazakhstan', Kenya = 'kenya', Uzbekistan = 'uzbekistan', Portugal = 'portugal', Bulgaria = 'bulgaria', Latvia = 'latvia', Liberia = 'liberia', Mauritius = 'mauritius', Mali = 'mali', Botswana = 'botswana', Cuba = 'cuba', Brazil = 'brazil', Denmark = 'denmark', ElSalvador = 'el-salvador', Eritrea = 'eritrea', Peru = 'peru', Brunei = 'brunei', Niger = 'niger', NorthMacedonia = 'north-macedonia', Mozambique = 'mozambique', Cameroon = 'cameroon', France = 'france', Bangladesh = 'bangladesh', Georgia = 'georgia', Italy = 'italy', Bolivia = 'bolivia', Egypt = 'egypt', Colombia = 'colombia', Liechtenstein = 'liechtenstein', Nicaragua = 'nicaragua', Philippines = 'philippines', SanMarino = 'san-marino', Greece = 'greece', Mexico = 'mexico', Slovenia = 'slovenia', SouthSudan = 'south-sudan', Sudan = 'sudan', UnitedStates = 'united-states', Palau = 'palau', NorthKorea = 'north-korea', Ireland = 'ireland', Micronesia = 'micronesia', Norway = 'norway', Samoa = 'samoa', SaudiArabia = 'saudi-arabia', Spain = 'spain' }
-export const enum GlobalTaxType { CustomsDuty = 'customs-duty', SalesTax = 'sales-tax', PropertyTax = 'property-tax', Gst = 'gst', Vat = 'vat', Other = 'other', ExciseTax = 'excise-tax' }
-export const enum IdentityProvider { Pinterest = 'pinterest', Signal = 'signal', Github = 'github', Tumblr = 'tumblr', Apple = 'apple', Reddit = 'reddit', Twitter = 'twitter', Dribbble = 'dribbble', Line = 'line', Microsoft = 'microsoft', Flickr = 'flickr', Instagram = 'instagram', Snapchat = 'snapchat', Linkedin = 'linkedin', Foursquare = 'foursquare', Telegram = 'telegram', Facebook = 'facebook', Paypal = 'paypal', Behance = 'behance', Whatsapp = 'whatsapp', Discord = 'discord', Slack = 'slack', Amazon = 'amazon', Yahoo = 'yahoo', Vimeo = 'vimeo', Google = 'google', Tiktok = 'tiktok', Wechat = 'wechat', Qq = 'qq', Other = 'other' }
-export const enum AccountEngagementLevel { Cold = 'cold', Warm = 'warm', Unknown = 'unknown', Hot = 'hot' }
-export const enum ReviewApprovalStatus { Pending = 'pending', InReview = 'in-review', Approved = 'approved', Rejected = 'rejected', Revised = 'revised' }
-export const enum StakeholderType { Vendor = 'vendor', Competitor = 'competitor', Customer = 'customer', Partner = 'partner', Other = 'other', Investor = 'investor' }
-export const enum AccountStatus { Inactive = 'inactive', Suspended = 'suspended', Closed = 'closed', Pending = 'pending', Active = 'active' }
-export const enum CampaignStatus { Planned = 'planned', Active = 'active', Paused = 'paused', Cancelled = 'cancelled', Archived = 'archived', Completed = 'completed', Scheduled = 'scheduled', Draft = 'draft' }
-export const enum CustomerType { Retail = 'retail', B2b = 'b2b', Wholesale = 'wholesale', B2c = 'b2c', Online = 'online', Corporate = 'corporate' }
-export const enum MessageContentType { Location = 'location', Voice = 'voice', Link = 'link', Image = 'image', Contact = 'contact', Text = 'text', Video = 'video', Audio = 'audio', Gif = 'gif', Sticker = 'sticker', Html = 'html', File = 'file', Document = 'document' }
-export const enum ReactionType { Wow = 'wow', Like = 'like', Laugh = 'laugh', Sad = 'sad', Interested = 'interested', Angry = 'angry', Love = 'love', Dislike = 'dislike', Bookmark = 'bookmark' }
-export const enum SupportTicketPriority { Medium = 'medium', Urgent = 'urgent', Immediate = 'immediate', Low = 'low', High = 'high' }
-export const enum IssueLifecycleStatus { InProgress = 'in-progress', Open = 'open', Pending = 'pending', OnHold = 'on-hold', Resolved = 'resolved', Cancelled = 'cancelled', Closed = 'closed' }
-export const enum OrderStatus { Refunded = 'refunded', PartiallyFulfilled = 'partially-fulfilled', Completed = 'completed', AwaitingPickup = 'awaiting-pickup', Abandoned = 'abandoned', Pending = 'pending', Processing = 'processing', Draft = 'draft', AwaitingShipment = 'awaiting-shipment', Shipped = 'shipped', Confirmed = 'confirmed', AwaitingPayment = 'awaiting-payment', Delivered = 'delivered', Returned = 'returned', Disputed = 'disputed', OnHold = 'on-hold', Failed = 'failed', Cancelled = 'cancelled' }
-export const enum DiscountType { TieredDiscount = 'tiered-discount', VariablePercentage = 'variable-percentage', ConditionalDiscount = 'conditional-discount', UnknownDiscount = 'unknown-discount', FixedAmount = 'fixed-amount', Percentage = 'percentage', VariableAmount = 'variable-amount', BuyOneGetOne = 'buy-one-get-one' }
-export const enum FulfillmentStatus { Failure = 'failure', Pending = 'pending', Cancelled = 'cancelled', Returned = 'returned', Delivered = 'delivered', InTransit = 'in-transit' }
-export const enum ProductAvailabilityStatus { OutOfStock = 'out-of-stock', BackOrder = 'back-order', PreOrder = 'pre-order', InStock = 'in-stock', Discontinued = 'discontinued' }
-export const enum ExpenseApprovalStatus { Reimbursed = 'reimbursed', Cancelled = 'cancelled', Approved = 'approved', Pending = 'pending', Denied = 'denied', Reviewing = 'reviewing', Processed = 'processed', New = 'new' }
-export const enum FinancialChargeType { ProcessingFee = 'processing-fee', Commission = 'commission', Other = 'other', ServiceCharge = 'service-charge', LateFee = 'late-fee', InterestCharge = 'interest-charge', TransactionFee = 'transaction-fee' }
-export const enum BillingStatus { PartiallyPaid = 'partially-paid', Deleted = 'deleted', Draft = 'draft', Authorised = 'authorised', Submitted = 'submitted', Overdue = 'overdue', Pending = 'pending', Voided = 'voided', Unpaid = 'unpaid', Paid = 'paid' }
-export const enum InvoiceAdjustmentType { Other = 'other', Tip = 'tip', Discount = 'discount', Tax = 'tax', Shipping = 'shipping' }
-export const enum DataType { Null = 'null', Undefined = 'undefined', Binary = 'binary', Boolean = 'boolean', Json = 'json', Number = 'number', Date = 'date', Array = 'array', Object = 'object', Custom = 'custom', Timestamp = 'timestamp', String = 'string' }
-export const enum EmploymentType { Volunteer = 'volunteer', PartTime = 'part-time', Contract = 'contract', Temporary = 'temporary', Internship = 'internship', Seasonal = 'seasonal', Freelance = 'freelance', Permanent = 'permanent', FullTime = 'full-time' }
-export const enum TimeCycle { Daily = 'daily', Secondly = 'secondly', Weekly = 'weekly', Biweekly = 'biweekly', Quarterly = 'quarterly', Triennially = 'triennially', Hourly = 'hourly', Annually = 'annually', AdHoc = 'ad-hoc', SemiAnnually = 'semi-annually', SemiMonthly = 'semi-monthly', Minutely = 'minutely', Biennially = 'biennially', Custom = 'custom', Monthly = 'monthly' }
-export const enum FinancialTrackingCategories { Service = 'service', Division = 'division', Department = 'department', Location = 'location', CostCenter = 'cost-center', Vendor = 'vendor', Class = 'class', Employee = 'employee', Other = 'other', Product = 'product', None = 'none', Project = 'project', Customer = 'customer' }
-export const enum CampaignType { Email = 'email', Other = 'other', SearchEngine = 'search-engine', Display = 'display', SocialMedia = 'social-media' }
-export const enum ContactAddressType { Personal = 'personal', Shipping = 'shipping', Business = 'business', Home = 'home', Billing = 'billing', Temporary = 'temporary', Work = 'work', Other = 'other' }
-export const enum LeadLifecycleStatus { Open = 'open', AttemptedToContact = 'attempted-to-contact', Connected = 'connected', Lost = 'lost', New = 'new', Revisited = 'revisited', Converted = 'converted', Unqualified = 'unqualified', BadTiming = 'bad-timing', InProcess = 'in-process' }
-export const enum ParticipantEngagementStatus { Active = 'active', Banned = 'banned', Admin = 'admin', Guest = 'guest', Left = 'left', Inactive = 'inactive', Moderator = 'moderator' }
-export const enum ItemEntityStatus { Active = 'active', Suspended = 'suspended', Deleted = 'deleted', Completed = 'completed', Inactive = 'inactive', Pending = 'pending', Archived = 'archived' }
-export const enum Currency { ZAR = 'zar', NPR = 'npr', CAD = 'cad', LAK = 'lak', ZMW = 'zmw', KMF = 'kmf', MMK = 'mmk', RSD = 'rsd', LRD = 'lrd', DJF = 'djf', CRC = 'crc', CUC = 'cuc', KPW = 'kpw', RUB = 'rub', SCR = 'scr', OMR = 'omr', AMD = 'amd', AWG = 'awg', AFN = 'afn', PGK = 'pgk', TOP = 'top', IQD = 'iqd', KYD = 'kyd', BGN = 'bgn', SSP = 'ssp', CUP = 'cup', MKD = 'mkd', TMT = 'tmt', BMD = 'bmd', INR = 'inr', TWD = 'twd', GIP = 'gip', SLL = 'sll', YER = 'yer', NAD = 'nad', IRR = 'irr', CNY = 'cny', MOP = 'mop', HKD = 'hkd', ARS = 'ars', SBD = 'sbd', PAB = 'pab', UYU = 'uyu', VES = 'ves', FJD = 'fjd', CVE = 'cve', KZT = 'kzt', JOD = 'jod', MDL = 'mdl', GBP = 'gbp', QAR = 'qar', KGS = 'kgs', LBP = 'lbp', LKR = 'lkr', GMD = 'gmd', HUF = 'huf', FKP = 'fkp', BIF = 'bif', BOB = 'bob', ETB = 'etb', THB = 'thb', SRD = 'srd', RWF = 'rwf', LYD = 'lyd', CHF = 'chf', CZK = 'czk', HRK = 'hrk', MZN = 'mzn', NZD = 'nzd', UAH = 'uah', VUV = 'vuv', MNT = 'mnt', SDG = 'sdg', GHS = 'ghs', BND = 'bnd', IMP = 'imp', VND = 'vnd', GEL = 'gel', KES = 'kes', ZWL = 'zwl', XOF = 'xof', SOS = 'sos', NOK = 'nok', TRY = 'try', BHD = 'bhd', LSL = 'lsl', UGX = 'ugx', FOK = 'fok', GGP = 'ggp', XCD = 'xcd', KWD = 'kwd', SGD = 'sgd', NGN = 'ngn', SZL = 'szl', TVD = 'tvd', XPF = 'xpf', HTG = 'htg', CLP = 'clp', HNL = 'hnl', TTD = 'ttd', DZD = 'dzd', MAD = 'mad', MRU = 'mru', MGA = 'mga', UZS = 'uzs', ILS = 'ils', ALL = 'all', BYN = 'byn', DKK = 'dkk', JEP = 'jep', TZS = 'tzs', BAM = 'bam', TJS = 'tjs', KRW = 'krw', SHP = 'shp', MWK = 'mwk', SEK = 'sek', ISK = 'isk', PKR = 'pkr', WST = 'wst', AED = 'aed', STN = 'stn', USD = 'usd', BDT = 'bdt', EGP = 'egp', TND = 'tnd', CDF = 'cdf', MXN = 'mxn', PLN = 'pln', ANG = 'ang', SAR = 'sar', NIO = 'nio', GTQ = 'gtq', PHP = 'php', PYG = 'pyg', EUR = 'eur', AZN = 'azn', JPY = 'jpy', KHR = 'khr', MVR = 'mvr', XDR = 'xdr', RON = 'ron', IDR = 'idr', BRL = 'brl', DOP = 'dop', ERN = 'ern', AUD = 'aud', JMD = 'jmd', MYR = 'myr', AOA = 'aoa', PEN = 'pen', XAF = 'xaf', COP = 'cop', GNF = 'gnf', GYD = 'gyd', BBD = 'bbd', MUR = 'mur', SYP = 'syp', BWP = 'bwp', BSD = 'bsd', BZD = 'bzd', KID = 'kid', BTN = 'btn' }
-export const enum CustomerEligibilityStatus { NewCustomers = 'new-customers', ReturningCustomers = 'returning-customers', Other = 'other', AllCustomers = 'all-customers', VipCustomers = 'vip-customers', SpecificConditions = 'specific-conditions' }
-export const enum ItemCondition { Used = 'used', OpenBox = 'open-box', LikeNew = 'like-new', Damaged = 'damaged', Refurbished = 'refurbished', New = 'new' }
-export const enum TransactionType { Refund = 'refund', Charge = 'charge', Adjustment = 'adjustment', Transfer = 'transfer', Withdrawal = 'withdrawal', Deposit = 'deposit', Payment = 'payment', Fee = 'fee' }
-export const enum EntityLifecycleStatus { Scheduled = 'scheduled', Active = 'active', Archived = 'archived', Preorder = 'preorder', Draft = 'draft', Deleted = 'deleted', Inactive = 'inactive' }
-export const enum JournalEntryStatus { Error = 'error', Pending = 'pending', Posted = 'posted', Draft = 'draft', Voided = 'voided', Corrected = 'corrected' }
-export const enum DayOfWeek { Sunday = 'sunday', Monday = 'monday', Tuesday = 'tuesday', Thursday = 'thursday', Wednesday = 'wednesday', Friday = 'friday', Saturday = 'saturday' }
-export const enum AccountingAccountType { ExpenseBorrowingCost = 'expense::borrowing-cost', EquityCapitalReserves = 'equity::capital-reserves', EquityInvestmentGrants = 'equity::investment-grants', RevenueUnappliedCashPaymentIncome = 'revenue::unapplied-cash-payment-income', ExpenseLegalProfessionalFees = 'expense::legal-professional-fees', AssetOrganizationalCosts = 'asset::organizational-costs', ExpenseOtherRentalCosts = 'expense::other-rental-costs', AssetCashAndCashEquivalents = 'asset::cash-and-cash-equivalents', AssetLoansToStockholders = 'asset::loans-to-stockholders', EquityPersonalIncome = 'equity::personal-income', OtherExpensePenaltiesSettlements = 'other-expense::penalties-settlements', OtherExpensePriorPeriodItems = 'other-expense::prior-period-items', LiabilityDebtsRelatedToParticipatingInterests = 'liability::debts-related-to-participating-interests', EquityMoneyReceivedAgainstShareWarrants = 'equity::money-received-against-share-warrants', ExpenseExtraordinaryCharges = 'expense::extraordinary-charges', LiabilityOtherLongTermProvisions = 'liability::other-long-term-provisions', AssetDeferredTax = 'asset::deferred-tax', OtherIncome = 'other-income', OtherIncomeLossOnDisposalOfAssets = 'other-income::loss-on-disposal-of-assets', OtherIncomeOtherOperatingIncome = 'other-income::other-operating-income', AssetOtherIntangibleAssets = 'asset::other-intangible-assets', ExpenseOfficeExpenses = 'expense::office-expenses', ExpenseTravelMeals = 'expense::travel-meals', ExpenseEntertainmentMeals = 'expense::entertainment-meals', OtherExpenseOtherHomeOfficeExpenses = 'other-expense::other-home-office-expenses', AssetLongTermLoansAndAdvancesToRelatedParties = 'asset::long-term-loans-and-advances-to-related-parties', AssetOtherEarMarkedBankAccounts = 'asset::other-ear-marked-bank-accounts', OtherExpenseRentAndLease = 'other-expense::rent-and-lease', AssetAccumulatedDepreciation = 'asset::accumulated-depreciation', EquityAccumulatedAdjustment = 'equity::accumulated-adjustment', LiabilityOutstandingDuesMicroSmallEnterprise = 'liability::outstanding-dues-micro-small-enterprise', AssetLand = 'asset::land', AssetBuildings = 'asset::buildings', LiabilityCreditCard = 'liability::credit-card', ExpenseEquipmentRental = 'expense::equipment-rental', LiabilityLongTermEmployeeBenefitObligations = 'liability::long-term-employee-benefit-obligations', ExpenseUnappliedCashBillPaymentExpense = 'expense::unapplied-cash-bill-payment-expense', LiabilityProvisionForLiabilities = 'liability::provision-for-liabilities', OtherCurrentLiability = 'other-current-liability', OtherCurrentLiabilityPayrollClearing = 'other-current-liability::payroll-clearing', AssetOtherCurrentAsset = 'asset::other-current-asset', AssetFixedAssetOtherToolsEquipment = 'asset::fixed-asset-other-tools-equipment', ExpenseLossOnDiscontinuedOperationsNetOfTax = 'expense::loss-on-discontinued-operations-net-of-tax', OtherExpenseRepairsAndMaintenance = 'other-expense::repairs-and-maintenance', OtherExpenseDeferredTaxExpense = 'other-expense::deferred-tax-expense', AssetMoneyMarket = 'asset::money-market', LiabilityLongTermDebit = 'liability::long-term-debit', OtherCurrentLiabilityDutiesAndTaxes = 'other-current-liability::duties-and-taxes', RevenueServiceFeeIncome = 'revenue::service-fee-income', OtherIncomeGainLossOnSaleOfInvestments = 'other-income::gain-loss-on-sale-of-investments', AccountsReceivable = 'accounts-receivable', RevenueSalesRetail = 'revenue::sales-retail', AssetAssetsAvailableForSale = 'asset::assets-available-for-sale', AssetInternalTransfers = 'asset::internal-transfers', OtherCurrentLiabilityTrustAccountsLiabilities = 'other-current-liability::trust-accounts-liabilities', AssetCumulativeDepreciationOnIntangibleAssets = 'asset::cumulative-depreciation-on-intangible-assets', LiabilityLongTermBorrowings = 'liability::long-term-borrowings', OtherCurrentLiabilityTradeAndOtherPayables = 'other-current-liability::trade-and-other-payables', AssetShortTermLoansAndAdvancesToRelatedParties = 'asset::short-term-loans-and-advances-to-related-parties', OtherExpenseAmortization = 'other-expense::amortization', LiabilityProvisionsNonCurrentLiabilities = 'liability::provisions-non-current-liabilities', AssetAvailableForSaleFinancialAssets = 'asset::available-for-sale-financial-assets', AssetOtherLongTermInvestments = 'asset::other-long-term-investments', RevenueOtherPrimaryIncome = 'revenue::other-primary-income', CostOfGoodsSoldFreightAndDeliveryCost = 'cost-of-goods-sold::freight-and-delivery-cost', AssetOtherCurrentAssets = 'asset::other-current-assets', OtherExpenseMatCredit = 'other-expense::mat-credit', LiabilityLiabilitiesRelatedToAssetsHeldForSale = 'liability::liabilities-related-to-assets-held-for-sale', AssetOtherAsset = 'asset::other-asset', ExpenseTaxesPaid = 'expense::taxes-paid', EquityCommonStock = 'equity::common-stock', AssetProvisionsNonCurrentAssets = 'asset::provisions-non-current-assets', ExpenseShippingFreightDelivery = 'expense::shipping-freight-delivery', AssetRetainage = 'asset::retainage', CostOfGoodsSold = 'cost-of-goods-sold', ExpenseInsurance = 'expense::insurance', ExpenseDistributionCosts = 'expense::distribution-costs', AssetInvestmentOther = 'asset::investment-other', OtherCurrentLiabilityInsurancePayable = 'other-current-liability::insurance-payable', CostOfGoodsSoldCostOfLaborCos = 'cost-of-goods-sold::cost-of-labor-cos', OtherExpense = 'other-expense', AssetDevelopmentCosts = 'asset::development-costs', AssetProvisionsCurrentAssets = 'asset::provisions-current-assets', ExpenseOtherCurrentOperatingCharges = 'expense::other-current-operating-charges', EquityPartnerDistributions = 'equity::partner-distributions', EquityEquityInEarningsOfSubsidiuaries = 'equity::equity-in-earnings-of-subsidiuaries', OtherExpenseExtraordinaryItems = 'other-expense::extraordinary-items', OtherCurrentLiabilityCurrentPortionOfObligationsUnderFinanceLeases = 'other-current-liability::current-portion-of-obligations-under-finance-leases', ExpenseEntertainment = 'expense::entertainment', OtherCurrentLiabilitySalesTaxPayable = 'other-current-liability::sales-tax-payable', AssetFurnitureAndFixtures = 'asset::furniture-and-fixtures', ExpenseRentOrLeaseOfBuildings = 'expense::rent-or-lease-of-buildings', LiabilityStaffAndRelatedLongTermLiabilityAccounts = 'liability::staff-and-related-long-term-liability-accounts', AssetFixedAssetCopiers = 'asset::fixed-asset-copiers', RevenueDiscountsRefundsGiven = 'revenue::discounts-refunds-given', Expense = 'expense', AssetBank = 'asset::bank', AssetTrustAccounts = 'asset::trust-accounts', OtherIncomeOtherMiscellaneousIncome = 'other-income::other-miscellaneous-income', AssetNonCurrentAssets = 'asset::non-current-assets', ExpenseAuto = 'expense::auto', Equity = 'equity', OtherExpenseVehicleLease = 'other-expense::vehicle-lease', OtherExpenseOtherVehicleExpenses = 'other-expense::other-vehicle-expenses', AssetOtherFixedAssets = 'asset::other-fixed-assets', ExpenseOtherSellingExpenses = 'expense::other-selling-expenses', OtherCurrentLiabilityLoanPayable = 'other-current-liability::loan-payable', OtherCurrentLiabilityCurrentPortionEmployeeBenefitsObligations = 'other-current-liability::current-portion-employee-benefits-obligations', AssetEmployeeCashAdvances = 'asset::employee-cash-advances', OtherCurrentLiabilityCurrentLiabilities = 'other-current-liability::current-liabilities', OtherExpenseParkingAndTolls = 'other-expense::parking-and-tolls', AssetFixedAssetSoftware = 'asset::fixed-asset-software', AssetFixedAssetComputers = 'asset::fixed-asset-computers', OtherExpenseIncomeTaxOtherExpense = 'other-expense::income-tax-other-expense', RevenueSalesWholesale = 'revenue::sales-wholesale', OtherCurrentLiabilityDividendsPayable = 'other-current-liability::dividends-payable', AssetParticipatingInterests = 'asset::participating-interests', EquityEstimatedTaxes = 'equity::estimated-taxes', LiabilityAccrualsAndDeferredIncome = 'liability::accruals-and-deferred-income', OtherCurrentLiabilityProvisionsCurrentLiabilities = 'other-current-liability::provisions-current-liabilities', EquityShareApplicationMoneyPendingAllotment = 'equity::share-application-money-pending-allotment', ExpenseTravel = 'expense::travel', AssetPrepaidExpenses = 'asset::prepaid-expenses', OtherExpenseDepreciation = 'other-expense::depreciation', LiabilityAccruedVacationPayable = 'liability::accrued-vacation-payable', ExpenseBankCharges = 'expense::bank-charges', AssetCalledUpShareCapitalNotPaid = 'asset::called-up-share-capital-not-paid', OtherIncomeDividendIncome = 'other-income::dividend-income', EquityFunds = 'equity::funds', EquityPaidInCapitalOrSurplus = 'equity::paid-in-capital-or-surplus', LiabilityGroupAndAssociates = 'liability::group-and-associates', OtherExpenseExchangeGainOrLoss = 'other-expense::exchange-gain-or-loss', OtherCurrentLiabilityOtherCurrentLiabilities = 'other-current-liability::other-current-liabilities', OtherCurrentLiabilityGlobalTaxSuspense = 'other-current-liability::global-tax-suspense', AssetLongTermInvestments = 'asset::long-term-investments', AssetLicenses = 'asset::licenses', ExpenseCommissionsAndFees = 'expense::commissions-and-fees', EquityPartnerContributions = 'equity::partner-contributions', AssetLoansToOthers = 'asset::loans-to-others', EquityPartnersEquity = 'equity::partners-equity', OtherExpenseWashAndRoadServices = 'other-expense::wash-and-road-services', OtherCurrentLiabilityGlobalTaxPayable = 'other-current-liability::global-tax-payable', ExpenseAmortizationExpense = 'expense::amortization-expense', CostOfGoodsSoldShippingFreightDeliveryCos = 'cost-of-goods-sold::shipping-freight-delivery-cos', AssetFixedAsset = 'asset::fixed-asset', AssetSecurityDeposits = 'asset::security-deposits', AssetCapitalWip = 'asset::capital-wip', OtherExpenseHomeOwnerRentalInsurance = 'other-expense::home-owner-rental-insurance', CostOfGoodsSoldSuppliesMaterialsCogs = 'cost-of-goods-sold::supplies-materials-cogs', AssetProvisionsFixedAssets = 'asset::provisions-fixed-assets', OtherCurrentLiabilityStaffAndRelatedLiabilityAccounts = 'other-current-liability::staff-and-related-liability-accounts', RevenueCashReceiptIncome = 'revenue::cash-receipt-income', EquityPreferredStock = 'equity::preferred-stock', AssetFixedAssetPhotoVideo = 'asset::fixed-asset-photo-video', AssetFixedAssetPhone = 'asset::fixed-asset-phone', ExpensePurchasesRebates = 'expense::purchases-rebates', LiabilityObligationsUnderFinanceLeases = 'liability::obligations-under-finance-leases', AssetInvestments = 'asset::investments', AssetOtherLongTermLoansAndAdvances = 'asset::other-long-term-loans-and-advances', ExpenseRepairMaintenance = 'expense::repair-maintenance', OtherExpenseTaxRoundoffGainOrLoss = 'other-expense::tax-roundoff-gain-or-loss', ExpenseCostOfLabor = 'expense::cost-of-labor', ExpenseOtherExternalServices = 'expense::other-external-services', AssetRentsHeldInTrust = 'asset::rents-held-in-trust', AssetAssetsHeldForSale = 'asset::assets-held-for-sale', OtherCurrentLiabilityDirectDepositPayable = 'other-current-liability::direct-deposit-payable', EquityTreasuryStock = 'equity::treasury-stock', OtherIncomeOtherInvestmentIncome = 'other-income::other-investment-income', AssetIntangibleAssetsUnderDevelopment = 'asset::intangible-assets-under-development', AssetAccumulatedDepletion = 'asset::accumulated-depletion', AssetOtherLongTermAssets = 'asset::other-long-term-assets', AssetShortTermInvestmentsInRelatedParties = 'asset::short-term-investments-in-related-parties', RevenueOtherCurrentOperatingIncome = 'revenue::other-current-operating-income', LiabilityGovernmentAndOtherPublicAuthorities = 'liability::government-and-other-public-authorities', LiabilityBankLoans = 'liability::bank-loans', EquityAccumulatedOtherComprehensiveIncome = 'equity::accumulated-other-comprehensive-income', OtherCurrentLiabilityFederalIncomeTaxPayable = 'other-current-liability::federal-income-tax-payable', AssetAllowanceForBadDebts = 'asset::allowance-for-bad-debts', ExpenseTravelExpensesSellingExpense = 'expense::travel-expenses-selling-expense', OtherExpenseExceptionalItems = 'other-expense::exceptional-items', AssetUndepositedFunds = 'asset::undeposited-funds', Asset = 'asset', OtherExpenseDepletion = 'other-expense::depletion', AssetGoodwill = 'asset::goodwill', OtherExpenseVehicleRepairs = 'other-expense::vehicle-repairs', LiabilityOtherLongTermLiabilities = 'liability::other-long-term-liabilities', ExpenseInterestPaid = 'expense::interest-paid', AssetLeaseBuyout = 'asset::lease-buyout', OtherExpenseHomeOffice = 'other-expense::home-office', OtherExpenseVehicleInsurance = 'other-expense::vehicle-insurance', ExpenseFinanceCosts = 'expense::finance-costs', EquityHealthcare = 'equity::healthcare', AssetExpenditureAuthorisationsAndLettersOfCredit = 'asset::expenditure-authorisations-and-letters-of-credit', EquityPersonalExpense = 'equity::personal-expense', ExpenseIncomeTaxExpense = 'expense::income-tax-expense', OtherCurrentLiabilityPayrollTaxPayable = 'other-current-liability::payroll-tax-payable', ExpensePayrollExpenses = 'expense::payroll-expenses', AssetIntangibleAssets = 'asset::intangible-assets', OtherIncomeTaxExemptInterest = 'other-income::tax-exempt-interest', OtherExpenseGasAndFuel = 'other-expense::gas-and-fuel', OtherIncomeGainLossOnSaleOfFixedAssets = 'other-income::gain-loss-on-sale-of-fixed-assets', AssetInventory = 'asset::inventory', OtherCurrentLiabilityPrepaidExpensesPayable = 'other-current-liability::prepaid-expenses-payable', LiabilityDeferredTaxLiabilities = 'liability::deferred-tax-liabilities', OtherIncomeUnrealisedLossOnSecuritiesNetOfTax = 'other-income::unrealised-loss-on-securities-net-of-tax', ExpenseProjectStudiesSurveysAssessments = 'expense::project-studies-surveys-assessments', EquityCalledUpShareCapital = 'equity::called-up-share-capital', AssetGlobalTaxRefund = 'asset::global-tax-refund', OtherExpenseVehicleRegistration = 'other-expense::vehicle-registration', RevenueOperatingGrants = 'revenue::operating-grants', AssetVehicles = 'asset::vehicles', CostOfGoodsSoldCostOfSales = 'cost-of-goods-sold::cost-of-sales', OtherExpenseMortgageInterest = 'other-expense::mortgage-interest', AssetInvestmentUsGovernmentObligations = 'asset::investment-us-government-obligations', RevenueNonProfitIncome = 'revenue::non-profit-income', EquityRetainedEarnings = 'equity::retained-earnings', ExpenseOtherMiscellaneousServiceCost = 'expense::other-miscellaneous-service-cost', OtherCurrentLiabilityCurrentTaxLiability = 'other-current-liability::current-tax-liability', LiabilityShareholderNotesPayable = 'liability::shareholder-notes-payable', ExpenseBadDebts = 'expense::bad-debts', AssetPrepaymentsAndAccruedIncome = 'asset::prepayments-and-accrued-income', ExpenseStaffCosts = 'expense::staff-costs', LiabilityLongTermLiability = 'liability::long-term-liability', OtherExpenseVehicle = 'other-expense::vehicle', LiabilityAccountsPayable = 'liability::accounts-payable', ExpenseUtilities = 'expense::utilities', ExpenseAppropriationsToDepreciation = 'expense::appropriations-to-depreciation', EquityOtherFreeReserves = 'equity::other-free-reserves', EquityOwnersEquity = 'equity::owners-equity', ExpenseGlobalTaxExpense = 'expense::global-tax-expense', AssetInvestmentMortgageRealEstateLoans = 'asset::investment-mortgage-real-estate-loans', ExpenseShippingAndDeliveryExpense = 'expense::shipping-and-delivery-expense', OtherExpenseVehicleLoanInterest = 'other-expense::vehicle-loan-interest', LiabilityOutstandingDuesOtherThanMicroSmallEnterprise = 'liability::outstanding-dues-other-than-micro-small-enterprise', RevenueOwnWorkCapitalized = 'revenue::own-work-capitalized', ExpenseExternalServices = 'expense::external-services', AssetFixedAssetFurniture = 'asset::fixed-asset-furniture', ExpenseOtherBusinessExpenses = 'expense::other-business-expenses', AssetGlobalTaxDeferred = 'asset::global-tax-deferred', AssetLeaseholdImprovements = 'asset::leasehold-improvements', AssetInvestmentTaxExemptSecurities = 'asset::investment-tax-exempt-securities', OtherCurrentLiabilitySundryDebtorsAndCreditors = 'other-current-liability::sundry-debtors-and-creditors', AssetLandAsset = 'asset::land-asset', ExpenseSuppliesMaterials = 'expense::supplies-materials', AssetSavings = 'asset::savings', ExpenseAdvertisingPromotional = 'expense::advertising-promotional', AssetMachineryAndEquipment = 'asset::machinery-and-equipment', OtherCurrentLiabilityShortTermBorrowings = 'other-current-liability::short-term-borrowings', ExpenseOfficeGeneralAdministrativeExpenses = 'expense::office-general-administrative-expenses', ExpenseTravelExpensesGeneralAndAdminExpenses = 'expense::travel-expenses-general-and-admin-expenses', EquityShareCapital = 'equity::share-capital', ExpenseSundry = 'expense::sundry', AssetChecking = 'asset::checking', RevenueSavingsByTaxScheme = 'revenue::savings-by-tax-scheme', AssetAccumulatedAmortization = 'asset::accumulated-amortization', AssetAssetsInCourseOfConstruction = 'asset::assets-in-course-of-construction', AssetTradeAndOtherReceivables = 'asset::trade-and-other-receivables', AssetBalWithGovtAuthorities = 'asset::bal-with-govt-authorities', ExpenseCharitableContributions = 'expense::charitable-contributions', CostOfGoodsSoldOtherCostsOfServiceCos = 'cost-of-goods-sold::other-costs-of-service-cos', EquityOpeningBalanceEquity = 'equity::opening-balance-equity', CostOfGoodsSoldEquipmentRentalCos = 'cost-of-goods-sold::equipment-rental-cos', OtherExpenseVehicleLoan = 'other-expense::vehicle-loan', ExpenseManagementCompensation = 'expense::management-compensation', RevenueIncome = 'revenue::income', OtherExpenseUtilities = 'other-expense::utilities', OtherCurrentLiabilityLineOfCredit = 'other-current-liability::line-of-credit', EquityDividendDisbursed = 'equity::dividend-disbursed', RevenueSalesOfProductIncome = 'revenue::sales-of-product-income', AssetOtherConsumables = 'asset::other-consumables', AssetAccumulatedAmortizationOfOtherAssets = 'asset::accumulated-amortization-of-other-assets', RevenueRevenueGeneral = 'revenue::revenue-general', ExpensePromotionalMeals = 'expense::promotional-meals', OtherExpenseOtherMiscellaneousExpense = 'other-expense::other-miscellaneous-expense', OtherCurrentLiabilityStateLocalIncomeTaxPayable = 'other-current-liability::state-local-income-tax-payable', OtherIncomeInterestEarned = 'other-income::interest-earned', LiabilityNotesPayable = 'liability::notes-payable', OtherCurrentLiabilityInterestPayables = 'other-current-liability::interest-payables', AssetDepletableAssets = 'asset::depletable-assets', LiabilityAccruedLongTermLiabilities = 'liability::accrued-long-term-liabilities', OtherCurrentLiabilitySocialSecurityAgencies = 'other-current-liability::social-security-agencies', OtherCurrentLiabilityRentsInTrustLiability = 'other-current-liability::rents-in-trust-liability', ExpenseDuesSubscriptions = 'expense::dues-subscriptions', AssetCashOnHand = 'asset::cash-on-hand', AssetLoansToOfficers = 'asset::loans-to-officers', OtherCurrentLiabilityAccruedLiabilities = 'other-current-liability::accrued-liabilities', OtherCurrentLiabilityProvisionForWarrantyObligations = 'other-current-liability::provision-for-warranty-obligations' }
-export const enum MessageReadStatus { Unsent = 'unsent', Read = 'read', Sent = 'sent', Delivered = 'delivered', Failed = 'failed' }
-export const enum MessageDeliveryStatus { Read = 'read', Pending = 'pending', Failed = 'failed', Delivered = 'delivered', Error = 'error', Sent = 'sent', Undeliverable = 'undeliverable' }
-export const enum SupportQueryType { Problem = 'problem', Bug = 'bug', Incident = 'incident', Question = 'question', Feedback = 'feedback', FeatureRequest = 'feature-request', Task = 'task' }
-export const enum ImageMimeType { ImagePng = 'image/png', ImageGif = 'image/gif', ImageSvgXml = 'image/svg+xml', ImageHeic = 'image/heic', ImageJpeg = 'image/jpeg', ImageWebp = 'image/webp', ImageBmp = 'image/bmp', ImageTiff = 'image/tiff' }
-export const enum OrderingCriteria { PriceDescending = 'price-descending', Popularity = 'popularity', CreationDate = 'creation-date', Relevance = 'relevance', Alphabetical = 'alphabetical', PriceAscending = 'price-ascending', Manual = 'manual', Rating = 'rating' }
-export const enum ChatType { Private = 'private', Public = 'public', Group = 'group' }
-export const enum ItemAvailabilityStatus { Discontinued = 'discontinued', OutOfStock = 'out-of-stock', Active = 'active', Inactive = 'inactive' }
-export const enum FinancialAccountStatus { UnderReview = 'under-review', Active = 'active', Delinquent = 'delinquent', Suspended = 'suspended', Closed = 'closed', Frozen = 'frozen', Inactive = 'inactive' }
-export const enum TransactionStatus { Succeeded = 'succeeded', Cancelled = 'cancelled', Error = 'error', Initiated = 'initiated', InProgress = 'in-progress', Failed = 'failed', Pending = 'pending' }
-export const enum CreditNoteStatus { Applied = 'applied', Issued = 'issued', Cancelled = 'cancelled', Draft = 'draft', Revised = 'revised', Disputed = 'disputed', Completed = 'completed', Void = 'void', Pending = 'pending' }
-export const enum PaymentTerm { Net = 'net', Prepayment = 'prepayment', Net60 = 'net-60', Prepaid = 'prepaid', DeferredPayment = 'deferred-payment', DueOnReceipt = 'due-on-receipt', UponCompletion = 'upon-completion', CashWithOrder = 'cash-with-order', CashInAdvance = 'cash-in-advance', CashBeforeShipment = 'cash-before-shipment', Installment = 'installment', CashOnDelivery = 'cash-on-delivery', Custom = 'custom', Net30 = 'net-30', Net90 = 'net-90', DueEndOfMonth = 'due-end-of-month' }
-export const enum EmploymentAndCandidateStatus { Active = 'active', Interviewing = 'interviewing', Hired = 'hired', New = 'new', OfferExtended = 'offer-extended', OnLeave = 'on-leave', InReview = 'in-review', NotSelected = 'not-selected', Other = 'other', Terminated = 'terminated', Inactive = 'inactive' }
-export const enum OrganizationalRole { Admin = 'admin', Other = 'other', Manager = 'manager', Employee = 'employee', Director = 'director', Supervisor = 'supervisor', Contractor = 'contractor' }
-export const enum CustomerStatus { Pending = 'pending', Inactive = 'inactive', Active = 'active', Suspended = 'suspended', Archived = 'archived' }
-export const enum SocialPlatform { Twitter = 'twitter', Instagram = 'instagram', X = 'x', Reddit = 'reddit', Snapchat = 'snapchat', Skype = 'skype', Pinterest = 'pinterest', OtherSocialPlatform = 'other-social-platform', Tumblr = 'tumblr', Facebook = 'facebook', Tiktok = 'tiktok', Youtube = 'youtube', Linkedin = 'linkedin' }
-export const enum ConversationStatus { Active = 'active', Archived = 'archived', Deleted = 'deleted' }
-export const enum CommunicationRole { Group = 'group', Channel = 'channel', User = 'user', Bot = 'bot', Guest = 'guest', Admin = 'admin', Owner = 'owner', System = 'system', Assistant = 'assistant', Service = 'service', Moderator = 'moderator', Member = 'member' }
-export const enum LifecycleStatus { Suspended = 'suspended', Cancelled = 'cancelled', Expired = 'expired', Active = 'active', Issued = 'issued', Redeemed = 'redeemed' }
-export const enum PaymentMethod { Cash = 'cash', Other = 'other', Check = 'check', Cryptocurrency = 'cryptocurrency', DebitCard = 'debit-card', MobilePayment = 'mobile-payment', CreditCard = 'credit-card', BankTransfer = 'bank-transfer', MobileWallet = 'mobile-wallet', Paypal = 'paypal', CashOnDelivery = 'cash-on-delivery' }
-export const enum FinancialTransactionStatus { Failed = 'failed', Refunded = 'refunded', SettlementInProgress = 'settlement-in-progress', Cancelled = 'cancelled', Pending = 'pending', Authorized = 'authorized', Cleared = 'cleared', Disputed = 'disputed' }
-export const enum AuditOpinionType { Qualified = 'qualified', Adverse = 'adverse', Disclaimer = 'disclaimer', Unqualified = 'unqualified' }
-export const enum InventoryStorageType { Consignment = 'consignment', Other = 'other', OnlineMarketplace = 'online-marketplace', Warehouse = 'warehouse', RetailStore = 'retail-store', DistributionCenter = 'distribution-center', DropShipper = 'drop-shipper' }
-export const enum VisibilityScope { Global = 'global', App = 'app', Internal = 'internal', Web = 'web', Private = 'private' }
-export const enum PaymentStatus { Disputed = 'disputed', Error = 'error', Succeeded = 'succeeded', PartiallyRefunded = 'partially-refunded', Voided = 'voided', Failed = 'failed', Draft = 'draft', Deleted = 'deleted', Pending = 'pending', Refunded = 'refunded', Cancelled = 'cancelled', Paid = 'paid', Adjusted = 'adjusted', Overdue = 'overdue', Processing = 'processing', Partial = 'partial', Submitted = 'submitted', Authorized = 'authorized' }
-export const enum TransactionChannel { BankBranch = 'bank-branch', Mobile = 'mobile', InPerson = 'in-person', Atm = 'atm', Online = 'online', Mail = 'mail', Telephone = 'telephone', Other = 'other' }
-export const enum FinancialDisputeStatus { NeedsResponse = 'needs-response', Escalated = 'escalated', AwaitingEvidence = 'awaiting-evidence', Closed = 'closed', ChargeRefunded = 'charge-refunded', Won = 'won', UnderReview = 'under-review', Lost = 'lost' }
-export const enum DeviceUsageType { Other = 'other', Business = 'business', Home = 'home', Personal = 'personal', Educational = 'educational', Industrial = 'industrial', Healthcare = 'healthcare' }
-export const enum FinancialTransactionType { Withdrawal = 'withdrawal', Adjustment = 'adjustment', Chargeback = 'chargeback', Deposit = 'deposit', Payment = 'payment', Charge = 'charge', Receive = 'receive', Refund = 'refund', Sale = 'sale', Other = 'other', Fee = 'fee', Interest = 'interest', Dividend = 'dividend', ReceivePrepayment = 'receive-prepayment', SpendOverpayment = 'spend-overpayment', SpendPrepayment = 'spend-prepayment', Transfer = 'transfer', ReceiveOverpayment = 'receive-overpayment', Spend = 'spend' }
-export const enum AccessControlModel { Rbac = 'rbac', Dac = 'dac', Custom = 'custom', None = 'none', Mac = 'mac', Abac = 'abac' }
-export const enum ParticipantType { User = 'user', Group = 'group', Team = 'team', ExternalParticipant = 'external-participant', Organization = 'organization' }
-export const enum PriorityLevel { Elevated = 'elevated', Low = 'low', Medium = 'medium', High = 'high', Urgent = 'urgent' }
-export const enum PrerequisiteRangeType { Subtotal = 'subtotal', Quantity = 'quantity', ShippingPrice = 'shipping-price' }
-export const enum ContentVisibility { Internal = 'internal', Protected = 'protected', Shared = 'shared', Private = 'private', Public = 'public' }
-export const enum EntityCategory { Person = 'person', Message = 'message', Link = 'link', Project = 'project', Task = 'task', Event = 'event', Document = 'document', User = 'user', Owner = 'owner', Other = 'other' }
-export const enum GenderIdentity { Male = 'male', Other = 'other', Female = 'female', PreferNotToSay = 'prefer-not-to-say' }
-export const enum CommunicationMethod { SocialMedia = 'social-media', Phone = 'phone', Other = 'other', PushNotification = 'push-notification', Text = 'text', Email = 'email', Mail = 'mail', Sms = 'sms', InstantMessage = 'instant-message', VideoCall = 'video-call', InPerson = 'in-person' }
-export const enum EmailCategoryType { Business = 'business', Spam = 'spam', Governmental = 'governmental', Transactional = 'transactional', Educational = 'educational', Other = 'other', Personal = 'personal', Promotional = 'promotional' }
-export const enum UniversalIdentifierType { String = 'string', Number = 'number', Email = 'email', Uuid = 'uuid', Url = 'url' }
-export const enum TaskStatus { Cancelled = 'cancelled', InProgress = 'in-progress', Todo = 'todo', OnHold = 'on-hold', Done = 'done', Blocked = 'blocked' }
-export const enum UserStatus { Deleted = 'deleted', Inactive = 'inactive', WaitListed = 'wait-listed', Pending = 'pending', Verified = 'verified', Banned = 'banned', Archived = 'archived', Suspended = 'suspended', Active = 'active' }
-export const enum PromotionType { FreeShipping = 'free-shipping', RewardPoints = 'reward-points', Percentage = 'percentage', BuyOneGetOne = 'buy-one-get-one', FixedAmount = 'fixed-amount', Other = 'other' }
-export const enum MimeType { ImageGif = 'image/gif', ImageSvgXml = 'image/svg+xml', ImagePng = 'image/png', ImageWebp = 'image/webp', ImageJpeg = 'image/jpeg' }
+export const enum AppliesTo { AllItems = 'all-items', SpecificItems = 'specific-items', SpecificCategories = 'specific-categories' }
+export const enum Status { Active = 'active', Scheduled = 'scheduled', Expired = 'expired' }
+export const enum TransactionMethod { BankBranch = 'bank-branch', Mail = 'mail', Telephone = 'telephone', Atm = 'atm', Mobile = 'mobile', Online = 'online' }
+export const enum CustomerSelection { Prerequisite = 'prerequisite', All = 'all' }
+export const enum Roles { User = 'user', Admin = 'admin', Moderator = 'moderator' }
+export const enum TargetSelection { Entitled = 'entitled', All = 'all' }
+export const enum SkuValidation { GlobalUnique = 'global-unique', LocalUnique = 'local-unique', None = 'none' }
+export const enum MinimumRequirements { None = 'none', MinimumPurchaseAmount = 'minimum-purchase-amount', MinimumQuantityOfItems = 'minimum-quantity-of-items' }
+export const enum Gender { Male = 'male', PreferNotToSay = 'prefer not to say', Female = 'female', Other = 'other' }
+export const enum ChannelAvailability { Online = 'online', InStore = 'in-store', AllChannels = 'all-channels', InApp = 'in-app' }
+export const enum CustomerEligibility { All = 'all', SpecificCustomerGroups = 'specific-customer-groups', SpecificCustomers = 'specific-customers' }
+export const enum TargetType { ShippingLine = 'shipping-line', LineItem = 'line-item' }
+export const enum AccountType { OtherExpenseRentAndLease = 'other-expense::rent-and-lease', AssetFixedAssetFurniture = 'asset::fixed-asset-furniture', AssetFixedAssetComputers = 'asset::fixed-asset-computers', AssetFixedAssetPhotoVideo = 'asset::fixed-asset-photo-video', LiabilityLongTermLiability = 'liability::long-term-liability', OtherIncomeUnrealisedLossOnSecuritiesNetOfTax = 'other-income::unrealised-loss-on-securities-net-of-tax', OtherCurrentLiabilityProvisionsCurrentLiabilities = 'other-current-liability::provisions-current-liabilities', OtherCurrentLiabilityCurrentPortionOfObligationsUnderFinanceLeases = 'other-current-liability::current-portion-of-obligations-under-finance-leases', AssetBuildings = 'asset::buildings', OtherExpenseExtraordinaryItems = 'other-expense::extraordinary-items', AssetOtherLongTermAssets = 'asset::other-long-term-assets', OtherExpenseTaxRoundoffGainOrLoss = 'other-expense::tax-roundoff-gain-or-loss', ExpenseGlobalTaxExpense = 'expense::global-tax-expense', EquityShareCapital = 'equity::share-capital', AssetOtherCurrentAsset = 'asset::other-current-asset', OtherCurrentLiabilityDutiesAndTaxes = 'other-current-liability::duties-and-taxes', EquityTreasuryStock = 'equity::treasury-stock', ExpenseManagementCompensation = 'expense::management-compensation', AssetOtherIntangibleAssets = 'asset::other-intangible-assets', CostOfGoodsSoldCostOfLaborCos = 'cost-of-goods-sold::cost-of-labor-cos', AssetEmployeeCashAdvances = 'asset::employee-cash-advances', AssetOtherConsumables = 'asset::other-consumables', LiabilityObligationsUnderFinanceLeases = 'liability::obligations-under-finance-leases', AssetSavings = 'asset::savings', OtherExpenseExchangeGainOrLoss = 'other-expense::exchange-gain-or-loss', OtherExpenseOtherHomeOfficeExpenses = 'other-expense::other-home-office-expenses', AssetShortTermLoansAndAdvancesToRelatedParties = 'asset::short-term-loans-and-advances-to-related-parties', RevenueSavingsByTaxScheme = 'revenue::savings-by-tax-scheme', AssetAccumulatedAmortizationOfOtherAssets = 'asset::accumulated-amortization-of-other-assets', AssetFixedAssetSoftware = 'asset::fixed-asset-software', ExpenseFinanceCosts = 'expense::finance-costs', LiabilityShareholderNotesPayable = 'liability::shareholder-notes-payable', OtherExpenseVehicleLoanInterest = 'other-expense::vehicle-loan-interest', OtherExpenseVehicleInsurance = 'other-expense::vehicle-insurance', EquityAccumulatedAdjustment = 'equity::accumulated-adjustment', AssetFixedAssetCopiers = 'asset::fixed-asset-copiers', EquityEstimatedTaxes = 'equity::estimated-taxes', OtherCurrentLiabilityDirectDepositPayable = 'other-current-liability::direct-deposit-payable', AssetLongTermLoansAndAdvancesToRelatedParties = 'asset::long-term-loans-and-advances-to-related-parties', AssetDeferredTax = 'asset::deferred-tax', ExpenseOtherBusinessExpenses = 'expense::other-business-expenses', LiabilityOtherLongTermProvisions = 'liability::other-long-term-provisions', LiabilityStaffAndRelatedLongTermLiabilityAccounts = 'liability::staff-and-related-long-term-liability-accounts', OtherCurrentLiabilityStateLocalIncomeTaxPayable = 'other-current-liability::state-local-income-tax-payable', OtherIncomeDividendIncome = 'other-income::dividend-income', OtherIncomeGainLossOnSaleOfInvestments = 'other-income::gain-loss-on-sale-of-investments', AssetBalWithGovtAuthorities = 'asset::bal-with-govt-authorities', RevenueServiceFeeIncome = 'revenue::service-fee-income', OtherCurrentLiabilityInterestPayables = 'other-current-liability::interest-payables', OtherIncomeOtherMiscellaneousIncome = 'other-income::other-miscellaneous-income', OtherCurrentLiabilityPrepaidExpensesPayable = 'other-current-liability::prepaid-expenses-payable', AssetTradeAndOtherReceivables = 'asset::trade-and-other-receivables', OtherCurrentLiabilityFederalIncomeTaxPayable = 'other-current-liability::federal-income-tax-payable', LiabilityBankLoans = 'liability::bank-loans', AssetCalledUpShareCapitalNotPaid = 'asset::called-up-share-capital-not-paid', AssetLongTermInvestments = 'asset::long-term-investments', ExpenseUnappliedCashBillPaymentExpense = 'expense::unapplied-cash-bill-payment-expense', OtherCurrentLiabilityOtherCurrentLiabilities = 'other-current-liability::other-current-liabilities', OtherExpenseVehicleRegistration = 'other-expense::vehicle-registration', ExpenseOtherMiscellaneousServiceCost = 'expense::other-miscellaneous-service-cost', AssetOtherLongTermInvestments = 'asset::other-long-term-investments', ExpenseShippingAndDeliveryExpense = 'expense::shipping-and-delivery-expense', CostOfGoodsSoldOtherCostsOfServiceCos = 'cost-of-goods-sold::other-costs-of-service-cos', ExpenseExtraordinaryCharges = 'expense::extraordinary-charges', EquityMoneyReceivedAgainstShareWarrants = 'equity::money-received-against-share-warrants', ExpenseCommissionsAndFees = 'expense::commissions-and-fees', RevenueRevenueGeneral = 'revenue::revenue-general', OtherCurrentLiabilitySundryDebtorsAndCreditors = 'other-current-liability::sundry-debtors-and-creditors', LiabilityAccrualsAndDeferredIncome = 'liability::accruals-and-deferred-income', AssetPrepaymentsAndAccruedIncome = 'asset::prepayments-and-accrued-income', AssetInvestmentOther = 'asset::investment-other', EquityAccumulatedOtherComprehensiveIncome = 'equity::accumulated-other-comprehensive-income', ExpensePromotionalMeals = 'expense::promotional-meals', RevenueUnappliedCashPaymentIncome = 'revenue::unapplied-cash-payment-income', LiabilityProvisionsNonCurrentLiabilities = 'liability::provisions-non-current-liabilities', OtherExpenseIncomeTaxOtherExpense = 'other-expense::income-tax-other-expense', AssetInternalTransfers = 'asset::internal-transfers', AssetOrganizationalCosts = 'asset::organizational-costs', OtherIncomeInterestEarned = 'other-income::interest-earned', OtherCurrentLiabilityCurrentPortionEmployeeBenefitsObligations = 'other-current-liability::current-portion-employee-benefits-obligations', OtherExpenseMatCredit = 'other-expense::mat-credit', AssetDevelopmentCosts = 'asset::development-costs', OtherCurrentLiabilityDividendsPayable = 'other-current-liability::dividends-payable', AssetOtherEarMarkedBankAccounts = 'asset::other-ear-marked-bank-accounts', OtherExpenseMortgageInterest = 'other-expense::mortgage-interest', Asset = 'asset', CostOfGoodsSoldCostOfSales = 'cost-of-goods-sold::cost-of-sales', AssetInvestments = 'asset::investments', ExpenseBadDebts = 'expense::bad-debts', Expense = 'expense', OtherCurrentLiabilityCurrentLiabilities = 'other-current-liability::current-liabilities', OtherCurrentLiabilityGlobalTaxSuspense = 'other-current-liability::global-tax-suspense', AssetChecking = 'asset::checking', ExpenseBankCharges = 'expense::bank-charges', AssetAccumulatedDepreciation = 'asset::accumulated-depreciation', AssetOtherAsset = 'asset::other-asset', ExpenseTaxesPaid = 'expense::taxes-paid', EquityPersonalIncome = 'equity::personal-income', AssetAccumulatedDepletion = 'asset::accumulated-depletion', LiabilityAccountsPayable = 'liability::accounts-payable', AssetExpenditureAuthorisationsAndLettersOfCredit = 'asset::expenditure-authorisations-and-letters-of-credit', AssetCumulativeDepreciationOnIntangibleAssets = 'asset::cumulative-depreciation-on-intangible-assets', AssetOtherLongTermLoansAndAdvances = 'asset::other-long-term-loans-and-advances', OtherCurrentLiabilityStaffAndRelatedLiabilityAccounts = 'other-current-liability::staff-and-related-liability-accounts', OtherExpenseExceptionalItems = 'other-expense::exceptional-items', OtherExpenseRepairsAndMaintenance = 'other-expense::repairs-and-maintenance', LiabilityProvisionForLiabilities = 'liability::provision-for-liabilities', AssetAvailableForSaleFinancialAssets = 'asset::available-for-sale-financial-assets', OtherExpenseDepletion = 'other-expense::depletion', AssetUndepositedFunds = 'asset::undeposited-funds', EquityPersonalExpense = 'equity::personal-expense', ExpenseInsurance = 'expense::insurance', ExpenseTravelMeals = 'expense::travel-meals', OtherExpenseVehicle = 'other-expense::vehicle', LiabilityOutstandingDuesMicroSmallEnterprise = 'liability::outstanding-dues-micro-small-enterprise', AssetMoneyMarket = 'asset::money-market', OtherCurrentLiabilityTradeAndOtherPayables = 'other-current-liability::trade-and-other-payables', EquityHealthcare = 'equity::healthcare', OtherIncomeOtherOperatingIncome = 'other-income::other-operating-income', AssetInvestmentMortgageRealEstateLoans = 'asset::investment-mortgage-real-estate-loans', OtherExpenseOtherVehicleExpenses = 'other-expense::other-vehicle-expenses', AssetFurnitureAndFixtures = 'asset::furniture-and-fixtures', AssetLeaseBuyout = 'asset::lease-buyout', ExpenseBorrowingCost = 'expense::borrowing-cost', OtherCurrentLiability = 'other-current-liability', AssetAssetsAvailableForSale = 'asset::assets-available-for-sale', EquityPreferredStock = 'equity::preferred-stock', ExpenseInterestPaid = 'expense::interest-paid', AssetParticipatingInterests = 'asset::participating-interests', OtherExpenseOtherMiscellaneousExpense = 'other-expense::other-miscellaneous-expense', LiabilityAccruedLongTermLiabilities = 'liability::accrued-long-term-liabilities', OtherExpensePenaltiesSettlements = 'other-expense::penalties-settlements', AccountsReceivable = 'accounts-receivable', OtherCurrentLiabilityGlobalTaxPayable = 'other-current-liability::global-tax-payable', ExpenseTravelExpensesGeneralAndAdminExpenses = 'expense::travel-expenses-general-and-admin-expenses', ExpenseOfficeGeneralAdministrativeExpenses = 'expense::office-general-administrative-expenses', AssetInvestmentTaxExemptSecurities = 'asset::investment-tax-exempt-securities', AssetCashAndCashEquivalents = 'asset::cash-and-cash-equivalents', AssetBank = 'asset::bank', ExpenseAdvertisingPromotional = 'expense::advertising-promotional', ExpenseLossOnDiscontinuedOperationsNetOfTax = 'expense::loss-on-discontinued-operations-net-of-tax', ExpenseRentOrLeaseOfBuildings = 'expense::rent-or-lease-of-buildings', LiabilityCreditCard = 'liability::credit-card', OtherExpenseHomeOffice = 'other-expense::home-office', OtherExpenseHomeOwnerRentalInsurance = 'other-expense::home-owner-rental-insurance', Liability = 'liability', OtherExpenseVehicleRepairs = 'other-expense::vehicle-repairs', ExpenseTravel = 'expense::travel', OtherIncomeLossOnDisposalOfAssets = 'other-income::loss-on-disposal-of-assets', ExpenseDuesSubscriptions = 'expense::dues-subscriptions', OtherCurrentLiabilityLineOfCredit = 'other-current-liability::line-of-credit', AssetLoansToOthers = 'asset::loans-to-others', AssetFixedAssetOtherToolsEquipment = 'asset::fixed-asset-other-tools-equipment', ExpenseAmortizationExpense = 'expense::amortization-expense', OtherExpenseUtilities = 'other-expense::utilities', LiabilityDebtsRelatedToParticipatingInterests = 'liability::debts-related-to-participating-interests', ExpenseCharitableContributions = 'expense::charitable-contributions', ExpenseEntertainmentMeals = 'expense::entertainment-meals', EquityFunds = 'equity::funds', AssetRetainage = 'asset::retainage', OtherExpenseWashAndRoadServices = 'other-expense::wash-and-road-services', AssetInventory = 'asset::inventory', EquityPartnerDistributions = 'equity::partner-distributions', ExpenseOtherExternalServices = 'expense::other-external-services', OtherCurrentLiabilityTrustAccountsLiabilities = 'other-current-liability::trust-accounts-liabilities', ExpenseIncomeTaxExpense = 'expense::income-tax-expense', EquityOtherFreeReserves = 'equity::other-free-reserves', AssetVehicles = 'asset::vehicles', AssetLand = 'asset::land', CostOfGoodsSoldEquipmentRentalCos = 'cost-of-goods-sold::equipment-rental-cos', OtherExpenseDeferredTaxExpense = 'other-expense::deferred-tax-expense', AssetCapitalWip = 'asset::capital-wip', AssetProvisionsCurrentAssets = 'asset::provisions-current-assets', AssetLicenses = 'asset::licenses', RevenueDiscountsRefundsGiven = 'revenue::discounts-refunds-given', RevenueOtherCurrentOperatingIncome = 'revenue::other-current-operating-income', CostOfGoodsSoldFreightAndDeliveryCost = 'cost-of-goods-sold::freight-and-delivery-cost', EquityInvestmentGrants = 'equity::investment-grants', ExpenseTravelExpensesSellingExpense = 'expense::travel-expenses-selling-expense', AssetCashOnHand = 'asset::cash-on-hand', OtherExpenseVehicleLoan = 'other-expense::vehicle-loan', AssetInvestmentUsGovernmentObligations = 'asset::investment-us-government-obligations', ExpenseRepairMaintenance = 'expense::repair-maintenance', OtherCurrentLiabilitySocialSecurityAgencies = 'other-current-liability::social-security-agencies', RevenueOwnWorkCapitalized = 'revenue::own-work-capitalized', EquityPartnersEquity = 'equity::partners-equity', LiabilityLiabilitiesRelatedToAssetsHeldForSale = 'liability::liabilities-related-to-assets-held-for-sale', OtherExpenseParkingAndTolls = 'other-expense::parking-and-tolls', OtherIncome = 'other-income', AssetGlobalTaxRefund = 'asset::global-tax-refund', ExpenseOtherSellingExpenses = 'expense::other-selling-expenses', OtherCurrentLiabilityPayrollTaxPayable = 'other-current-liability::payroll-tax-payable', AssetDepletableAssets = 'asset::depletable-assets', AssetLoansToOfficers = 'asset::loans-to-officers', LiabilityNotesPayable = 'liability::notes-payable', AssetLeaseholdImprovements = 'asset::leasehold-improvements', AssetOtherCurrentAssets = 'asset::other-current-assets', ExpenseOtherRentalCosts = 'expense::other-rental-costs', RevenueNonProfitIncome = 'revenue::non-profit-income', AssetFixedAssetPhone = 'asset::fixed-asset-phone', LiabilityLongTermBorrowings = 'liability::long-term-borrowings', OtherCurrentLiabilityPayrollClearing = 'other-current-liability::payroll-clearing', AssetAccumulatedAmortization = 'asset::accumulated-amortization', OtherExpenseGasAndFuel = 'other-expense::gas-and-fuel', EquityCapitalReserves = 'equity::capital-reserves', OtherIncomeOtherInvestmentIncome = 'other-income::other-investment-income', EquityCommonStock = 'equity::common-stock', OtherExpenseVehicleLease = 'other-expense::vehicle-lease', CostOfGoodsSoldShippingFreightDeliveryCos = 'cost-of-goods-sold::shipping-freight-delivery-cos', EquityRetainedEarnings = 'equity::retained-earnings', ExpenseEntertainment = 'expense::entertainment', OtherExpense = 'other-expense', RevenueSalesOfProductIncome = 'revenue::sales-of-product-income', EquityShareApplicationMoneyPendingAllotment = 'equity::share-application-money-pending-allotment', ExpenseAuto = 'expense::auto', LiabilityLongTermEmployeeBenefitObligations = 'liability::long-term-employee-benefit-obligations', RevenueCashReceiptIncome = 'revenue::cash-receipt-income', AssetFixedAsset = 'asset::fixed-asset', LiabilityLongTermDebit = 'liability::long-term-debit', OtherCurrentLiabilityLoanPayable = 'other-current-liability::loan-payable', LiabilityGroupAndAssociates = 'liability::group-and-associates', OtherCurrentLiabilityRentsInTrustLiability = 'other-current-liability::rents-in-trust-liability', ExpenseOfficeExpenses = 'expense::office-expenses', AssetRentsHeldInTrust = 'asset::rents-held-in-trust', RevenueOperatingGrants = 'revenue::operating-grants', ExpenseSuppliesMaterials = 'expense::supplies-materials', ExpenseAppropriationsToDepreciation = 'expense::appropriations-to-depreciation', EquityEquityInEarningsOfSubsidiuaries = 'equity::equity-in-earnings-of-subsidiuaries', LiabilityDeferredTaxLiabilities = 'liability::deferred-tax-liabilities', OtherIncomeGainLossOnSaleOfFixedAssets = 'other-income::gain-loss-on-sale-of-fixed-assets', LiabilityAccruedVacationPayable = 'liability::accrued-vacation-payable', AssetShortTermInvestmentsInRelatedParties = 'asset::short-term-investments-in-related-parties', EquityDividendDisbursed = 'equity::dividend-disbursed', AssetIntangibleAssets = 'asset::intangible-assets', EquityPartnerContributions = 'equity::partner-contributions', ExpenseUtilities = 'expense::utilities', LiabilityOutstandingDuesOtherThanMicroSmallEnterprise = 'liability::outstanding-dues-other-than-micro-small-enterprise', OtherCurrentLiabilityShortTermBorrowings = 'other-current-liability::short-term-borrowings', EquityOwnersEquity = 'equity::owners-equity', ExpenseCostOfLabor = 'expense::cost-of-labor', ExpenseLegalProfessionalFees = 'expense::legal-professional-fees', OtherCurrentLiabilityInsurancePayable = 'other-current-liability::insurance-payable', AssetGoodwill = 'asset::goodwill', AssetMachineryAndEquipment = 'asset::machinery-and-equipment', AssetProvisionsNonCurrentAssets = 'asset::provisions-non-current-assets', AssetNonCurrentAssets = 'asset::non-current-assets', AssetTrustAccounts = 'asset::trust-accounts', ExpensePayrollExpenses = 'expense::payroll-expenses', ExpenseOtherCurrentOperatingCharges = 'expense::other-current-operating-charges', ExpensePenaltiesSettlements = 'expense::penalties-settlements', AssetGlobalTaxDeferred = 'asset::global-tax-deferred', OtherCurrentLiabilitySalesTaxPayable = 'other-current-liability::sales-tax-payable', RevenueSalesWholesale = 'revenue::sales-wholesale', RevenueOtherPrimaryIncome = 'revenue::other-primary-income', AssetAssetsHeldForSale = 'asset::assets-held-for-sale', AssetAssetsInCourseOfConstruction = 'asset::assets-in-course-of-construction', AssetLoansToStockholders = 'asset::loans-to-stockholders', LiabilityGovernmentAndOtherPublicAuthorities = 'liability::government-and-other-public-authorities', ExpenseEquipmentRental = 'expense::equipment-rental', Income = 'income', AssetProvisionsFixedAssets = 'asset::provisions-fixed-assets', OtherExpenseAmortization = 'other-expense::amortization', ExpenseDistributionCosts = 'expense::distribution-costs', Equity = 'equity', LiabilityOtherLongTermLiabilities = 'liability::other-long-term-liabilities', AssetLandAsset = 'asset::land-asset', EquityPaidInCapitalOrSurplus = 'equity::paid-in-capital-or-surplus', ExpenseProjectStudiesSurveysAssessments = 'expense::project-studies-surveys-assessments', ExpenseShippingFreightDelivery = 'expense::shipping-freight-delivery', OtherIncomeTaxExemptInterest = 'other-income::tax-exempt-interest', ExpensePurchasesRebates = 'expense::purchases-rebates', OtherCurrentLiabilityAccruedLiabilities = 'other-current-liability::accrued-liabilities', AssetPrepaidExpenses = 'asset::prepaid-expenses', OtherCurrentLiabilityCurrentTaxLiability = 'other-current-liability::current-tax-liability', AssetIntangibleAssetsUnderDevelopment = 'asset::intangible-assets-under-development', ExpenseStaffCosts = 'expense::staff-costs', ExpenseExternalServices = 'expense::external-services', EquityOpeningBalanceEquity = 'equity::opening-balance-equity', OtherCurrentLiabilityProvisionForWarrantyObligations = 'other-current-liability::provision-for-warranty-obligations', RevenueIncome = 'revenue::income', CostOfGoodsSoldSuppliesMaterialsCogs = 'cost-of-goods-sold::supplies-materials-cogs', OtherExpenseDepreciation = 'other-expense::depreciation', CostOfGoodsSold = 'cost-of-goods-sold', EquityCalledUpShareCapital = 'equity::called-up-share-capital', RevenueSalesRetail = 'revenue::sales-retail', AssetAllowanceForBadDebts = 'asset::allowance-for-bad-debts', OtherExpensePriorPeriodItems = 'other-expense::prior-period-items', AssetSecurityDeposits = 'asset::security-deposits', ExpenseSundry = 'expense::sundry', AssetOtherFixedAssets = 'asset::other-fixed-assets' }
+export const enum Country { Chad = 'chad', Serbia = 'serbia', Guyana = 'guyana', Switzerland = 'switzerland', Mozambique = 'mozambique', Kyrgyzstan = 'kyrgyzstan', Angola = 'angola', CostaRica = 'costa-rica', Paraguay = 'paraguay', Greece = 'greece', Comoros = 'comoros', Andorra = 'andorra', Brazil = 'brazil', China = 'china', Djibouti = 'djibouti', SouthAfrica = 'south-africa', Philippines = 'philippines', Mauritius = 'mauritius', Turkey = 'turkey', Estonia = 'estonia', Mauritania = 'mauritania', Rwanda = 'rwanda', Eritrea = 'eritrea', Uzbekistan = 'uzbekistan', Luxembourg = 'luxembourg', Malaysia = 'malaysia', Fiji = 'fiji', Palestine = 'palestine', Suriname = 'suriname', Morocco = 'morocco', Dominica = 'dominica', Jamaica = 'jamaica', Benin = 'benin', SaintKittsAndNevis = 'saint-kitts-and-nevis', Monaco = 'monaco', Ecuador = 'ecuador', NorthMacedonia = 'north-macedonia', Belgium = 'belgium', Lesotho = 'lesotho', Oman = 'oman', Libya = 'libya', UnitedArabEmirates = 'united-arab-emirates', Afghanistan = 'afghanistan', Egypt = 'egypt', CentralAfricanRepublic = 'central-african-republic', Guatemala = 'guatemala', Georgia = 'georgia', Kazakhstan = 'kazakhstan', Slovakia = 'slovakia', Pakistan = 'pakistan', NewZealand = 'new-zealand', Burundi = 'burundi', Myanmar = 'myanmar', Iran = 'iran', Qatar = 'qatar', ElSalvador = 'el-salvador', Romania = 'romania', SaoTomeAndPrincipe = 'sao-tome-and-principe', Zimbabwe = 'zimbabwe', Latvia = 'latvia', Maldives = 'maldives', Seychelles = 'seychelles', Cuba = 'cuba', CongoDemocraticRepublic = 'congo-democratic-republic', Malta = 'malta', Italy = 'italy', Lithuania = 'lithuania', Canada = 'canada', Kiribati = 'kiribati', Moldova = 'moldova', Tuvalu = 'tuvalu', SouthSudan = 'south-sudan', Mali = 'mali', Finland = 'finland', DominicanRepublic = 'dominican-republic', Jordan = 'jordan', Cameroon = 'cameroon', SaintLucia = 'saint-lucia', TimorLeste = 'timor-leste', Micronesia = 'micronesia', Spain = 'spain', CaboVerde = 'cabo-verde', Belarus = 'belarus', Ireland = 'ireland', Portugal = 'portugal', Colombia = 'colombia', Slovenia = 'slovenia', Nepal = 'nepal', Kuwait = 'kuwait', PapuaNewGuinea = 'papua-new-guinea', Peru = 'peru', Thailand = 'thailand', Tanzania = 'tanzania', Armenia = 'armenia', Lebanon = 'lebanon', SierraLeone = 'sierra-leone', Vanuatu = 'vanuatu', Azerbaijan = 'azerbaijan', Turkmenistan = 'turkmenistan', Bolivia = 'bolivia', Grenada = 'grenada', Kenya = 'kenya', Brunei = 'brunei', Bangladesh = 'bangladesh', CzechRepublic = 'czech-republic', Bhutan = 'bhutan', BosniaAndHerzegovina = 'bosnia-and-herzegovina', Nicaragua = 'nicaragua', Norway = 'norway', Japan = 'japan', Ghana = 'ghana', AntiguaAndBarbuda = 'antigua-and-barbuda', Haiti = 'haiti', UnitedKingdom = 'united-kingdom', Montenegro = 'montenegro', Albania = 'albania', Bahrain = 'bahrain', Uruguay = 'uruguay', SanMarino = 'san-marino', Tajikistan = 'tajikistan', Panama = 'panama', Ukraine = 'ukraine', Samoa = 'samoa', Liberia = 'liberia', Senegal = 'senegal', NorthKorea = 'north-korea', Madagascar = 'madagascar', Chile = 'chile', Indonesia = 'indonesia', Taiwan = 'taiwan', VaticanCity = 'vatican-city', Argentina = 'argentina', Australia = 'australia', France = 'france', Syria = 'syria', Honduras = 'honduras', Croatia = 'croatia', Togo = 'togo', Botswana = 'botswana', Niger = 'niger', UnitedStates = 'united-states', Ethiopia = 'ethiopia', Gambia = 'gambia', GuineaBissau = 'guinea-bissau', Israel = 'israel', Denmark = 'denmark', Palau = 'palau', Poland = 'poland', SaudiArabia = 'saudi-arabia', Russia = 'russia', CoteDIvoire = 'cote-d-ivoire', Iceland = 'iceland', Cambodia = 'cambodia', Somalia = 'somalia', Bahamas = 'bahamas', Iraq = 'iraq', Liechtenstein = 'liechtenstein', SolomonIslands = 'solomon-islands', SriLanka = 'sri-lanka', Sweden = 'sweden', Tonga = 'tonga', Sudan = 'sudan', Hungary = 'hungary', TrinidadAndTobago = 'trinidad-and-tobago', Tunisia = 'tunisia', Uganda = 'uganda', Zambia = 'zambia', Singapore = 'singapore', Mongolia = 'mongolia', MarshallIslands = 'marshall-islands', EquatorialGuinea = 'equatorial-guinea', Eswatini = 'eswatini', Namibia = 'namibia', Bulgaria = 'bulgaria', Yemen = 'yemen', Venezuela = 'venezuela', Vietnam = 'vietnam', Nauru = 'nauru', Belize = 'belize', Cyprus = 'cyprus', Gabon = 'gabon', India = 'india', Laos = 'laos', SaintVincentAndTheGrenadines = 'saint-vincent-and-the-grenadines', CongoRepublic = 'congo-republic', Netherlands = 'netherlands', Austria = 'austria', Barbados = 'barbados', Algeria = 'algeria', SouthKorea = 'south-korea', Malawi = 'malawi', BurkinaFaso = 'burkina-faso', Germany = 'germany', Mexico = 'mexico', Guinea = 'guinea', Nigeria = 'nigeria' }
+export const enum GlobalTaxType { SalesTax = 'sales-tax', PropertyTax = 'property-tax', Other = 'other', Vat = 'vat', Gst = 'gst', ExciseTax = 'excise-tax', CustomsDuty = 'customs-duty' }
+export const enum IdentityProvider { Tiktok = 'tiktok', Dribbble = 'dribbble', Facebook = 'facebook', Discord = 'discord', Linkedin = 'linkedin', Reddit = 'reddit', Slack = 'slack', Github = 'github', Vimeo = 'vimeo', Apple = 'apple', Google = 'google', Microsoft = 'microsoft', Pinterest = 'pinterest', Foursquare = 'foursquare', Whatsapp = 'whatsapp', Qq = 'qq', Behance = 'behance', Signal = 'signal', Amazon = 'amazon', Snapchat = 'snapchat', Tumblr = 'tumblr', Flickr = 'flickr', Telegram = 'telegram', Yahoo = 'yahoo', Line = 'line', Instagram = 'instagram', Other = 'other', Paypal = 'paypal', Wechat = 'wechat', Twitter = 'twitter' }
+export const enum AccountEngagementLevel { Cold = 'cold', Hot = 'hot', Warm = 'warm', Unknown = 'unknown' }
+export const enum ReviewApprovalStatus { Revised = 'revised', Approved = 'approved', Pending = 'pending', Rejected = 'rejected', InReview = 'in-review' }
+export const enum StakeholderType { Customer = 'customer', Competitor = 'competitor', Investor = 'investor', Partner = 'partner', Vendor = 'vendor', Other = 'other' }
+export const enum AccountStatus { Inactive = 'inactive', Suspended = 'suspended', Pending = 'pending', Active = 'active', Closed = 'closed' }
+export const enum CampaignStatus { Completed = 'completed', Archived = 'archived', Cancelled = 'cancelled', Draft = 'draft', Active = 'active', Planned = 'planned', Scheduled = 'scheduled', Paused = 'paused' }
+export const enum CustomerType { B2c = 'b2c', Online = 'online', Retail = 'retail', B2b = 'b2b', Wholesale = 'wholesale', Corporate = 'corporate' }
+export const enum MessageContentType { Contact = 'contact', Video = 'video', File = 'file', Location = 'location', Html = 'html', Text = 'text', Image = 'image', Audio = 'audio', Voice = 'voice', Document = 'document', Sticker = 'sticker', Link = 'link', Gif = 'gif' }
+export const enum ReactionType { Bookmark = 'bookmark', Dislike = 'dislike', Laugh = 'laugh', Like = 'like', Sad = 'sad', Interested = 'interested', Angry = 'angry', Love = 'love', Wow = 'wow' }
+export const enum SupportTicketPriority { Urgent = 'urgent', High = 'high', Medium = 'medium', Low = 'low', Immediate = 'immediate' }
+export const enum IssueLifecycleStatus { Open = 'open', Pending = 'pending', Resolved = 'resolved', InProgress = 'in-progress', Cancelled = 'cancelled', OnHold = 'on-hold', Closed = 'closed' }
+export const enum OrderStatus { Completed = 'completed', Pending = 'pending', Shipped = 'shipped', Returned = 'returned', AwaitingPayment = 'awaiting-payment', Delivered = 'delivered', Confirmed = 'confirmed', AwaitingPickup = 'awaiting-pickup', Refunded = 'refunded', Disputed = 'disputed', Failed = 'failed', Abandoned = 'abandoned', PartiallyFulfilled = 'partially-fulfilled', Processing = 'processing', Cancelled = 'cancelled', AwaitingShipment = 'awaiting-shipment', OnHold = 'on-hold', Draft = 'draft' }
+export const enum DiscountType { FixedAmount = 'fixed-amount', BuyOneGetOne = 'buy-one-get-one', TieredDiscount = 'tiered-discount', ConditionalDiscount = 'conditional-discount', VariablePercentage = 'variable-percentage', Percentage = 'percentage', VariableAmount = 'variable-amount', UnknownDiscount = 'unknown-discount' }
+export const enum FulfillmentStatus { Cancelled = 'cancelled', Returned = 'returned', Pending = 'pending', InTransit = 'in-transit', Failure = 'failure', Delivered = 'delivered' }
+export const enum ProductAvailabilityStatus { OutOfStock = 'out-of-stock', Discontinued = 'discontinued', BackOrder = 'back-order', PreOrder = 'pre-order', InStock = 'in-stock' }
+export const enum ExpenseApprovalStatus { Reviewing = 'reviewing', Denied = 'denied', Approved = 'approved', New = 'new', Processed = 'processed', Cancelled = 'cancelled', Pending = 'pending', Reimbursed = 'reimbursed' }
+export const enum FinancialChargeType { ProcessingFee = 'processing-fee', LateFee = 'late-fee', Commission = 'commission', TransactionFee = 'transaction-fee', ServiceCharge = 'service-charge', Other = 'other', InterestCharge = 'interest-charge' }
+export const enum BillingStatus { Overdue = 'overdue', PartiallyPaid = 'partially-paid', Paid = 'paid', Unpaid = 'unpaid', Submitted = 'submitted', Voided = 'voided', Draft = 'draft', Pending = 'pending', Deleted = 'deleted', Authorised = 'authorised' }
+export const enum InvoiceAdjustmentType { Discount = 'discount', Tax = 'tax', Shipping = 'shipping', Tip = 'tip', Other = 'other' }
+export const enum DataType { Custom = 'custom', Binary = 'binary', Date = 'date', Json = 'json', Boolean = 'boolean', Array = 'array', String = 'string', Number = 'number', Undefined = 'undefined', Object = 'object', Timestamp = 'timestamp', Null = 'null' }
+export const enum EmploymentType { Internship = 'internship', Permanent = 'permanent', PartTime = 'part-time', FullTime = 'full-time', Freelance = 'freelance', Contract = 'contract', Volunteer = 'volunteer', Temporary = 'temporary', Seasonal = 'seasonal' }
+export const enum TimeCycle { AdHoc = 'ad-hoc', Quarterly = 'quarterly', Annually = 'annually', Hourly = 'hourly', Daily = 'daily', SemiMonthly = 'semi-monthly', Weekly = 'weekly', Biweekly = 'biweekly', Monthly = 'monthly', Secondly = 'secondly', SemiAnnually = 'semi-annually', Biennially = 'biennially', Custom = 'custom', Triennially = 'triennially', Minutely = 'minutely' }
+export const enum FinancialTrackingCategories { Product = 'product', Service = 'service', None = 'none', Division = 'division', Location = 'location', Project = 'project', Customer = 'customer', CostCenter = 'cost-center', Class = 'class', Department = 'department', Employee = 'employee', Other = 'other', Vendor = 'vendor' }
+export const enum CampaignType { SocialMedia = 'social-media', Display = 'display', SearchEngine = 'search-engine', Other = 'other', Email = 'email' }
+export const enum ContactAddressType { Billing = 'billing', Work = 'work', Home = 'home', Business = 'business', Personal = 'personal', Temporary = 'temporary', Other = 'other', Shipping = 'shipping' }
+export const enum LeadLifecycleStatus { Open = 'open', Unqualified = 'unqualified', Connected = 'connected', New = 'new', InProcess = 'in-process', Converted = 'converted', AttemptedToContact = 'attempted-to-contact', BadTiming = 'bad-timing', Revisited = 'revisited', Lost = 'lost' }
+export const enum ParticipantEngagementStatus { Inactive = 'inactive', Banned = 'banned', Active = 'active', Guest = 'guest', Left = 'left', Admin = 'admin', Moderator = 'moderator' }
+export const enum ItemEntityStatus { Inactive = 'inactive', Suspended = 'suspended', Active = 'active', Archived = 'archived', Pending = 'pending', Deleted = 'deleted', Completed = 'completed' }
+export const enum Currency { INR = 'inr', EGP = 'egp', HTG = 'htg', VES = 'ves', AUD = 'aud', ISK = 'isk', ERN = 'ern', DOP = 'dop', FOK = 'fok', DZD = 'dzd', IDR = 'idr', GMD = 'gmd', CAD = 'cad', MRU = 'mru', SOS = 'sos', XOF = 'xof', XPF = 'xpf', ARS = 'ars', AFN = 'afn', BOB = 'bob', PAB = 'pab', ANG = 'ang', KES = 'kes', TWD = 'twd', KID = 'kid', XCD = 'xcd', AED = 'aed', CHF = 'chf', KWD = 'kwd', NZD = 'nzd', KMF = 'kmf', IQD = 'iqd', ALL = 'all', AOA = 'aoa', HNL = 'hnl', BND = 'bnd', TND = 'tnd', MXN = 'mxn', KGS = 'kgs', LYD = 'lyd', MYR = 'myr', SRD = 'srd', SCR = 'scr', CNY = 'cny', SZL = 'szl', JMD = 'jmd', XAF = 'xaf', XDR = 'xdr', CLP = 'clp', CRC = 'crc', MZN = 'mzn', CDF = 'cdf', GHS = 'ghs', CUC = 'cuc', NAD = 'nad', NIO = 'nio', PYG = 'pyg', SBD = 'sbd', IRR = 'irr', MOP = 'mop', BTN = 'btn', JOD = 'jod', BYN = 'byn', CZK = 'czk', KHR = 'khr', NOK = 'nok', TOP = 'top', SAR = 'sar', SSP = 'ssp', UYU = 'uyu', PLN = 'pln', BZD = 'bzd', LRD = 'lrd', ZAR = 'zar', VND = 'vnd', BIF = 'bif', BGN = 'bgn', UAH = 'uah', JPY = 'jpy', MWK = 'mwk', KYD = 'kyd', MDL = 'mdl', MMK = 'mmk', GTQ = 'gtq', BMD = 'bmd', LKR = 'lkr', UGX = 'ugx', BBD = 'bbd', KRW = 'krw', DKK = 'dkk', ZWL = 'zwl', HRK = 'hrk', PEN = 'pen', BHD = 'bhd', IMP = 'imp', RWF = 'rwf', JEP = 'jep', EUR = 'eur', SLL = 'sll', WST = 'wst', USD = 'usd', YER = 'yer', PHP = 'php', GEL = 'gel', LSL = 'lsl', MUR = 'mur', TMT = 'tmt', BRL = 'brl', GGP = 'ggp', GYD = 'gyd', HKD = 'hkd', GNF = 'gnf', PKR = 'pkr', RSD = 'rsd', VUV = 'vuv', THB = 'thb', AZN = 'azn', SDG = 'sdg', BWP = 'bwp', DJF = 'djf', FKP = 'fkp', PGK = 'pgk', ETB = 'etb', OMR = 'omr', COP = 'cop', TRY = 'try', CUP = 'cup', LAK = 'lak', MNT = 'mnt', MAD = 'mad', MKD = 'mkd', KZT = 'kzt', BDT = 'bdt', STN = 'stn', SHP = 'shp', MGA = 'mga', FJD = 'fjd', GBP = 'gbp', LBP = 'lbp', ILS = 'ils', QAR = 'qar', TZS = 'tzs', RON = 'ron', CVE = 'cve', GIP = 'gip', SEK = 'sek', SYP = 'syp', TTD = 'ttd', UZS = 'uzs', TJS = 'tjs', KPW = 'kpw', HUF = 'huf', BSD = 'bsd', BAM = 'bam', TVD = 'tvd', NGN = 'ngn', MVR = 'mvr', ZMW = 'zmw', RUB = 'rub', AWG = 'awg', AMD = 'amd', SGD = 'sgd', NPR = 'npr' }
+export const enum CustomerEligibilityStatus { AllCustomers = 'all-customers', ReturningCustomers = 'returning-customers', NewCustomers = 'new-customers', SpecificConditions = 'specific-conditions', VipCustomers = 'vip-customers', Other = 'other' }
+export const enum ItemCondition { OpenBox = 'open-box', Damaged = 'damaged', Used = 'used', LikeNew = 'like-new', Refurbished = 'refurbished', New = 'new' }
+export const enum TransactionType { Adjustment = 'adjustment', Payment = 'payment', Withdrawal = 'withdrawal', Deposit = 'deposit', Fee = 'fee', Transfer = 'transfer', Refund = 'refund', Charge = 'charge' }
+export const enum EntityLifecycleStatus { Draft = 'draft', Preorder = 'preorder', Active = 'active', Deleted = 'deleted', Archived = 'archived', Inactive = 'inactive', Scheduled = 'scheduled' }
+export const enum JournalEntryStatus { Error = 'error', Voided = 'voided', Corrected = 'corrected', Pending = 'pending', Draft = 'draft', Posted = 'posted' }
+export const enum DayOfWeek { Wednesday = 'wednesday', Saturday = 'saturday', Monday = 'monday', Tuesday = 'tuesday', Friday = 'friday', Thursday = 'thursday', Sunday = 'sunday' }
+export const enum AccountingAccountType { ExpensePromotionalMeals = 'expense::promotional-meals', AssetEmployeeCashAdvances = 'asset::employee-cash-advances', AssetCapitalWip = 'asset::capital-wip', AssetBuildings = 'asset::buildings', AssetBank = 'asset::bank', AssetFixedAssetFurniture = 'asset::fixed-asset-furniture', ExpenseOfficeExpenses = 'expense::office-expenses', OtherCurrentLiabilityCurrentLiabilities = 'other-current-liability::current-liabilities', EquityEquityInEarningsOfSubsidiuaries = 'equity::equity-in-earnings-of-subsidiuaries', RevenueSavingsByTaxScheme = 'revenue::savings-by-tax-scheme', OtherCurrentLiabilityTrustAccountsLiabilities = 'other-current-liability::trust-accounts-liabilities', OtherIncomeTaxExemptInterest = 'other-income::tax-exempt-interest', OtherCurrentLiabilityStaffAndRelatedLiabilityAccounts = 'other-current-liability::staff-and-related-liability-accounts', OtherExpenseGasAndFuel = 'other-expense::gas-and-fuel', AssetInternalTransfers = 'asset::internal-transfers', ExpenseGlobalTaxExpense = 'expense::global-tax-expense', ExpenseDuesSubscriptions = 'expense::dues-subscriptions', RevenueSalesRetail = 'revenue::sales-retail', OtherIncomeGainLossOnSaleOfInvestments = 'other-income::gain-loss-on-sale-of-investments', AssetSecurityDeposits = 'asset::security-deposits', ExpenseAppropriationsToDepreciation = 'expense::appropriations-to-depreciation', OtherExpenseOtherMiscellaneousExpense = 'other-expense::other-miscellaneous-expense', ExpenseEquipmentRental = 'expense::equipment-rental', AssetTradeAndOtherReceivables = 'asset::trade-and-other-receivables', OtherExpenseDepreciation = 'other-expense::depreciation', OtherExpense = 'other-expense', AssetOtherConsumables = 'asset::other-consumables', CostOfGoodsSoldSuppliesMaterialsCogs = 'cost-of-goods-sold::supplies-materials-cogs', AssetMachineryAndEquipment = 'asset::machinery-and-equipment', OtherCurrentLiabilityLineOfCredit = 'other-current-liability::line-of-credit', LiabilityStaffAndRelatedLongTermLiabilityAccounts = 'liability::staff-and-related-long-term-liability-accounts', AssetLoansToStockholders = 'asset::loans-to-stockholders', OtherCurrentLiabilitySundryDebtorsAndCreditors = 'other-current-liability::sundry-debtors-and-creditors', AssetFixedAssetPhone = 'asset::fixed-asset-phone', LiabilityProvisionsNonCurrentLiabilities = 'liability::provisions-non-current-liabilities', LiabilityLongTermLiability = 'liability::long-term-liability', AssetVehicles = 'asset::vehicles', AssetAccumulatedDepreciation = 'asset::accumulated-depreciation', Equity = 'equity', RevenueDiscountsRefundsGiven = 'revenue::discounts-refunds-given', AssetLoansToOfficers = 'asset::loans-to-officers', AccountsReceivable = 'accounts-receivable', AssetAccumulatedAmortization = 'asset::accumulated-amortization', AssetOtherIntangibleAssets = 'asset::other-intangible-assets', AssetParticipatingInterests = 'asset::participating-interests', ExpensePurchasesRebates = 'expense::purchases-rebates', EquityMoneyReceivedAgainstShareWarrants = 'equity::money-received-against-share-warrants', OtherExpenseMortgageInterest = 'other-expense::mortgage-interest', AssetOtherCurrentAsset = 'asset::other-current-asset', AssetInvestmentOther = 'asset::investment-other', AssetFixedAssetComputers = 'asset::fixed-asset-computers', ExpenseOtherExternalServices = 'expense::other-external-services', OtherExpenseExtraordinaryItems = 'other-expense::extraordinary-items', OtherCurrentLiabilityDirectDepositPayable = 'other-current-liability::direct-deposit-payable', OtherExpensePenaltiesSettlements = 'other-expense::penalties-settlements', Asset = 'asset', OtherExpensePriorPeriodItems = 'other-expense::prior-period-items', ExpenseTaxesPaid = 'expense::taxes-paid', OtherIncomeUnrealisedLossOnSecuritiesNetOfTax = 'other-income::unrealised-loss-on-securities-net-of-tax', AssetAvailableForSaleFinancialAssets = 'asset::available-for-sale-financial-assets', OtherExpenseAmortization = 'other-expense::amortization', LiabilityLongTermEmployeeBenefitObligations = 'liability::long-term-employee-benefit-obligations', OtherIncomeLossOnDisposalOfAssets = 'other-income::loss-on-disposal-of-assets', AssetLandAsset = 'asset::land-asset', OtherExpenseVehicleInsurance = 'other-expense::vehicle-insurance', ExpenseDistributionCosts = 'expense::distribution-costs', CostOfGoodsSoldEquipmentRentalCos = 'cost-of-goods-sold::equipment-rental-cos', AssetDepletableAssets = 'asset::depletable-assets', ExpenseStaffCosts = 'expense::staff-costs', ExpenseShippingAndDeliveryExpense = 'expense::shipping-and-delivery-expense', AssetInventory = 'asset::inventory', OtherCurrentLiabilityFederalIncomeTaxPayable = 'other-current-liability::federal-income-tax-payable', EquityPreferredStock = 'equity::preferred-stock', ExpenseInterestPaid = 'expense::interest-paid', AssetAccumulatedDepletion = 'asset::accumulated-depletion', ExpenseUtilities = 'expense::utilities', AssetPrepaymentsAndAccruedIncome = 'asset::prepayments-and-accrued-income', OtherExpenseVehicleLease = 'other-expense::vehicle-lease', OtherExpenseDepletion = 'other-expense::depletion', AssetDeferredTax = 'asset::deferred-tax', AssetLongTermLoansAndAdvancesToRelatedParties = 'asset::long-term-loans-and-advances-to-related-parties', OtherExpenseVehicleRegistration = 'other-expense::vehicle-registration', AssetFixedAsset = 'asset::fixed-asset', LiabilityOutstandingDuesOtherThanMicroSmallEnterprise = 'liability::outstanding-dues-other-than-micro-small-enterprise', EquityOwnersEquity = 'equity::owners-equity', ExpenseOtherBusinessExpenses = 'expense::other-business-expenses', EquityHealthcare = 'equity::healthcare', EquityTreasuryStock = 'equity::treasury-stock', ExpenseRepairMaintenance = 'expense::repair-maintenance', ExpenseTravelExpensesSellingExpense = 'expense::travel-expenses-selling-expense', AssetAssetsInCourseOfConstruction = 'asset::assets-in-course-of-construction', LiabilityGroupAndAssociates = 'liability::group-and-associates', ExpenseEntertainmentMeals = 'expense::entertainment-meals', ExpenseLossOnDiscontinuedOperationsNetOfTax = 'expense::loss-on-discontinued-operations-net-of-tax', AssetBalWithGovtAuthorities = 'asset::bal-with-govt-authorities', RevenueUnappliedCashPaymentIncome = 'revenue::unapplied-cash-payment-income', AssetInvestmentMortgageRealEstateLoans = 'asset::investment-mortgage-real-estate-loans', AssetFurnitureAndFixtures = 'asset::furniture-and-fixtures', OtherExpenseUtilities = 'other-expense::utilities', OtherExpenseIncomeTaxOtherExpense = 'other-expense::income-tax-other-expense', LiabilityShareholderNotesPayable = 'liability::shareholder-notes-payable', OtherCurrentLiabilityInsurancePayable = 'other-current-liability::insurance-payable', AssetAssetsHeldForSale = 'asset::assets-held-for-sale', EquityShareCapital = 'equity::share-capital', OtherExpenseHomeOffice = 'other-expense::home-office', LiabilityNotesPayable = 'liability::notes-payable', AssetDevelopmentCosts = 'asset::development-costs', AssetFixedAssetPhotoVideo = 'asset::fixed-asset-photo-video', EquityRetainedEarnings = 'equity::retained-earnings', AssetChecking = 'asset::checking', AssetUndepositedFunds = 'asset::undeposited-funds', OtherExpenseRentAndLease = 'other-expense::rent-and-lease', OtherCurrentLiabilityProvisionForWarrantyObligations = 'other-current-liability::provision-for-warranty-obligations', CostOfGoodsSoldFreightAndDeliveryCost = 'cost-of-goods-sold::freight-and-delivery-cost', ExpenseOfficeGeneralAdministrativeExpenses = 'expense::office-general-administrative-expenses', RevenueOtherPrimaryIncome = 'revenue::other-primary-income', OtherCurrentLiabilityPrepaidExpensesPayable = 'other-current-liability::prepaid-expenses-payable', EquityPartnersEquity = 'equity::partners-equity', LiabilityBankLoans = 'liability::bank-loans', OtherExpenseOtherVehicleExpenses = 'other-expense::other-vehicle-expenses', EquityPartnerContributions = 'equity::partner-contributions', ExpenseOtherCurrentOperatingCharges = 'expense::other-current-operating-charges', AssetExpenditureAuthorisationsAndLettersOfCredit = 'asset::expenditure-authorisations-and-letters-of-credit', AssetTrustAccounts = 'asset::trust-accounts', LiabilityObligationsUnderFinanceLeases = 'liability::obligations-under-finance-leases', RevenueIncome = 'revenue::income', CostOfGoodsSoldCostOfSales = 'cost-of-goods-sold::cost-of-sales', AssetOtherCurrentAssets = 'asset::other-current-assets', AssetIntangibleAssets = 'asset::intangible-assets', OtherExpenseVehicleLoanInterest = 'other-expense::vehicle-loan-interest', CostOfGoodsSoldShippingFreightDeliveryCos = 'cost-of-goods-sold::shipping-freight-delivery-cos', RevenueSalesWholesale = 'revenue::sales-wholesale', EquityPersonalIncome = 'equity::personal-income', OtherCurrentLiabilityAccruedLiabilities = 'other-current-liability::accrued-liabilities', AssetProvisionsNonCurrentAssets = 'asset::provisions-non-current-assets', EquityInvestmentGrants = 'equity::investment-grants', AssetSavings = 'asset::savings', AssetOtherAsset = 'asset::other-asset', ExpenseExternalServices = 'expense::external-services', ExpenseTravelExpensesGeneralAndAdminExpenses = 'expense::travel-expenses-general-and-admin-expenses', OtherExpenseWashAndRoadServices = 'other-expense::wash-and-road-services', RevenueCashReceiptIncome = 'revenue::cash-receipt-income', OtherIncome = 'other-income', RevenueOwnWorkCapitalized = 'revenue::own-work-capitalized', ExpenseTravel = 'expense::travel', AssetMoneyMarket = 'asset::money-market', OtherCurrentLiabilityTradeAndOtherPayables = 'other-current-liability::trade-and-other-payables', ExpenseCommissionsAndFees = 'expense::commissions-and-fees', OtherCurrentLiabilityInterestPayables = 'other-current-liability::interest-payables', AssetLeaseBuyout = 'asset::lease-buyout', LiabilityAccruedVacationPayable = 'liability::accrued-vacation-payable', ExpenseProjectStudiesSurveysAssessments = 'expense::project-studies-surveys-assessments', EquityOpeningBalanceEquity = 'equity::opening-balance-equity', OtherCurrentLiabilityShortTermBorrowings = 'other-current-liability::short-term-borrowings', CostOfGoodsSoldOtherCostsOfServiceCos = 'cost-of-goods-sold::other-costs-of-service-cos', OtherIncomeOtherMiscellaneousIncome = 'other-income::other-miscellaneous-income', AssetAccumulatedAmortizationOfOtherAssets = 'asset::accumulated-amortization-of-other-assets', EquityPaidInCapitalOrSurplus = 'equity::paid-in-capital-or-surplus', AssetAllowanceForBadDebts = 'asset::allowance-for-bad-debts', AssetLand = 'asset::land', LiabilityOtherLongTermLiabilities = 'liability::other-long-term-liabilities', AssetInvestmentTaxExemptSecurities = 'asset::investment-tax-exempt-securities', AssetLeaseholdImprovements = 'asset::leasehold-improvements', EquityCalledUpShareCapital = 'equity::called-up-share-capital', OtherCurrentLiabilityGlobalTaxPayable = 'other-current-liability::global-tax-payable', OtherIncomeInterestEarned = 'other-income::interest-earned', EquityPartnerDistributions = 'equity::partner-distributions', ExpenseInsurance = 'expense::insurance', LiabilityAccrualsAndDeferredIncome = 'liability::accruals-and-deferred-income', ExpenseOtherRentalCosts = 'expense::other-rental-costs', AssetPrepaidExpenses = 'asset::prepaid-expenses', OtherCurrentLiability = 'other-current-liability', LiabilityAccruedLongTermLiabilities = 'liability::accrued-long-term-liabilities', AssetFixedAssetCopiers = 'asset::fixed-asset-copiers', CostOfGoodsSoldCostOfLaborCos = 'cost-of-goods-sold::cost-of-labor-cos', AssetAssetsAvailableForSale = 'asset::assets-available-for-sale', ExpenseBorrowingCost = 'expense::borrowing-cost', RevenueOperatingGrants = 'revenue::operating-grants', AssetOtherLongTermAssets = 'asset::other-long-term-assets', OtherCurrentLiabilityCurrentPortionEmployeeBenefitsObligations = 'other-current-liability::current-portion-employee-benefits-obligations', EquityPersonalExpense = 'equity::personal-expense', ExpenseAmortizationExpense = 'expense::amortization-expense', OtherExpenseExceptionalItems = 'other-expense::exceptional-items', AssetProvisionsCurrentAssets = 'asset::provisions-current-assets', EquityFunds = 'equity::funds', AssetGlobalTaxDeferred = 'asset::global-tax-deferred', OtherCurrentLiabilityStateLocalIncomeTaxPayable = 'other-current-liability::state-local-income-tax-payable', ExpenseRentOrLeaseOfBuildings = 'expense::rent-or-lease-of-buildings', LiabilityGovernmentAndOtherPublicAuthorities = 'liability::government-and-other-public-authorities', AssetProvisionsFixedAssets = 'asset::provisions-fixed-assets', Expense = 'expense', RevenueServiceFeeIncome = 'revenue::service-fee-income', LiabilityAccountsPayable = 'liability::accounts-payable', OtherIncomeDividendIncome = 'other-income::dividend-income', LiabilityProvisionForLiabilities = 'liability::provision-for-liabilities', OtherCurrentLiabilityCurrentPortionOfObligationsUnderFinanceLeases = 'other-current-liability::current-portion-of-obligations-under-finance-leases', ExpenseAuto = 'expense::auto', LiabilityCreditCard = 'liability::credit-card', OtherIncomeOtherInvestmentIncome = 'other-income::other-investment-income', AssetOtherLongTermLoansAndAdvances = 'asset::other-long-term-loans-and-advances', AssetGlobalTaxRefund = 'asset::global-tax-refund', AssetIntangibleAssetsUnderDevelopment = 'asset::intangible-assets-under-development', ExpenseShippingFreightDelivery = 'expense::shipping-freight-delivery', EquityEstimatedTaxes = 'equity::estimated-taxes', ExpenseTravelMeals = 'expense::travel-meals', CostOfGoodsSold = 'cost-of-goods-sold', OtherIncomeGainLossOnSaleOfFixedAssets = 'other-income::gain-loss-on-sale-of-fixed-assets', LiabilityOutstandingDuesMicroSmallEnterprise = 'liability::outstanding-dues-micro-small-enterprise', AssetInvestmentUsGovernmentObligations = 'asset::investment-us-government-obligations', OtherExpenseVehicleLoan = 'other-expense::vehicle-loan', LiabilityDeferredTaxLiabilities = 'liability::deferred-tax-liabilities', OtherExpenseHomeOwnerRentalInsurance = 'other-expense::home-owner-rental-insurance', AssetShortTermLoansAndAdvancesToRelatedParties = 'asset::short-term-loans-and-advances-to-related-parties', EquityCommonStock = 'equity::common-stock', EquityShareApplicationMoneyPendingAllotment = 'equity::share-application-money-pending-allotment', ExpenseManagementCompensation = 'expense::management-compensation', ExpenseFinanceCosts = 'expense::finance-costs', ExpenseCharitableContributions = 'expense::charitable-contributions', RevenueRevenueGeneral = 'revenue::revenue-general', RevenueOtherCurrentOperatingIncome = 'revenue::other-current-operating-income', AssetRentsHeldInTrust = 'asset::rents-held-in-trust', OtherCurrentLiabilityDutiesAndTaxes = 'other-current-liability::duties-and-taxes', ExpenseOtherSellingExpenses = 'expense::other-selling-expenses', ExpenseLegalProfessionalFees = 'expense::legal-professional-fees', ExpenseExtraordinaryCharges = 'expense::extraordinary-charges', OtherCurrentLiabilityPayrollTaxPayable = 'other-current-liability::payroll-tax-payable', OtherCurrentLiabilityProvisionsCurrentLiabilities = 'other-current-liability::provisions-current-liabilities', OtherCurrentLiabilitySalesTaxPayable = 'other-current-liability::sales-tax-payable', OtherExpenseExchangeGainOrLoss = 'other-expense::exchange-gain-or-loss', ExpenseEntertainment = 'expense::entertainment', EquityOtherFreeReserves = 'equity::other-free-reserves', OtherExpenseRepairsAndMaintenance = 'other-expense::repairs-and-maintenance', AssetLoansToOthers = 'asset::loans-to-others', AssetInvestments = 'asset::investments', AssetFixedAssetOtherToolsEquipment = 'asset::fixed-asset-other-tools-equipment', AssetCumulativeDepreciationOnIntangibleAssets = 'asset::cumulative-depreciation-on-intangible-assets', LiabilityLiabilitiesRelatedToAssetsHeldForSale = 'liability::liabilities-related-to-assets-held-for-sale', EquityAccumulatedAdjustment = 'equity::accumulated-adjustment', AssetOrganizationalCosts = 'asset::organizational-costs', OtherCurrentLiabilityLoanPayable = 'other-current-liability::loan-payable', AssetLongTermInvestments = 'asset::long-term-investments', ExpenseUnappliedCashBillPaymentExpense = 'expense::unapplied-cash-bill-payment-expense', OtherCurrentLiabilityDividendsPayable = 'other-current-liability::dividends-payable', OtherCurrentLiabilityRentsInTrustLiability = 'other-current-liability::rents-in-trust-liability', AssetOtherLongTermInvestments = 'asset::other-long-term-investments', EquityDividendDisbursed = 'equity::dividend-disbursed', ExpensePayrollExpenses = 'expense::payroll-expenses', ExpenseSundry = 'expense::sundry', LiabilityOtherLongTermProvisions = 'liability::other-long-term-provisions', AssetShortTermInvestmentsInRelatedParties = 'asset::short-term-investments-in-related-parties', ExpenseIncomeTaxExpense = 'expense::income-tax-expense', ExpenseBankCharges = 'expense::bank-charges', OtherExpenseVehicleRepairs = 'other-expense::vehicle-repairs', AssetCashOnHand = 'asset::cash-on-hand', OtherExpenseDeferredTaxExpense = 'other-expense::deferred-tax-expense', LiabilityDebtsRelatedToParticipatingInterests = 'liability::debts-related-to-participating-interests', AssetGoodwill = 'asset::goodwill', OtherCurrentLiabilityGlobalTaxSuspense = 'other-current-liability::global-tax-suspense', AssetFixedAssetSoftware = 'asset::fixed-asset-software', OtherExpenseMatCredit = 'other-expense::mat-credit', ExpenseCostOfLabor = 'expense::cost-of-labor', AssetOtherEarMarkedBankAccounts = 'asset::other-ear-marked-bank-accounts', OtherCurrentLiabilityCurrentTaxLiability = 'other-current-liability::current-tax-liability', OtherExpenseParkingAndTolls = 'other-expense::parking-and-tolls', OtherExpenseOtherHomeOfficeExpenses = 'other-expense::other-home-office-expenses', RevenueNonProfitIncome = 'revenue::non-profit-income', AssetCashAndCashEquivalents = 'asset::cash-and-cash-equivalents', EquityAccumulatedOtherComprehensiveIncome = 'equity::accumulated-other-comprehensive-income', ExpenseSuppliesMaterials = 'expense::supplies-materials', OtherExpenseTaxRoundoffGainOrLoss = 'other-expense::tax-roundoff-gain-or-loss', OtherCurrentLiabilitySocialSecurityAgencies = 'other-current-liability::social-security-agencies', AssetNonCurrentAssets = 'asset::non-current-assets', AssetRetainage = 'asset::retainage', EquityCapitalReserves = 'equity::capital-reserves', OtherCurrentLiabilityOtherCurrentLiabilities = 'other-current-liability::other-current-liabilities', ExpenseBadDebts = 'expense::bad-debts', AssetOtherFixedAssets = 'asset::other-fixed-assets', ExpenseAdvertisingPromotional = 'expense::advertising-promotional', OtherExpenseVehicle = 'other-expense::vehicle', LiabilityLongTermBorrowings = 'liability::long-term-borrowings', ExpenseOtherMiscellaneousServiceCost = 'expense::other-miscellaneous-service-cost', OtherIncomeOtherOperatingIncome = 'other-income::other-operating-income', LiabilityLongTermDebit = 'liability::long-term-debit', OtherCurrentLiabilityPayrollClearing = 'other-current-liability::payroll-clearing', RevenueSalesOfProductIncome = 'revenue::sales-of-product-income', AssetCalledUpShareCapitalNotPaid = 'asset::called-up-share-capital-not-paid', AssetLicenses = 'asset::licenses' }
+export const enum MessageReadStatus { Unsent = 'unsent', Read = 'read', Failed = 'failed', Delivered = 'delivered', Sent = 'sent' }
+export const enum MessageDeliveryStatus { Delivered = 'delivered', Pending = 'pending', Error = 'error', Read = 'read', Undeliverable = 'undeliverable', Sent = 'sent', Failed = 'failed' }
+export const enum SupportQueryType { Bug = 'bug', Task = 'task', Incident = 'incident', Question = 'question', Problem = 'problem', FeatureRequest = 'feature-request', Feedback = 'feedback' }
+export const enum ImageMimeType { ImageGif = 'image/gif', ImageTiff = 'image/tiff', ImageSvgXml = 'image/svg+xml', ImageHeic = 'image/heic', ImageWebp = 'image/webp', ImageJpeg = 'image/jpeg', ImageBmp = 'image/bmp', ImagePng = 'image/png' }
+export const enum OrderingCriteria { Rating = 'rating', CreationDate = 'creation-date', PriceAscending = 'price-ascending', Alphabetical = 'alphabetical', Popularity = 'popularity', Manual = 'manual', PriceDescending = 'price-descending', Relevance = 'relevance' }
+export const enum ChatType { Group = 'group', Private = 'private', Public = 'public' }
+export const enum ItemAvailabilityStatus { Active = 'active', OutOfStock = 'out-of-stock', Discontinued = 'discontinued', Inactive = 'inactive' }
+export const enum FinancialAccountStatus { Closed = 'closed', Delinquent = 'delinquent', Frozen = 'frozen', Suspended = 'suspended', Active = 'active', Inactive = 'inactive', UnderReview = 'under-review' }
+export const enum TransactionStatus { Failed = 'failed', Pending = 'pending', Succeeded = 'succeeded', Initiated = 'initiated', Cancelled = 'cancelled', InProgress = 'in-progress', Error = 'error' }
+export const enum CreditNoteStatus { Revised = 'revised', Draft = 'draft', Applied = 'applied', Pending = 'pending', Void = 'void', Cancelled = 'cancelled', Issued = 'issued', Disputed = 'disputed', Completed = 'completed' }
+export const enum PaymentTerm { DueOnReceipt = 'due-on-receipt', DueEndOfMonth = 'due-end-of-month', CashInAdvance = 'cash-in-advance', Net90 = 'net-90', DeferredPayment = 'deferred-payment', UponCompletion = 'upon-completion', Prepaid = 'prepaid', Installment = 'installment', CashOnDelivery = 'cash-on-delivery', Net = 'net', CashWithOrder = 'cash-with-order', Prepayment = 'prepayment', Net60 = 'net-60', CashBeforeShipment = 'cash-before-shipment', Custom = 'custom', Net30 = 'net-30' }
+export const enum EmploymentAndCandidateStatus { Hired = 'hired', NotSelected = 'not-selected', Other = 'other', Terminated = 'terminated', InReview = 'in-review', Active = 'active', Inactive = 'inactive', New = 'new', OfferExtended = 'offer-extended', Interviewing = 'interviewing', OnLeave = 'on-leave' }
+export const enum OrganizationalRole { Other = 'other', Admin = 'admin', Manager = 'manager', Employee = 'employee', Contractor = 'contractor', Director = 'director', Supervisor = 'supervisor' }
+export const enum CustomerStatus { Suspended = 'suspended', Active = 'active', Inactive = 'inactive', Pending = 'pending', Archived = 'archived' }
+export const enum SocialPlatform { Tiktok = 'tiktok', Youtube = 'youtube', Tumblr = 'tumblr', OtherSocialPlatform = 'other-social-platform', Skype = 'skype', X = 'x', Instagram = 'instagram', Pinterest = 'pinterest', Twitter = 'twitter', Snapchat = 'snapchat', Facebook = 'facebook', Reddit = 'reddit', Linkedin = 'linkedin' }
+export const enum ConversationStatus { Deleted = 'deleted', Archived = 'archived', Active = 'active' }
+export const enum CommunicationRole { Guest = 'guest', Assistant = 'assistant', Moderator = 'moderator', Service = 'service', Member = 'member', Bot = 'bot', System = 'system', User = 'user', Admin = 'admin', Group = 'group', Owner = 'owner', Channel = 'channel' }
+export const enum LifecycleStatus { Issued = 'issued', Active = 'active', Expired = 'expired', Redeemed = 'redeemed', Suspended = 'suspended', Cancelled = 'cancelled' }
+export const enum PaymentMethod { CashOnDelivery = 'cash-on-delivery', BankTransfer = 'bank-transfer', Check = 'check', MobileWallet = 'mobile-wallet', MobilePayment = 'mobile-payment', Paypal = 'paypal', Cryptocurrency = 'cryptocurrency', Cash = 'cash', CreditCard = 'credit-card', DebitCard = 'debit-card', Other = 'other' }
+export const enum FinancialTransactionStatus { Pending = 'pending', Cleared = 'cleared', Failed = 'failed', Cancelled = 'cancelled', Authorized = 'authorized', SettlementInProgress = 'settlement-in-progress', Disputed = 'disputed', Refunded = 'refunded' }
+export const enum AuditOpinionType { Adverse = 'adverse', Qualified = 'qualified', Unqualified = 'unqualified', Disclaimer = 'disclaimer' }
+export const enum InventoryStorageType { DistributionCenter = 'distribution-center', RetailStore = 'retail-store', DropShipper = 'drop-shipper', OnlineMarketplace = 'online-marketplace', Consignment = 'consignment', Other = 'other', Warehouse = 'warehouse' }
+export const enum VisibilityScope { Internal = 'internal', Private = 'private', Global = 'global', App = 'app', Web = 'web' }
+export const enum PaymentStatus { Partial = 'partial', Processing = 'processing', Failed = 'failed', Paid = 'paid', Voided = 'voided', Deleted = 'deleted', Adjusted = 'adjusted', Cancelled = 'cancelled', PartiallyRefunded = 'partially-refunded', Submitted = 'submitted', Succeeded = 'succeeded', Disputed = 'disputed', Draft = 'draft', Authorized = 'authorized', Error = 'error', Overdue = 'overdue', Refunded = 'refunded', Pending = 'pending' }
+export const enum TransactionChannel { Other = 'other', Online = 'online', Mail = 'mail', Mobile = 'mobile', InPerson = 'in-person', Atm = 'atm', Telephone = 'telephone', BankBranch = 'bank-branch' }
+export const enum FinancialDisputeStatus { NeedsResponse = 'needs-response', Closed = 'closed', Won = 'won', Lost = 'lost', UnderReview = 'under-review', AwaitingEvidence = 'awaiting-evidence', Escalated = 'escalated', ChargeRefunded = 'charge-refunded' }
+export const enum DeviceUsageType { Educational = 'educational', Business = 'business', Healthcare = 'healthcare', Home = 'home', Industrial = 'industrial', Other = 'other', Personal = 'personal' }
+export const enum FinancialTransactionType { Deposit = 'deposit', Chargeback = 'chargeback', Charge = 'charge', Transfer = 'transfer', Receive = 'receive', Refund = 'refund', Dividend = 'dividend', SpendPrepayment = 'spend-prepayment', Adjustment = 'adjustment', ReceiveOverpayment = 'receive-overpayment', Other = 'other', Interest = 'interest', Fee = 'fee', Spend = 'spend', ReceivePrepayment = 'receive-prepayment', Withdrawal = 'withdrawal', Sale = 'sale', Payment = 'payment', SpendOverpayment = 'spend-overpayment' }
+export const enum AccessControlModel { None = 'none', Abac = 'abac', Rbac = 'rbac', Mac = 'mac', Dac = 'dac', Custom = 'custom' }
+export const enum ParticipantType { Group = 'group', User = 'user', Team = 'team', Organization = 'organization', ExternalParticipant = 'external-participant' }
+export const enum PriorityLevel { Low = 'low', Medium = 'medium', High = 'high', Urgent = 'urgent', Elevated = 'elevated' }
+export const enum PrerequisiteRangeType { ShippingPrice = 'shipping-price', Quantity = 'quantity', Subtotal = 'subtotal' }
+export const enum ContentVisibility { Internal = 'internal', Public = 'public', Private = 'private', Shared = 'shared', Protected = 'protected' }
+export const enum EntityCategory { Project = 'project', User = 'user', Document = 'document', Person = 'person', Message = 'message', Link = 'link', Task = 'task', Event = 'event', Owner = 'owner', Other = 'other' }
+export const enum GenderIdentity { Female = 'female', PreferNotToSay = 'prefer-not-to-say', Male = 'male', Other = 'other' }
+export const enum CommunicationMethod { PushNotification = 'push-notification', InstantMessage = 'instant-message', Sms = 'sms', Email = 'email', Text = 'text', Phone = 'phone', Mail = 'mail', InPerson = 'in-person', VideoCall = 'video-call', SocialMedia = 'social-media', Other = 'other' }
+export const enum EmailCategoryType { Transactional = 'transactional', Governmental = 'governmental', Spam = 'spam', Business = 'business', Educational = 'educational', Other = 'other', Promotional = 'promotional', Personal = 'personal' }
+export const enum UniversalIdentifierType { Uuid = 'uuid', Url = 'url', Number = 'number', Email = 'email', String = 'string' }
+export const enum TaskStatus { Cancelled = 'cancelled', Done = 'done', Blocked = 'blocked', InProgress = 'in-progress', Todo = 'todo', OnHold = 'on-hold' }
+export const enum UserStatus { Inactive = 'inactive', Verified = 'verified', Suspended = 'suspended', Active = 'active', Banned = 'banned', Pending = 'pending', WaitListed = 'wait-listed', Archived = 'archived', Deleted = 'deleted' }
+export const enum PromotionType { Percentage = 'percentage', RewardPoints = 'reward-points', Other = 'other', FreeShipping = 'free-shipping', BuyOneGetOne = 'buy-one-get-one', FixedAmount = 'fixed-amount' }
+export const enum MimeType { ImagePng = 'image/png', ImageGif = 'image/gif', ImageSvgXml = 'image/svg+xml', ImageWebp = 'image/webp', ImageJpeg = 'image/jpeg' }
 export const enum TaxType { Inclusive = 'inclusive', Additive = 'additive', Variable = 'variable' }
 export const enum ModifierType { List = 'list', Text = 'text' }
 export const enum CardType { UnknownCard = 'unknown-card', Credit = 'credit', Debit = 'debit' }
-export const enum PrepaidType { UnknownPrepaid = 'unknown-prepaid', Prepaid = 'prepaid', NotPrepaid = 'not-prepaid' }
-export const enum EntryMethod { Emv = 'emv', Keyed = 'keyed', OnFile = 'on-file', Contactless = 'contactless', Swiped = 'swiped' }
-export const enum CvvStatus { Accepted = 'accepted', NotChecked = 'not-checked', Rejected = 'rejected' }
-export const enum AvcStatus { Accepted = 'accepted', NotChecked = 'not-checked', Rejected = 'rejected' }
-export const enum CreditType { Supplier = 'supplier', Goodwill = 'goodwill', Customer = 'customer', Prepayment = 'prepayment', Overpayment = 'overpayment' }
-export const enum CallDirection { Unknown = 'unknown', Conference = 'conference', Outbound = 'outbound', Inbound = 'inbound' }
-export const enum SpeakerRole { Attendee = 'attendee', Invitee = 'invitee' }
-export const enum FileType { Url = 'url', File = 'file', Folder = 'folder' }
-export const enum AiToolChoiceType { Any = 'any', Auto = 'auto', Tool = 'tool', None = 'none' }
+export const enum PrepaidType { Prepaid = 'prepaid', UnknownPrepaid = 'unknown-prepaid', NotPrepaid = 'not-prepaid' }
+export const enum EntryMethod { Contactless = 'contactless', Emv = 'emv', Swiped = 'swiped', Keyed = 'keyed', OnFile = 'on-file' }
+export const enum CvvStatus { Rejected = 'rejected', NotChecked = 'not-checked', Accepted = 'accepted' }
+export const enum AvcStatus { Accepted = 'accepted', Rejected = 'rejected', NotChecked = 'not-checked' }
+export const enum CreditType { Customer = 'customer', Goodwill = 'goodwill', Prepayment = 'prepayment', Supplier = 'supplier', Overpayment = 'overpayment' }
+export const enum CallDirection { Conference = 'conference', Unknown = 'unknown', Outbound = 'outbound', Inbound = 'inbound' }
+export const enum SpeakerRole { Invitee = 'invitee', Attendee = 'attendee' }
+export const enum FileType { File = 'file', Folder = 'folder', Url = 'url' }
+export const enum AiToolChoiceType { Tool = 'tool', Any = 'any', None = 'none', Auto = 'auto' }
 export const enum ImageType { Base64 = 'base64' }
 export const enum ResponseFormatType { JsonObject = 'json-object', JsonSchema = 'json-schema', Text = 'text' }
 export const enum ToolCallType { Function = 'function' }
-export const enum AiMessagesContentType { Image = 'image', ToolResult = 'tool-result', ToolUse = 'tool-use', Text = 'text' }
-export const enum AiRole { Assistant = 'assistant', User = 'user', Tool = 'tool' }
+export const enum AiMessagesContentType { Text = 'text', ToolResult = 'tool-result', ToolUse = 'tool-use', Image = 'image' }
+export const enum AiRole { Assistant = 'assistant', Tool = 'tool', User = 'user' }
 export const enum JsonSchemaType { Function = 'function' }
+export const enum EventStatus { Cancelled = 'cancelled', Tentative = 'tentative', Confirmed = 'confirmed' }
+export const enum EventVisibility { Public = 'public', Private = 'private', Confidential = 'confidential' }
+export const enum EventReminderAction { Popup = 'popup', Email = 'email' }
+export const enum EventRuleType { Repeat = 'repeat', ExcludeDates = 'exclude-dates', AddDates = 'add-dates', Exclude = 'exclude' }
+export const enum EventFrequency { Yearly = 'yearly', Weekly = 'weekly', Monthly = 'monthly', Daily = 'daily' }
