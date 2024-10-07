@@ -26,8 +26,8 @@ import {
     PriceRules, 
     Discounts, 
     Chats, 
-    Conversations, 
     Messages, 
+    Conversations, 
     TaxRates, 
     CreditNotes, 
     Expenses, 
@@ -292,11 +292,11 @@ export class IntegrationOS {
     chats(connectionKey: string) {
         return new UnifiedResourceImpl<Chats>(this.axiosInstance, connectionKey, 'chats');
     }
-    conversations(connectionKey: string) {
-        return new UnifiedResourceImpl<Conversations>(this.axiosInstance, connectionKey, 'conversations');
-    }
     messages(connectionKey: string) {
         return new UnifiedResourceImpl<Messages>(this.axiosInstance, connectionKey, 'messages');
+    }
+    conversations(connectionKey: string) {
+        return new UnifiedResourceImpl<Conversations>(this.axiosInstance, connectionKey, 'conversations');
     }
     taxRates(connectionKey: string) {
         return new UnifiedResourceImpl<TaxRates>(this.axiosInstance, connectionKey, 'taxrates');
