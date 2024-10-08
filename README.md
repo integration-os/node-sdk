@@ -1,4 +1,4 @@
-# @integrationos/node-sdk
+# @integrationos/node
 
 The IntegrationOS library for Node.js provides convenient access to the IntegrationOS API from applications written in server-side JavaScript.
 
