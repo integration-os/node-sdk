@@ -59,7 +59,7 @@ import {
     Customers
 } from './types/';
 
-interface UnifiedApi<Type> {
+export interface UnifiedApi<Type> {
     create(object: Type, options?: UnifiedOptions | undefined | null): Promise<Response<Type>>;
     list(filter?: ListFilter | undefined | null, options?: UnifiedOptions | undefined | null): Promise<ListResponse<Type>>;
     get(id: string, options?: UnifiedOptions | undefined | null): Promise<Response<Type>>;
@@ -164,7 +164,7 @@ export class Resource {
     }
 }
 
-class UnifiedResourceImpl<T> extends Resource implements UnifiedApi<T> {
+export class UnifiedResourceImpl<T> extends Resource implements UnifiedApi<T> {
     async create(object: T, options?: UnifiedOptions): Promise<Response<T>> {
         return this.makeRequestSingle<T>('POST', `/unified/${this.resourceName}`, object, options, undefined, HttpStatusCode.Created);
     }
