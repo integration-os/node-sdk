@@ -1,6 +1,6 @@
 {
   "name": "@integrationos/node",
-  "version": "4.1.5",
+  "version": "4.1.6",
   "description": "Node SDK for the IntegrationOS Unified API",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
