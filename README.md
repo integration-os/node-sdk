@@ -21,7 +21,7 @@ yarn add @integrationos/node
 To use the library you must provide an API key and Connection key. Both are located in the IntegrationOS dashboard.
 
 ```jsx
-import { IntegrationOS } from "@integrationOS/node";
+import { IntegrationOS } from "@integrationos/node";
 
 const integrate = new IntegrationOS("sk_live_1234");
 

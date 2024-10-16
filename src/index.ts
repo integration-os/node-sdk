@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, Method } from 'axios';
-import { UnifiedOptions, Response, ListFilter, ListResponse, Count, DeleteOptions, HttpStatusCode } from './types/';
+import { UnifiedOptions, Response, ListFilter, ListResponse, Count, DeleteOptions, HttpStatusCode, ResponseError } from './types/';
 import { convertFilterToQueryParams } from './utils';
 
 export * from './types/generic';
@@ -130,7 +130,7 @@ export class Resource {
 
             return output;
         } catch (error: any) {
-            throw error.response?.data;
+            throw error.response?.data as ResponseError;
         }
     }
 
@@ -159,7 +159,7 @@ export class Resource {
 
             return output;
         } catch (error: any) {
-            throw error.response?.data;
+            throw error.response?.data as ResponseError;
         }
     }
 }
