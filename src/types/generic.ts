@@ -46,6 +46,15 @@ export interface Response<Type> {
     statusCode: number;
 }
 
+export interface ResponseError {
+    type: string;
+    code: number;
+    status: number;
+    key: string;
+    message: string;
+    meta: object | null;
+}
+
 export enum HttpStatusCode {
     // 1xx Informational
     Continue = 100,
