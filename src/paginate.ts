@@ -9,9 +9,7 @@ export class PaginationHelper<T> {
 
     constructor(
         private fetchFunction: PaginationHelperFetch<T>,
-        private listParams: ListFilter = {
-            limit: 25
-        }
+        private listParams: ListFilter = {}
     ) { }
 
     async initialize(): Promise<void> {
@@ -60,6 +58,10 @@ export class PaginationHelper<T> {
     }
 
     hasMoreData(): boolean {
+        if (!this.isInitialized) {
+            return true;
+        }
+
         return this.currentBatch.length > 0 || (this.nextBatch !== null && this.nextBatch.length > 0);
     }
 }
