@@ -7,12 +7,10 @@ export class PaginationHelper<T> {
     private nextCursor: string | undefined;
     private isInitialized: boolean = false;
 
-    private defaultBatchSize: number = 25
-
     constructor(
         private fetchFunction: PaginationHelperFetch<T>,
         private listParams: ListFilter = {
-            limit: this.defaultBatchSize
+            limit: 25
         }
     ) { }
 
