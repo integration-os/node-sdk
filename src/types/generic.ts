@@ -21,6 +21,8 @@ export interface Pagination {
     previousCursor?: string;
 }
 
+export type PaginationHelperFetch<T> = (params: ListFilter) => Promise<ListResponse<T>>;
+
 export interface DeleteOptions {
     modifyToken?: string;
 }

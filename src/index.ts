@@ -4,6 +4,7 @@ import { convertFilterToQueryParams } from './utils';
 
 export * from './types/generic';
 export * from './types/models';
+export * from './paginate';
 
 import { 
     Events, 
