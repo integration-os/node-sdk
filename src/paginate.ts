@@ -8,20 +8,18 @@ export class PaginationHelper<T> {
     private isInitialized: boolean = false;
 
     constructor(
-        private fetchFunction: PaginationHelperFetch<T>,
-        private listParams: ListFilter = {}
+        private fetchFunction: PaginationHelperFetch<T>
     ) { }
 
     async initialize(): Promise<void> {
         if (this.isInitialized) return;
 
-        const firstResponse = await this.fetchFunction({ ...this.listParams });
+        const firstResponse = await this.fetchFunction({});
         this.currentBatch = firstResponse.unified;
         this.currentCursor = firstResponse.pagination.nextCursor;
 
         if (this.currentCursor) {
             const secondResponse = await this.fetchFunction({
-                ...this.listParams,
                 cursor: this.currentCursor
             });
 
@@ -43,7 +41,6 @@ export class PaginationHelper<T> {
 
         if (this.currentCursor) {
             const response = await this.fetchFunction({
-                ...this.listParams,
                 cursor: this.currentCursor
             });
 
