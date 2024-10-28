@@ -1,4 +1,4 @@
-import { ListFilter, PaginationHelperFetch } from "./types";
+import { PaginationHelperFetch } from "./types";
 
 export class PaginationHelper<T> {
     private currentBatch: T[] = [];
