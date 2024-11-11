@@ -7,6 +7,7 @@ export * from './types/models';
 export * from './paginate';
 
 import { 
+    Projects, 
     Events, 
     Calendars, 
     Threads, 
@@ -233,6 +234,9 @@ export class IntegrationOS {
         return new PassthroughResourceImpl(this.axiosInstance, connectionKey, 'passthrough');
     }
 
+    projects(connectionKey: string) {
+        return new UnifiedResourceImpl<Projects>(this.axiosInstance, connectionKey, 'projects');
+    }
     events(connectionKey: string) {
         return new UnifiedResourceImpl<Events>(this.axiosInstance, connectionKey, 'events');
     }
