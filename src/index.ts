@@ -7,58 +7,58 @@ export * from './types/models';
 export * from './paginate';
 
 import { 
-    Projects, 
-    Events, 
-    Calendars, 
-    Threads, 
-    Drafts, 
-    Drives, 
-    Folders, 
-    Files, 
-    Recordings, 
-    Transcripts, 
-    Tables, 
-    Databases, 
-    Attributes, 
-    Records, 
-    Objects, 
-    ModifierGroups, 
-    Locations, 
     Webhooks, 
-    PriceRules, 
-    Discounts, 
-    Chats, 
-    Messages, 
-    Conversations, 
-    TaxRates, 
-    CreditNotes, 
-    Expenses, 
-    Transactions, 
-    Accounts, 
-    PurchaseOrders, 
-    Refunds, 
-    Payments, 
-    Bills, 
     Vendors, 
-    BalanceSheets, 
-    IncomeStatements, 
-    Invoices, 
-    JournalEntries, 
-    InvoiceItems, 
+    Users, 
+    Transcripts, 
+    Transactions, 
     Tickets, 
-    Candidates, 
-    Contacts, 
-    Jobs, 
+    Threads, 
+    TaxRates, 
     Tasks, 
+    Tables, 
+    Refunds, 
+    Records, 
+    Recordings, 
+    PurchaseOrders, 
+    Projects, 
     Products, 
+    PriceRules, 
+    Payments, 
     Orders, 
     Opportunities, 
-    Users, 
-    Categories, 
+    Objects, 
     Notes, 
+    ModifierGroups, 
+    Messages, 
+    Locations, 
     Leads, 
+    JournalEntries, 
+    Jobs, 
+    Invoices, 
+    InvoiceItems, 
+    IncomeStatements, 
+    Folders, 
+    Files, 
+    Expenses, 
+    Events, 
+    Drives, 
+    Drafts, 
+    Discounts, 
+    Databases, 
+    Customers, 
+    CreditNotes, 
+    Conversations, 
+    Contacts, 
     Companies, 
-    Customers
+    Chats, 
+    Categories, 
+    Candidates, 
+    Calendars, 
+    Bills, 
+    BalanceSheets, 
+    Attributes, 
+    Accounts
 } from './types/';
 
 export interface UnifiedApi<Type> {
@@ -234,137 +234,59 @@ export class IntegrationOS {
         return new PassthroughResourceImpl(this.axiosInstance, connectionKey, 'passthrough');
     }
 
-    projects(connectionKey: string) {
-        return new UnifiedResourceImpl<Projects>(this.axiosInstance, connectionKey, 'projects');
-    }
-    events(connectionKey: string) {
-        return new UnifiedResourceImpl<Events>(this.axiosInstance, connectionKey, 'events');
-    }
-    calendars(connectionKey: string) {
-        return new UnifiedResourceImpl<Calendars>(this.axiosInstance, connectionKey, 'calendars');
-    }
-    threads(connectionKey: string) {
-        return new UnifiedResourceImpl<Threads>(this.axiosInstance, connectionKey, 'threads');
-    }
-    drafts(connectionKey: string) {
-        return new UnifiedResourceImpl<Drafts>(this.axiosInstance, connectionKey, 'drafts');
-    }
-    drives(connectionKey: string) {
-        return new UnifiedResourceImpl<Drives>(this.axiosInstance, connectionKey, 'drives');
-    }
-    folders(connectionKey: string) {
-        return new UnifiedResourceImpl<Folders>(this.axiosInstance, connectionKey, 'folders');
-    }
-    files(connectionKey: string) {
-        return new UnifiedResourceImpl<Files>(this.axiosInstance, connectionKey, 'files');
-    }
-    recordings(connectionKey: string) {
-        return new UnifiedResourceImpl<Recordings>(this.axiosInstance, connectionKey, 'recordings');
-    }
-    transcripts(connectionKey: string) {
-        return new UnifiedResourceImpl<Transcripts>(this.axiosInstance, connectionKey, 'transcripts');
-    }
-    tables(connectionKey: string) {
-        return new UnifiedResourceImpl<Tables>(this.axiosInstance, connectionKey, 'tables');
-    }
-    databases(connectionKey: string) {
-        return new UnifiedResourceImpl<Databases>(this.axiosInstance, connectionKey, 'databases');
-    }
-    attributes(connectionKey: string) {
-        return new UnifiedResourceImpl<Attributes>(this.axiosInstance, connectionKey, 'attributes');
-    }
-    records(connectionKey: string) {
-        return new UnifiedResourceImpl<Records>(this.axiosInstance, connectionKey, 'records');
-    }
-    objects(connectionKey: string) {
-        return new UnifiedResourceImpl<Objects>(this.axiosInstance, connectionKey, 'objects');
-    }
-    modifierGroups(connectionKey: string) {
-        return new UnifiedResourceImpl<ModifierGroups>(this.axiosInstance, connectionKey, 'modifiergroups');
-    }
-    locations(connectionKey: string) {
-        return new UnifiedResourceImpl<Locations>(this.axiosInstance, connectionKey, 'locations');
-    }
     webhooks(connectionKey: string) {
         return new UnifiedResourceImpl<Webhooks>(this.axiosInstance, connectionKey, 'webhooks');
-    }
-    priceRules(connectionKey: string) {
-        return new UnifiedResourceImpl<PriceRules>(this.axiosInstance, connectionKey, 'pricerules');
-    }
-    discounts(connectionKey: string) {
-        return new UnifiedResourceImpl<Discounts>(this.axiosInstance, connectionKey, 'discounts');
-    }
-    chats(connectionKey: string) {
-        return new UnifiedResourceImpl<Chats>(this.axiosInstance, connectionKey, 'chats');
-    }
-    messages(connectionKey: string) {
-        return new UnifiedResourceImpl<Messages>(this.axiosInstance, connectionKey, 'messages');
-    }
-    conversations(connectionKey: string) {
-        return new UnifiedResourceImpl<Conversations>(this.axiosInstance, connectionKey, 'conversations');
-    }
-    taxRates(connectionKey: string) {
-        return new UnifiedResourceImpl<TaxRates>(this.axiosInstance, connectionKey, 'taxrates');
-    }
-    creditNotes(connectionKey: string) {
-        return new UnifiedResourceImpl<CreditNotes>(this.axiosInstance, connectionKey, 'creditnotes');
-    }
-    expenses(connectionKey: string) {
-        return new UnifiedResourceImpl<Expenses>(this.axiosInstance, connectionKey, 'expenses');
-    }
-    transactions(connectionKey: string) {
-        return new UnifiedResourceImpl<Transactions>(this.axiosInstance, connectionKey, 'transactions');
-    }
-    accounts(connectionKey: string) {
-        return new UnifiedResourceImpl<Accounts>(this.axiosInstance, connectionKey, 'accounts');
-    }
-    purchaseOrders(connectionKey: string) {
-        return new UnifiedResourceImpl<PurchaseOrders>(this.axiosInstance, connectionKey, 'purchaseorders');
-    }
-    refunds(connectionKey: string) {
-        return new UnifiedResourceImpl<Refunds>(this.axiosInstance, connectionKey, 'refunds');
-    }
-    payments(connectionKey: string) {
-        return new UnifiedResourceImpl<Payments>(this.axiosInstance, connectionKey, 'payments');
-    }
-    bills(connectionKey: string) {
-        return new UnifiedResourceImpl<Bills>(this.axiosInstance, connectionKey, 'bills');
     }
     vendors(connectionKey: string) {
         return new UnifiedResourceImpl<Vendors>(this.axiosInstance, connectionKey, 'vendors');
     }
-    balanceSheets(connectionKey: string) {
-        return new UnifiedResourceImpl<BalanceSheets>(this.axiosInstance, connectionKey, 'balancesheets');
+    users(connectionKey: string) {
+        return new UnifiedResourceImpl<Users>(this.axiosInstance, connectionKey, 'users');
     }
-    incomeStatements(connectionKey: string) {
-        return new UnifiedResourceImpl<IncomeStatements>(this.axiosInstance, connectionKey, 'incomestatements');
+    transcripts(connectionKey: string) {
+        return new UnifiedResourceImpl<Transcripts>(this.axiosInstance, connectionKey, 'transcripts');
     }
-    invoices(connectionKey: string) {
-        return new UnifiedResourceImpl<Invoices>(this.axiosInstance, connectionKey, 'invoices');
-    }
-    journalEntries(connectionKey: string) {
-        return new UnifiedResourceImpl<JournalEntries>(this.axiosInstance, connectionKey, 'journalentries');
-    }
-    invoiceItems(connectionKey: string) {
-        return new UnifiedResourceImpl<InvoiceItems>(this.axiosInstance, connectionKey, 'invoiceitems');
+    transactions(connectionKey: string) {
+        return new UnifiedResourceImpl<Transactions>(this.axiosInstance, connectionKey, 'transactions');
     }
     tickets(connectionKey: string) {
         return new UnifiedResourceImpl<Tickets>(this.axiosInstance, connectionKey, 'tickets');
     }
-    candidates(connectionKey: string) {
-        return new UnifiedResourceImpl<Candidates>(this.axiosInstance, connectionKey, 'candidates');
+    threads(connectionKey: string) {
+        return new UnifiedResourceImpl<Threads>(this.axiosInstance, connectionKey, 'threads');
     }
-    contacts(connectionKey: string) {
-        return new UnifiedResourceImpl<Contacts>(this.axiosInstance, connectionKey, 'contacts');
-    }
-    jobs(connectionKey: string) {
-        return new UnifiedResourceImpl<Jobs>(this.axiosInstance, connectionKey, 'jobs');
+    taxRates(connectionKey: string) {
+        return new UnifiedResourceImpl<TaxRates>(this.axiosInstance, connectionKey, 'taxrates');
     }
     tasks(connectionKey: string) {
         return new UnifiedResourceImpl<Tasks>(this.axiosInstance, connectionKey, 'tasks');
     }
+    tables(connectionKey: string) {
+        return new UnifiedResourceImpl<Tables>(this.axiosInstance, connectionKey, 'tables');
+    }
+    refunds(connectionKey: string) {
+        return new UnifiedResourceImpl<Refunds>(this.axiosInstance, connectionKey, 'refunds');
+    }
+    records(connectionKey: string) {
+        return new UnifiedResourceImpl<Records>(this.axiosInstance, connectionKey, 'records');
+    }
+    recordings(connectionKey: string) {
+        return new UnifiedResourceImpl<Recordings>(this.axiosInstance, connectionKey, 'recordings');
+    }
+    purchaseOrders(connectionKey: string) {
+        return new UnifiedResourceImpl<PurchaseOrders>(this.axiosInstance, connectionKey, 'purchaseorders');
+    }
+    projects(connectionKey: string) {
+        return new UnifiedResourceImpl<Projects>(this.axiosInstance, connectionKey, 'projects');
+    }
     products(connectionKey: string) {
         return new UnifiedResourceImpl<Products>(this.axiosInstance, connectionKey, 'products');
+    }
+    priceRules(connectionKey: string) {
+        return new UnifiedResourceImpl<PriceRules>(this.axiosInstance, connectionKey, 'pricerules');
+    }
+    payments(connectionKey: string) {
+        return new UnifiedResourceImpl<Payments>(this.axiosInstance, connectionKey, 'payments');
     }
     orders(connectionKey: string) {
         return new UnifiedResourceImpl<Orders>(this.axiosInstance, connectionKey, 'orders');
@@ -372,22 +294,100 @@ export class IntegrationOS {
     opportunities(connectionKey: string) {
         return new UnifiedResourceImpl<Opportunities>(this.axiosInstance, connectionKey, 'opportunities');
     }
-    users(connectionKey: string) {
-        return new UnifiedResourceImpl<Users>(this.axiosInstance, connectionKey, 'users');
-    }
-    categories(connectionKey: string) {
-        return new UnifiedResourceImpl<Categories>(this.axiosInstance, connectionKey, 'categories');
+    objects(connectionKey: string) {
+        return new UnifiedResourceImpl<Objects>(this.axiosInstance, connectionKey, 'objects');
     }
     notes(connectionKey: string) {
         return new UnifiedResourceImpl<Notes>(this.axiosInstance, connectionKey, 'notes');
     }
+    modifierGroups(connectionKey: string) {
+        return new UnifiedResourceImpl<ModifierGroups>(this.axiosInstance, connectionKey, 'modifiergroups');
+    }
+    messages(connectionKey: string) {
+        return new UnifiedResourceImpl<Messages>(this.axiosInstance, connectionKey, 'messages');
+    }
+    locations(connectionKey: string) {
+        return new UnifiedResourceImpl<Locations>(this.axiosInstance, connectionKey, 'locations');
+    }
     leads(connectionKey: string) {
         return new UnifiedResourceImpl<Leads>(this.axiosInstance, connectionKey, 'leads');
+    }
+    journalEntries(connectionKey: string) {
+        return new UnifiedResourceImpl<JournalEntries>(this.axiosInstance, connectionKey, 'journalentries');
+    }
+    jobs(connectionKey: string) {
+        return new UnifiedResourceImpl<Jobs>(this.axiosInstance, connectionKey, 'jobs');
+    }
+    invoices(connectionKey: string) {
+        return new UnifiedResourceImpl<Invoices>(this.axiosInstance, connectionKey, 'invoices');
+    }
+    invoiceItems(connectionKey: string) {
+        return new UnifiedResourceImpl<InvoiceItems>(this.axiosInstance, connectionKey, 'invoiceitems');
+    }
+    incomeStatements(connectionKey: string) {
+        return new UnifiedResourceImpl<IncomeStatements>(this.axiosInstance, connectionKey, 'incomestatements');
+    }
+    folders(connectionKey: string) {
+        return new UnifiedResourceImpl<Folders>(this.axiosInstance, connectionKey, 'folders');
+    }
+    files(connectionKey: string) {
+        return new UnifiedResourceImpl<Files>(this.axiosInstance, connectionKey, 'files');
+    }
+    expenses(connectionKey: string) {
+        return new UnifiedResourceImpl<Expenses>(this.axiosInstance, connectionKey, 'expenses');
+    }
+    events(connectionKey: string) {
+        return new UnifiedResourceImpl<Events>(this.axiosInstance, connectionKey, 'events');
+    }
+    drives(connectionKey: string) {
+        return new UnifiedResourceImpl<Drives>(this.axiosInstance, connectionKey, 'drives');
+    }
+    drafts(connectionKey: string) {
+        return new UnifiedResourceImpl<Drafts>(this.axiosInstance, connectionKey, 'drafts');
+    }
+    discounts(connectionKey: string) {
+        return new UnifiedResourceImpl<Discounts>(this.axiosInstance, connectionKey, 'discounts');
+    }
+    databases(connectionKey: string) {
+        return new UnifiedResourceImpl<Databases>(this.axiosInstance, connectionKey, 'databases');
+    }
+    customers(connectionKey: string) {
+        return new UnifiedResourceImpl<Customers>(this.axiosInstance, connectionKey, 'customers');
+    }
+    creditNotes(connectionKey: string) {
+        return new UnifiedResourceImpl<CreditNotes>(this.axiosInstance, connectionKey, 'creditnotes');
+    }
+    conversations(connectionKey: string) {
+        return new UnifiedResourceImpl<Conversations>(this.axiosInstance, connectionKey, 'conversations');
+    }
+    contacts(connectionKey: string) {
+        return new UnifiedResourceImpl<Contacts>(this.axiosInstance, connectionKey, 'contacts');
     }
     companies(connectionKey: string) {
         return new UnifiedResourceImpl<Companies>(this.axiosInstance, connectionKey, 'companies');
     }
-    customers(connectionKey: string) {
-        return new UnifiedResourceImpl<Customers>(this.axiosInstance, connectionKey, 'customers');
+    chats(connectionKey: string) {
+        return new UnifiedResourceImpl<Chats>(this.axiosInstance, connectionKey, 'chats');
+    }
+    categories(connectionKey: string) {
+        return new UnifiedResourceImpl<Categories>(this.axiosInstance, connectionKey, 'categories');
+    }
+    candidates(connectionKey: string) {
+        return new UnifiedResourceImpl<Candidates>(this.axiosInstance, connectionKey, 'candidates');
+    }
+    calendars(connectionKey: string) {
+        return new UnifiedResourceImpl<Calendars>(this.axiosInstance, connectionKey, 'calendars');
+    }
+    bills(connectionKey: string) {
+        return new UnifiedResourceImpl<Bills>(this.axiosInstance, connectionKey, 'bills');
+    }
+    balanceSheets(connectionKey: string) {
+        return new UnifiedResourceImpl<BalanceSheets>(this.axiosInstance, connectionKey, 'balancesheets');
+    }
+    attributes(connectionKey: string) {
+        return new UnifiedResourceImpl<Attributes>(this.axiosInstance, connectionKey, 'attributes');
+    }
+    accounts(connectionKey: string) {
+        return new UnifiedResourceImpl<Accounts>(this.axiosInstance, connectionKey, 'accounts');
     }
 }
